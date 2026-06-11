@@ -5,9 +5,26 @@ import Link from "next/link";
 import { Mail, MapPin, Phone, Facebook, Twitter, Linkedin } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 export function Footer() {
   const logo = PlaceHolderImages.find(img => img.id === "cpra-logo");
+  const { toast } = useToast();
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+
+    // Mock successful subscription
+    toast({
+      title: "Subscription Successful!",
+      description: "Thank you for joining our mailing list. You will receive our next update shortly.",
+    });
+    
+    setEmail("");
+  };
 
   return (
     <footer className="bg-primary text-primary-foreground pt-16 pb-8">
@@ -84,13 +101,21 @@ export function Footer() {
             <p className="text-sm text-primary-foreground/70 mb-4">
               Subscribe to our monthly fragility assessments and advocacy briefs.
             </p>
-            <form className="flex gap-2">
+            <form onSubmit={handleSubscribe} className="flex gap-2">
               <input 
                 type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email address" 
-                className="bg-primary-foreground/10 border-primary-foreground/20 rounded-md px-4 py-2 text-sm w-full focus:outline-none focus:ring-1 focus:ring-accent"
+                required
+                className="bg-primary-foreground/10 border-primary-foreground/20 rounded-md px-4 py-2 text-sm w-full focus:outline-none focus:ring-1 focus:ring-accent text-white placeholder:text-primary-foreground/40"
               />
-              <button className="bg-accent text-white px-4 py-2 rounded-md hover:bg-accent/90 transition-colors">Join</button>
+              <button 
+                type="submit"
+                className="bg-accent text-white px-4 py-2 rounded-md hover:bg-accent/90 transition-colors font-bold text-sm"
+              >
+                Join
+              </button>
             </form>
           </div>
         </div>
