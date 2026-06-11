@@ -8,6 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Users, MapPin, Search, ArrowLeft, Clock, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
+/**
+ * EDITABLE INTERNSHIP ROLES
+ * You can add, remove, or modify roles in this array.
+ */
 const roles = [
   {
     id: "i-1",
@@ -37,6 +41,8 @@ const roles = [
     partner: "Ministry of Justice"
   }
 ];
+
+const FB_LINK = "https://www.facebook.com/p/Centre-for-Peace-Research-and-Advocacy-CPRA-100087220065870/";
 
 export default function InternshipsPage() {
   return (
@@ -88,8 +94,10 @@ export default function InternshipsPage() {
                       </div>
                     </div>
                     <div className="bg-primary/5 p-8 flex items-center justify-center border-l border-muted">
-                      <Button asChild className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-12 uppercase tracking-widest text-xs">
-                        <Link href="/support">Express Interest</Link>
+                      <Button asChild className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-12 uppercase tracking-widest text-[10px] sm:text-xs whitespace-nowrap px-4">
+                        <a href={FB_LINK} target="_blank" rel="noopener noreferrer">
+                          Express Interest
+                        </a>
                       </Button>
                     </div>
                   </div>
