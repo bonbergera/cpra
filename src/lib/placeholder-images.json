@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-peace",
+      "description": "A serene landscape representing peace and stability in Southern Africa.",
+      "imageUrl": "https://picsum.photos/seed/cpra1/1200/600",
+      "imageHint": "peace landscape"
+    },
+    {
+      "id": "peacebuilding",
+      "description": "Community members engaged in a peaceful dialogue session.",
+      "imageUrl": "https://picsum.photos/seed/cpra2/600/400",
+      "imageHint": "community dialogue"
+    },
+    {
+      "id": "climate-justice",
+      "description": "Impact of environment on a local Zambian community.",
+      "imageUrl": "https://picsum.photos/seed/cpra3/600/400",
+      "imageHint": "climate environment"
+    },
+    {
+      "id": "vulnerable-groups",
+      "description": "Social workers supporting children in a regional center.",
+      "imageUrl": "https://picsum.photos/seed/cpra4/600/400",
+      "imageHint": "child protection"
+    },
+    {
+      "id": "cliffton-chifuwe",
+      "description": "Executive Director Cliffton Mayaba Chifuwe (placeholder).",
+      "imageUrl": "https://picsum.photos/seed/cpra5/300/300",
+      "imageHint": "professional man"
+    }
+  ]
 }
