@@ -93,8 +93,8 @@ export default function InternshipsPage() {
                         ))}
                       </div>
                     </div>
-                    <div className="bg-primary/5 p-8 flex items-center justify-center border-l border-muted">
-                      <Button asChild className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-12 uppercase tracking-widest text-[10px] sm:text-xs whitespace-nowrap px-4">
+                    <div className="bg-primary/5 p-6 md:p-4 lg:p-8 flex items-center justify-center border-l border-muted">
+                      <Button asChild className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-12 uppercase tracking-tight text-[10px] sm:text-xs px-2 sm:px-4">
                         <a href={FB_LINK} target="_blank" rel="noopener noreferrer">
                           Express Interest
                         </a>
