@@ -56,7 +56,7 @@ const MAP_POINTS = [
 /**
  * EDITABLE ASSESSMENTS DATA
  * This powers the sidebar and the detailed popups.
- * reportUrl should point to a file in public/documents/
+ * reportUrl should point to a file in public/documents/ (e.g., "/documents/my-report.pdf")
  */
 const RECENT_ASSESSMENTS = [
   { 
