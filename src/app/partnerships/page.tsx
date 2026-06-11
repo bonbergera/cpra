@@ -37,7 +37,9 @@ export default function PartnershipsPage() {
                   <Button asChild className="bg-primary px-8">
                     <Link href="/support">Become a Partner</Link>
                   </Button>
-                  <Button variant="outline" className="px-8">View Active MOUs</Button>
+                  <Button asChild variant="outline" className="px-8">
+                    <Link href="/partnerships/mous">View Active MOUs</Link>
+                  </Button>
                 </div>
               </div>
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
