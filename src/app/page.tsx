@@ -66,7 +66,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative h-[85vh] flex items-center overflow-hidden">
+        <section className="relative min-h-[85vh] flex items-center overflow-hidden py-20">
           <div className="absolute inset-0 z-0">
             <Image
               src={heroImg?.imageUrl || ""}
@@ -78,22 +78,22 @@ export default function Home() {
             />
           </div>
           <div className="container mx-auto px-4 sm:px-6 relative z-10">
-            <div className="max-w-3xl space-y-8 animate-fade-in">
-              <div className="inline-block bg-accent/20 border border-accent/30 text-accent-foreground px-4 py-1.5 rounded-full text-sm font-semibold backdrop-blur-sm">
+            <div className="max-w-3xl space-y-6 md:space-y-8 animate-fade-in">
+              <div className="inline-block bg-accent/20 border border-accent/30 text-accent-foreground px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold backdrop-blur-sm">
                 Independent NGO • Zambia
               </div>
-              <h1 className="text-5xl md:text-7xl font-headline font-bold text-white leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-bold text-white leading-[1.1]">
                 Fostering Sustainable <span className="text-accent italic">Peace</span> Across Southern Africa
               </h1>
-              <p className="text-xl text-white/80 font-light leading-relaxed max-w-2xl">
+              <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed max-w-2xl">
                 The Centre for Peace Research and Advocacy (CPRA) is dedicated to promoting democracy, 
                 human rights, and social justice through evidence-based research and localized conflict resolution.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white px-8">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white px-8 h-14 md:h-12 w-full sm:w-auto">
                   <Link href="/research">Launch Research Tool</Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white/10 px-8">
+                <Button asChild size="lg" variant="secondary" className="bg-white hover:bg-slate-100 text-primary px-8 h-14 md:h-12 w-full sm:w-auto font-bold shadow-lg">
                   <Link href="/themes">Explore Core Themes</Link>
                 </Button>
               </div>
@@ -102,18 +102,18 @@ export default function Home() {
         </section>
 
         {/* Mission Statement */}
-        <section className="py-24 bg-background">
+        <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="space-y-6">
                 <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary">Our Vision</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                   We envision a vibrant Southern Africa anchored on peaceful and inclusive societies, 
                   where every individual can thrive in an environment free from violence and inequality.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="bg-primary/5 p-3 rounded-lg">
+                    <div className="bg-primary/5 p-3 rounded-lg shrink-0">
                       <Shield className="h-6 w-6 text-primary" />
                     </div>
                     <div>
@@ -122,7 +122,7 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="bg-primary/5 p-3 rounded-lg">
+                    <div className="bg-primary/5 p-3 rounded-lg shrink-0">
                       <Scale className="h-6 w-6 text-primary" />
                     </div>
                     <div>
@@ -146,14 +146,14 @@ export default function Home() {
         </section>
 
         {/* Thematic Pillars */}
-        <section className="py-24 bg-primary text-primary-foreground">
+        <section className="py-16 md:py-24 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
+            <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16 space-y-4">
               <h2 className="text-3xl md:text-5xl font-headline font-bold">Strategic Pillars</h2>
-              <p className="text-primary-foreground/70">Our work operates at the critical intersection of governance, human rights, and environmental stability.</p>
+              <p className="text-primary-foreground/70 text-sm md:text-base">Our work operates at the critical intersection of governance, human rights, and environmental stability.</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {[
                 { title: "Peacebuilding", icon: Globe, desc: "Conflict mapping and local community mediation training." },
                 { title: "Governance", icon: Scale, desc: "Monitoring electoral integrity and legislative reforms." },
@@ -178,10 +178,10 @@ export default function Home() {
         </section>
 
         {/* Executive Director Section */}
-        <section className="py-24 bg-white border-y">
+        <section className="py-16 md:py-24 bg-white border-y">
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="flex flex-col md:flex-row items-center gap-12 max-w-5xl mx-auto">
-              <div className="shrink-0 relative w-48 h-48 rounded-full overflow-hidden border-4 border-accent shadow-xl">
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 max-w-5xl mx-auto">
+              <div className="shrink-0 relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-accent shadow-xl">
                 <Image
                   src={execImg?.imageUrl || ""}
                   alt="Cliffton Mayaba Chifuwe"
@@ -190,12 +190,12 @@ export default function Home() {
                 />
               </div>
               <div className="text-center md:text-left space-y-4">
-                <blockquote className="text-2xl font-headline italic text-primary leading-snug">
+                <blockquote className="text-xl md:text-2xl font-headline italic text-primary leading-snug">
                   "At CPRA, we believe that peace is not merely the absence of conflict, but the presence of social justice, democratic accountability, and human dignity."
                 </blockquote>
                 <div>
                   <h4 className="text-lg font-bold text-primary">Cliffton Mayaba Chifuwe</h4>
-                  <p className="text-muted-foreground text-sm uppercase tracking-widest font-semibold">Executive Director, CPRA</p>
+                  <p className="text-muted-foreground text-xs uppercase tracking-widest font-semibold">Executive Director, CPRA</p>
                 </div>
               </div>
             </div>
@@ -203,19 +203,19 @@ export default function Home() {
         </section>
 
         {/* Newsroom Preview */}
-        <section className="py-24 bg-background">
+        <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="flex justify-between items-end mb-12">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 md:mb-12 gap-4">
               <div className="space-y-2">
                 <h2 className="text-3xl font-headline font-bold text-primary">Latest Advocacy</h2>
-                <p className="text-muted-foreground">Recent public statements and policy updates.</p>
+                <p className="text-muted-foreground text-sm md:text-base">Recent public statements and policy updates.</p>
               </div>
-              <Button asChild variant="ghost" className="text-accent hover:text-accent/80 font-bold">
+              <Button asChild variant="ghost" className="text-accent hover:text-accent/80 font-bold p-0 sm:p-4">
                 <Link href="/newsroom">View All News <ChevronRight className="h-4 w-4 ml-1" /></Link>
               </Button>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {advocacyItems.map((news, idx) => (
                 <div key={idx} className="group cursor-pointer" onClick={() => setSelectedAdvocacy(news)}>
                   <div className="mb-4 overflow-hidden rounded-lg aspect-video relative">
@@ -244,7 +244,7 @@ export default function Home() {
 
         {/* Advocacy Modal */}
         <Dialog open={!!selectedAdvocacy} onOpenChange={() => setSelectedAdvocacy(null)}>
-          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto w-[95vw]">
             {selectedAdvocacy && (
               <>
                 <DialogHeader className="space-y-4 text-left">
@@ -252,26 +252,26 @@ export default function Home() {
                     <Badge className="bg-accent">{selectedAdvocacy.category}</Badge>
                     <span className="text-xs text-muted-foreground">{selectedAdvocacy.date}</span>
                   </div>
-                  <DialogTitle className="text-2xl font-headline text-primary">{selectedAdvocacy.title}</DialogTitle>
+                  <DialogTitle className="text-2xl font-headline text-primary leading-tight">{selectedAdvocacy.title}</DialogTitle>
                 </DialogHeader>
                 <div className="prose prose-slate max-w-none mt-4">
-                  <div className="whitespace-pre-wrap text-muted-foreground leading-relaxed">
+                  <div className="whitespace-pre-wrap text-sm md:text-base text-muted-foreground leading-relaxed">
                     {selectedAdvocacy.fullStory}
                   </div>
                 </div>
                 <DialogFooter className="mt-8 pt-6 border-t flex flex-col sm:flex-row gap-4 items-center justify-between">
-                  <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+                  <div className="flex items-center gap-2 text-xs md:text-sm font-medium text-muted-foreground text-center sm:text-left">
                     Follow CPRA advocacy on social media
                   </div>
-                  <div className="flex gap-3">
-                    <Button asChild variant="outline" className="gap-2 border-primary/20">
+                  <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                    <Button asChild variant="outline" className="gap-2 border-primary/20 w-full sm:w-auto">
                       <a href={selectedAdvocacy.socialMediaLink} target="_blank" rel="noopener noreferrer">
-                        <Facebook className="h-4 w-4 text-blue-600" /> View on Facebook
+                        <Facebook className="h-4 w-4 text-blue-600" /> Facebook
                       </a>
                     </Button>
-                    <Button asChild className="gap-2 bg-primary">
+                    <Button asChild className="gap-2 bg-primary w-full sm:w-auto">
                       <a href={selectedAdvocacy.socialMediaLink} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4" /> View Original Story
+                        <ExternalLink className="h-4 w-4" /> Original Story
                       </a>
                     </Button>
                   </div>
@@ -282,15 +282,15 @@ export default function Home() {
         </Dialog>
 
         {/* Final CTA */}
-        <section className="py-24 bg-accent text-white">
+        <section className="py-16 md:py-24 bg-accent text-white">
           <div className="container mx-auto px-4 sm:px-6 text-center space-y-8">
             <h2 className="text-3xl md:text-5xl font-headline font-bold">Ready to Drive Change?</h2>
-            <p className="text-xl opacity-90 max-w-2xl mx-auto">Join us in our mission to build a more inclusive and peaceful Southern Africa.</p>
-            <div className="flex justify-center gap-4">
-              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 px-10">
+            <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">Join us in our mission to build a more inclusive and peaceful Southern Africa.</p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 px-10 w-full sm:w-auto">
                 <Link href="/support">Become a Partner</Link>
               </Button>
-              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 px-10">
+              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 px-10 w-full sm:w-auto">
                 <Link href="/research">Analyze Research</Link>
               </Button>
             </div>
@@ -301,3 +301,4 @@ export default function Home() {
     </>
   );
 }
+

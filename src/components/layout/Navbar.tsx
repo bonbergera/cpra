@@ -27,7 +27,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 sm:px-6 flex h-20 items-center justify-between gap-2 md:gap-4">
+      <div className="container mx-auto px-4 sm:px-6 flex h-20 items-center justify-between gap-2 lg:gap-4">
         {/* Logo - ensured to be shrink-resistant but responsive */}
         <Link href="/" className="flex items-center hover:scale-105 transition-transform duration-300 shrink-0">
           <Image 
@@ -42,7 +42,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav - Flexible centered container */}
-        <nav className="hidden lg:flex items-center justify-center flex-1 min-w-0 mx-2">
+        <nav className="hidden lg:flex items-center justify-center flex-1 min-w-0 mx-2 overflow-x-auto no-scrollbar">
           <div className="flex items-center gap-0.5 xl:gap-2">
             {navItems.map((item) => (
               <Link
@@ -64,7 +64,7 @@ export function Navbar() {
 
         {/* Actions - Responsive visibility for the CTA button to maximize nav space */}
         <div className="flex items-center gap-2 shrink-0">
-          <Button asChild variant="default" className="hidden min-[1150px]:inline-flex bg-primary hover:bg-primary/90 hover:scale-105 transition-transform text-[10px] xl:text-xs font-bold uppercase tracking-wider h-9 xl:h-10">
+          <Button asChild variant="default" className="hidden min-[1200px]:inline-flex bg-primary hover:bg-primary/90 hover:scale-105 transition-transform text-[10px] xl:text-xs font-bold uppercase tracking-wider h-9 xl:h-10">
             <Link href="/support">Support Mission</Link>
           </Button>
           <button
@@ -79,7 +79,7 @@ export function Navbar() {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="lg:hidden bg-background border-b animate-in slide-in-from-top-4 duration-200">
+        <div className="lg:hidden bg-background border-b animate-in slide-in-from-top-4 duration-200 overflow-y-auto max-h-[calc(100vh-80px)]">
           <nav className="container mx-auto px-4 py-6 flex flex-col space-y-1">
             {navItems.map((item) => (
               <Link
@@ -106,3 +106,4 @@ export function Navbar() {
     </header>
   );
 }
+
