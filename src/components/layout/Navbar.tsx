@@ -27,42 +27,44 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 sm:px-6 flex h-20 items-center justify-between gap-4">
+      <div className="container mx-auto px-4 sm:px-6 flex h-20 items-center justify-between gap-2 md:gap-4">
+        {/* Logo - ensured to be shrink-resistant but responsive */}
         <Link href="/" className="flex items-center hover:scale-105 transition-transform duration-300 shrink-0">
           <Image 
             src={logo?.imageUrl || "https://picsum.photos/seed/peace-advocacy-logo/400/120"} 
             alt="CPRA Logo" 
             width={200} 
             height={60} 
-            className="h-12 w-auto object-contain"
+            className="h-10 md:h-12 w-auto object-contain"
             priority
             data-ai-hint="peace advocacy logo"
           />
         </Link>
 
-        {/* Desktop Nav - Flexible container */}
-        <nav className="hidden lg:flex items-center justify-center flex-1 px-2">
-          <div className="flex items-center gap-1 xl:gap-4">
+        {/* Desktop Nav - Flexible centered container */}
+        <nav className="hidden lg:flex items-center justify-center flex-1 min-w-0 mx-2">
+          <div className="flex items-center gap-0.5 xl:gap-2">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "text-[13px] xl:text-sm font-medium transition-all duration-300 hover:text-accent flex items-center gap-1.5 px-2 py-1 hover:scale-110 active:scale-95 whitespace-nowrap",
+                  "text-[12px] xl:text-sm font-medium transition-all duration-300 hover:text-accent flex items-center gap-1 px-1.5 xl:px-3 py-1 hover:scale-110 active:scale-95 whitespace-nowrap",
                   pathname === item.href 
                     ? "text-primary font-bold border-b-2 border-accent" 
                     : "text-muted-foreground"
                 )}
               >
                 <item.icon className="h-4 w-4 shrink-0" />
-                {item.name}
+                <span>{item.name}</span>
               </Link>
             ))}
           </div>
         </nav>
 
+        {/* Actions - Responsive visibility for the CTA button to maximize nav space */}
         <div className="flex items-center gap-2 shrink-0">
-          <Button asChild variant="default" className="hidden xl:inline-flex bg-primary hover:bg-primary/90 hover:scale-105 transition-transform text-xs font-bold uppercase tracking-wider">
+          <Button asChild variant="default" className="hidden min-[1150px]:inline-flex bg-primary hover:bg-primary/90 hover:scale-105 transition-transform text-[10px] xl:text-xs font-bold uppercase tracking-wider h-9 xl:h-10">
             <Link href="/support">Support Mission</Link>
           </Button>
           <button
@@ -78,14 +80,14 @@ export function Navbar() {
       {/* Mobile Nav */}
       {isOpen && (
         <div className="lg:hidden bg-background border-b animate-in slide-in-from-top-4 duration-200">
-          <nav className="container mx-auto px-4 py-6 flex flex-col space-y-2">
+          <nav className="container mx-auto px-4 py-6 flex flex-col space-y-1">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  "text-lg font-medium py-3 px-4 rounded-xl flex items-center gap-4 transition-all hover:bg-accent/5 hover:translate-x-2",
+                  "text-base font-medium py-3 px-4 rounded-xl flex items-center gap-4 transition-all hover:bg-accent/5 hover:translate-x-2",
                   pathname === item.href ? "bg-accent/10 text-primary font-bold" : "text-muted-foreground"
                 )}
               >
