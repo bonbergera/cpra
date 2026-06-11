@@ -1,4 +1,3 @@
-
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
@@ -70,7 +69,11 @@ export default function PartnershipsPage() {
                       <CardDescription className="text-white/60">3-6 month guided programs for postgraduate students.</CardDescription>
                     </CardHeader>
                     <CardFooter>
-                      <Button variant="link" className="text-accent p-0 hover:underline">Apply Now <ArrowRight className="h-4 w-4 ml-1" /></Button>
+                      <Button asChild variant="link" className="text-accent p-0 hover:underline">
+                        <Link href="/partnerships/fellowships">
+                          Apply Now <ArrowRight className="h-4 w-4 ml-1" />
+                        </Link>
+                      </Button>
                     </CardFooter>
                   </Card>
                   <Card className="bg-white/10 border-white/20">
@@ -79,7 +82,11 @@ export default function PartnershipsPage() {
                       <CardDescription className="text-white/60">Practical field experience in localized conflict mediation.</CardDescription>
                     </CardHeader>
                     <CardFooter>
-                      <Button variant="link" className="text-accent p-0 hover:underline">View Roles <ArrowRight className="h-4 w-4 ml-1" /></Button>
+                      <Button asChild variant="link" className="text-accent p-0 hover:underline">
+                        <Link href="/partnerships/internships">
+                          View Roles <ArrowRight className="h-4 w-4 ml-1" />
+                        </Link>
+                      </Button>
                     </CardFooter>
                   </Card>
                 </div>
