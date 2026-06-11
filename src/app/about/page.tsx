@@ -53,9 +53,7 @@ export default function AboutPage() {
                 <div className="space-y-4">
                   <h2 className="text-3xl font-headline font-bold text-primary">Our Mission</h2>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    To build strong institutions, catalyse positive change and support partnerships 
-                    to foster sustainable peace and development through research, advocacy and 
-                    evidence-based approaches.
+                    To build strong institutions, catalyse positive change and support partnerships to foster sustainable peace and development through research, advocacy and evidence-based approaches.
                   </p>
                 </div>
               </div>
@@ -80,33 +78,33 @@ export default function AboutPage() {
               {[
                 { 
                   icon: Target, 
-                  title: "Non-Partisan", 
-                  desc: "CPRA will remain apolitical, neutral and objective in all its research and advocacy efforts." 
+                  title: "Non Partisan", 
+                  desc: "CPRA will remain apolitical, neutral and objective" 
                 },
                 { 
                   icon: Eye, 
                   title: "Transparent & Accountable", 
-                  desc: "CPRA will be transparent and accountable in its dealings with all stakeholders and communities." 
+                  desc: "CPRA will be transparent and accountable in its dealings" 
                 },
                 { 
                   icon: Heart, 
                   title: "Ethical", 
-                  desc: "CPRA will continue to adhere to professional and acceptable ethos in its mission-driven work." 
+                  desc: "CPRA will continue to adhere to professional and acceptable ethos" 
                 },
                 { 
                   icon: Shield, 
                   title: "Honesty & Integrity", 
-                  desc: "CPRA will be guided by principles that uphold integrity and honesty in every localized intervention." 
+                  desc: "CPRA will be guided by principles that uphold integrity" 
                 },
                 { 
                   icon: Scale, 
                   title: "Democratic Values", 
-                  desc: "CPRA's institutional arrangements will be anchored on respect for democratic values and human rights." 
+                  desc: "CPRA's institutional arrangements will be anchored on respect for democratic values" 
                 },
                 { 
                   icon: Globe, 
-                  title: "Regional Cooperation", 
-                  desc: "CPRA will be anchored on recognition of the value of regional efforts to build lasting peace in Southern Africa." 
+                  title: "Regional cooperation", 
+                  desc: "CPRA will be anchored on recognition of the value of regional efforts" 
                 }
               ].map((value, idx) => (
                 <Card key={idx} className="border-none shadow-md hover:shadow-xl transition-all duration-300">
