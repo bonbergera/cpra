@@ -29,6 +29,12 @@
       "description": "Executive Director Cliffton Mayaba Chifuwe (placeholder).",
       "imageUrl": "https://picsum.photos/seed/cpra5/300/300",
       "imageHint": "professional man"
+    },
+    {
+      "id": "cpra-logo",
+      "description": "The official logo for the Centre for Peace Research and Advocacy.",
+      "imageUrl": "https://picsum.photos/seed/cpra-logo/400/150",
+      "imageHint": "organization logo"
     }
   ]
 }

@@ -1,16 +1,25 @@
 
 import Link from "next/link";
-import { Scale, Mail, MapPin, Phone, Facebook, Twitter, Linkedin } from "lucide-react";
+import { Mail, MapPin, Phone, Facebook, Twitter, Linkedin } from "lucide-react";
+import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export function Footer() {
+  const logo = PlaceHolderImages.find(img => img.id === "cpra-logo");
+
   return (
     <footer className="bg-primary text-primary-foreground pt-16 pb-8">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <Link href="/" className="flex items-center space-x-2">
-              <Scale className="h-8 w-8 text-accent" />
-              <span className="font-headline text-2xl font-bold">CPRA Insight</span>
+            <Link href="/" className="inline-block">
+              <Image 
+                src={logo?.imageUrl || ""} 
+                alt="CPRA Logo" 
+                width={200} 
+                height={70} 
+                className="h-14 w-auto object-contain brightness-0 invert"
+              />
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed max-w-xs">
               Promoting sustainable peace and development through evidence-based research and advocacy in Southern Africa.

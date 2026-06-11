@@ -4,9 +4,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Scale, Globe, FileText, Newspaper, Users, Map, Menu, X } from "lucide-react";
+import { Newspaper, Globe, FileText, Scale, Map, Users, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const navItems = [
   { name: "Newsroom", href: "/newsroom", icon: Newspaper },
@@ -20,18 +22,20 @@ const navItems = [
 export function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const logo = PlaceHolderImages.find(img => img.id === "cpra-logo");
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 sm:px-6 flex h-20 items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
-          <div className="bg-primary text-primary-foreground p-1.5 rounded">
-            <Scale className="h-6 w-6" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-headline text-xl font-bold tracking-tight text-primary leading-none">CPRA</span>
-            <span className="text-[10px] uppercase tracking-widest text-accent font-semibold">Insight</span>
-          </div>
+        <Link href="/" className="flex items-center">
+          <Image 
+            src={logo?.imageUrl || ""} 
+            alt="CPRA Logo" 
+            width={180} 
+            height={60} 
+            className="h-12 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}
