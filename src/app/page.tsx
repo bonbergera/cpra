@@ -1,14 +1,60 @@
 
+"use client";
+
+import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Globe, Shield, Scale, TreePine, Users, ChevronRight, FileText } from "lucide-react";
+import { ArrowRight, Globe, Shield, Scale, TreePine, Users, ChevronRight, Facebook, ExternalLink } from "lucide-react";
+
+const advocacyItems = [
+  { 
+    category: "Media Freedoms",
+    title: "CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST",
+    date: "Oct 12, 2023",
+    desc: "CPRA demands immediate police action to safeguard democratic values and press freedom.",
+    fullStory: `The Centre for Peace Research and Advocacy (CPRA) has condemned alleged violence by UPND cadres during a recent community engagement, in which a Power FM journalist, Mr. Alfonso, was reportedly assaulted while on duty.
+
+Executive Director Cliffton Mayaba Chifuwe described the attack as unjustifiable and a threat to press freedom and democratic values, noting that it contradicts assurances by President Hakainde Hichilema on media protection.
+
+He warned that the re-emergence of cadre violence ahead of the August 13 elections could escalate if not addressed, and called on the UPND to cooperate with police in identifying and prosecuting those responsible. He also raised concern over reports that some suspects were armed with tasers.
+
+Mr. Chifuwe further cautioned that such incidents could undermine public confidence in the electoral process and urged political players to promote tolerance, respect the rule of law, and safeguard media freedoms.
+
+By Zambia Today Staff Reporter
+Mafken FM`,
+    socialMediaLink: "https://www.facebook.com/zambiatodayz/posts/cpra-condemns-alleged-upnd-cadre-violence-on-journalistthe-centre-for-peace-rese/1441667144640741/"
+  },
+  { 
+    category: "Legislative Reform",
+    title: "Urgent Call for Review of the Public Gatherings Bill",
+    date: "Sep 28, 2023",
+    desc: "The Ministry of Justice must expedite reviews to ensure a level playing field for all citizens.",
+    fullStory: "The Centre for Peace, Research and Advocacy has urged the Ministry of Justice to fast-track the review of the draft Public Gatherings Bill so it can be presented when the Fifth Session of the Thirteenth National Assembly resumes on Tuesday, February 3, 2026.",
+    socialMediaLink: "https://www.facebook.com/HotFmZambia/posts/the-centre-for-peace-research-and-advocacy-has-urged-the-ministry-of-justice-to-/1330322699137825/"
+  },
+  { 
+    category: "Partnerships",
+    title: "Strategic MOU Signed with Regional Academic Institutions",
+    date: "Sep 15, 2023",
+    desc: "Enhancing collaborative research in restorative justice and student mentorship.",
+    fullStory: `We are pleased to announce that, following our weekly partnership negotiations, we have successfully signed a Memorandum of Understanding (MOU) with the Centre for Peace Research and Advocacy-CPRA.
+
+This MOU marks a significant milestone in our joint efforts to advance research and initiatives in policy, peace studies, restorative justice, peacebuilding, wellbeing, and student mentorship.
+
+We are excited about this collaboration and the positive impact it will have on our shared goals. This partnership underscores our commitment to addressing critical issues through rigorous research and dedicated advocacy. We look forward to the positive outcomes this partnership will bring.`,
+    socialMediaLink: "https://www.facebook.com/100070134764200/posts/we-are-pleased-to-announce-that-following-our-weekly-partnership-negotiations-we/743484734666012/"
+  }
+];
 
 export default function Home() {
+  const [selectedAdvocacy, setSelectedAdvocacy] = useState<typeof advocacyItems[0] | null>(null);
   const heroImg = PlaceHolderImages.find(img => img.id === "hero-peace");
   const execImg = PlaceHolderImages.find(img => img.id === "cliffton-chifuwe");
 
@@ -167,27 +213,8 @@ export default function Home() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { 
-                  category: "Media Freedoms",
-                  title: "Condemning Political Cadre Violence Against Journalists",
-                  date: "Oct 12, 2023",
-                  desc: "CPRA demands immediate police action to safeguard democratic values and press freedom."
-                },
-                { 
-                  category: "Legislative Reform",
-                  title: "Urgent Call for Review of the Public Gatherings Bill",
-                  date: "Sep 28, 2023",
-                  desc: "The Ministry of Justice must expedite reviews to ensure a level playing field for all citizens."
-                },
-                { 
-                  category: "Partnerships",
-                  title: "Strategic MOU Signed with Regional Academic Institutions",
-                  date: "Sep 15, 2023",
-                  desc: "Enhancing collaborative research in restorative justice and student mentorship."
-                }
-              ].map((news, idx) => (
-                <div key={idx} className="group cursor-pointer">
+              {advocacyItems.map((news, idx) => (
+                <div key={idx} className="group cursor-pointer" onClick={() => setSelectedAdvocacy(news)}>
                   <div className="mb-4 overflow-hidden rounded-lg aspect-video relative">
                     <Image 
                       src={`https://picsum.photos/seed/news${idx}/800/450`} 
@@ -197,16 +224,58 @@ export default function Home() {
                     />
                   </div>
                   <span className="text-xs font-bold text-accent uppercase tracking-wider">{news.category}</span>
-                  <h3 className="text-xl font-headline font-semibold mt-2 group-hover:text-primary transition-colors leading-tight">
+                  <h3 className="text-xl font-headline font-semibold mt-2 group-hover:text-primary transition-colors leading-tight line-clamp-2">
                     {news.title}
                   </h3>
                   <p className="text-sm text-muted-foreground mt-3 line-clamp-2">{news.desc}</p>
-                  <p className="text-xs text-muted-foreground/60 mt-4">{news.date}</p>
+                  <div className="flex items-center justify-between mt-4">
+                    <p className="text-xs text-muted-foreground/60">{news.date}</p>
+                    <span className="text-xs font-bold text-accent group-hover:underline flex items-center gap-1">Read Story <ArrowRight className="h-3 w-3" /></span>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
+
+        {/* Advocacy Modal */}
+        <Dialog open={!!selectedAdvocacy} onOpenChange={() => setSelectedAdvocacy(null)}>
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+            {selectedAdvocacy && (
+              <>
+                <DialogHeader className="space-y-4 text-left">
+                  <div className="flex items-center gap-2">
+                    <Badge className="bg-accent">{selectedAdvocacy.category}</Badge>
+                    <span className="text-xs text-muted-foreground">{selectedAdvocacy.date}</span>
+                  </div>
+                  <DialogTitle className="text-2xl font-headline text-primary">{selectedAdvocacy.title}</DialogTitle>
+                </DialogHeader>
+                <div className="prose prose-slate max-w-none mt-4">
+                  <div className="whitespace-pre-wrap text-muted-foreground leading-relaxed">
+                    {selectedAdvocacy.fullStory}
+                  </div>
+                </div>
+                <DialogFooter className="mt-8 pt-6 border-t flex flex-col sm:flex-row gap-4 items-center justify-between">
+                  <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+                    Follow CPRA advocacy on social media
+                  </div>
+                  <div className="flex gap-3">
+                    <Button asChild variant="outline" className="gap-2 border-primary/20">
+                      <a href={selectedAdvocacy.socialMediaLink} target="_blank" rel="noopener noreferrer">
+                        <Facebook className="h-4 w-4 text-blue-600" /> View on Facebook
+                      </a>
+                    </Button>
+                    <Button asChild className="gap-2 bg-primary">
+                      <a href={selectedAdvocacy.socialMediaLink} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4" /> Full Story
+                      </a>
+                    </Button>
+                  </div>
+                </DialogFooter>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
 
         {/* Final CTA */}
         <section className="py-24 bg-accent text-white">
