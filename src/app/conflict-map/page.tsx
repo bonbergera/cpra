@@ -7,7 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Map, AlertTriangle, Info, MapPin, Layers, Filter, ZoomIn, ZoomOut, Maximize2, Calendar, BookOpen, Mail } from "lucide-react";
+import { Map, AlertTriangle, Info, MapPin, Layers, Filter, ZoomIn, ZoomOut, Maximize2, Calendar, BookOpen, Mail, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -262,7 +262,7 @@ export default function ConflictMapPage() {
                   <Badge className="bg-accent text-white border-none uppercase text-[10px] tracking-widest">{selectedAssessment.region}</Badge>
                   <span className="text-xs opacity-70 flex items-center gap-1.5 font-bold"><Calendar className="h-3 w-3" /> {selectedAssessment.date}</span>
                 </div>
-                <DialogTitle className="text-2xl md:text-3xl font-headline font-bold leading-tight">
+                <DialogTitle className="text-2xl md:text-3xl font-headline font-bold leading-tight pr-8">
                   {selectedAssessment.type}
                 </DialogTitle>
                 <div className="absolute -bottom-4 right-8 p-3 bg-white rounded-full shadow-xl">
@@ -292,9 +292,6 @@ export default function ConflictMapPage() {
               <div className="p-6 bg-slate-50 border-t flex justify-between items-center">
                 <p className="text-[10px] text-muted-foreground font-bold uppercase">Restricted CPRA Insight Access</p>
                 <div className="flex gap-3">
-                  <Button variant="outline" onClick={() => setSelectedAssessment(null)} className="text-xs font-bold uppercase tracking-widest px-6 h-10 rounded-xl border-slate-300">
-                    Close
-                  </Button>
                   <Button className="bg-primary hover:bg-primary/90 text-xs font-bold uppercase tracking-widest px-6 h-10 rounded-xl">
                     Download Full Report
                   </Button>
