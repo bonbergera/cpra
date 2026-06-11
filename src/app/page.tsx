@@ -19,14 +19,11 @@ const advocacyItems = [
     title: "CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST",
     date: "Oct 12, 2023",
     desc: "CPRA demands immediate police action to safeguard democratic values and press freedom.",
-    fullStory: `The Centre for Peace Research and Advocacy (CPRA) has condemned alleged violence by UPND cadres during a recent community engagement, in which a Power FM journalist, Mr. Alfonso, was reportedly assaulted while on duty.
-
+    fullStory: `CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST
+The Centre for Peace Research and Advocacy (CPRA) has condemned alleged violence by UPND cadres during a recent community engagement, in which a Power FM journalist, Mr. Alfonso, was reportedly assaulted while on duty.
 Executive Director Cliffton Mayaba Chifuwe described the attack as unjustifiable and a threat to press freedom and democratic values, noting that it contradicts assurances by President Hakainde Hichilema on media protection.
-
 He warned that the re-emergence of cadre violence ahead of the August 13 elections could escalate if not addressed, and called on the UPND to cooperate with police in identifying and prosecuting those responsible. He also raised concern over reports that some suspects were armed with tasers.
-
 Mr. Chifuwe further cautioned that such incidents could undermine public confidence in the electoral process and urged political players to promote tolerance, respect the rule of law, and safeguard media freedoms.
-
 By Zambia Today Staff Reporter
 Mafken FM`,
     socialMediaLink: "https://www.facebook.com/zambiatodayz/posts/cpra-condemns-alleged-upnd-cadre-violence-on-journalistthe-centre-for-peace-rese/1441667144640741/"
@@ -45,9 +42,7 @@ Mafken FM`,
     date: "Sep 15, 2023",
     desc: "Enhancing collaborative research in restorative justice and student mentorship.",
     fullStory: `We are pleased to announce that, following our weekly partnership negotiations, we have successfully signed a Memorandum of Understanding (MOU) with the Centre for Peace Research and Advocacy-CPRA.
-
 This MOU marks a significant milestone in our joint efforts to advance research and initiatives in policy, peace studies, restorative justice, peacebuilding, wellbeing, and student mentorship.
-
 We are excited about this collaboration and the positive impact it will have on our shared goals. This partnership underscores our commitment to addressing critical issues through rigorous research and dedicated advocacy. We look forward to the positive outcomes this partnership will bring.`,
     socialMediaLink: "https://www.facebook.com/100070134764200/posts/we-are-pleased-to-announce-that-following-our-weekly-partnership-negotiations-we/743484734666012/"
   }
@@ -267,7 +262,7 @@ export default function Home() {
                     </Button>
                     <Button asChild className="gap-2 bg-primary">
                       <a href={selectedAdvocacy.socialMediaLink} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4" /> Full Story
+                        <ExternalLink className="h-4 w-4" /> View Original Story
                       </a>
                     </Button>
                   </div>

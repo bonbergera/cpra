@@ -18,14 +18,11 @@ const newsItems = [
     date: "October 12, 2023",
     category: "Media Freedoms",
     excerpt: "The Centre for Peace Research and Advocacy (CPRA) has condemned alleged violence by UPND cadres during a recent community engagement...",
-    fullStory: `The Centre for Peace Research and Advocacy (CPRA) has condemned alleged violence by UPND cadres during a recent community engagement, in which a Power FM journalist, Mr. Alfonso, was reportedly assaulted while on duty.
-
+    fullStory: `CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST
+The Centre for Peace Research and Advocacy (CPRA) has condemned alleged violence by UPND cadres during a recent community engagement, in which a Power FM journalist, Mr. Alfonso, was reportedly assaulted while on duty.
 Executive Director Cliffton Mayaba Chifuwe described the attack as unjustifiable and a threat to press freedom and democratic values, noting that it contradicts assurances by President Hakainde Hichilema on media protection.
-
 He warned that the re-emergence of cadre violence ahead of the August 13 elections could escalate if not addressed, and called on the UPND to cooperate with police in identifying and prosecuting those responsible. He also raised concern over reports that some suspects were armed with tasers.
-
 Mr. Chifuwe further cautioned that such incidents could undermine public confidence in the electoral process and urged political players to promote tolerance, respect the rule of law, and safeguard media freedoms.
-
 By Zambia Today Staff Reporter
 Mafken FM`,
     image: "https://picsum.photos/seed/news1/800/400",
@@ -35,7 +32,7 @@ Mafken FM`,
     id: 2,
     title: "Centre Urges Ministry of Justice to Expedite Draft Public Gatherings Bill",
     date: "September 28, 2023",
-    category: "Legal Reform",
+    category: "Legislative Reform",
     excerpt: "The Centre for Peace, Research and Advocacy has urged the Ministry of Justice to fast-track the review of the draft Public Gatherings Bill...",
     fullStory: "The Centre for Peace, Research and Advocacy has urged the Ministry of Justice to fast-track the review of the draft Public Gatherings Bill so it can be presented when the Fifth Session of the Thirteenth National Assembly resumes on Tuesday, February 3, 2026.",
     image: "https://picsum.photos/seed/news2/800/400",
@@ -48,9 +45,7 @@ Mafken FM`,
     category: "Partnerships",
     excerpt: "We are pleased to announce that, following our weekly partnership negotiations, we have successfully signed an MOU with CPRA...",
     fullStory: `We are pleased to announce that, following our weekly partnership negotiations, we have successfully signed a Memorandum of Understanding (MOU) with the Centre for Peace Research and Advocacy-CPRA.
-
 This MOU marks a significant milestone in our joint efforts to advance research and initiatives in policy, peace studies, restorative justice, peacebuilding, wellbeing, and student mentorship.
-
 We are excited about this collaboration and the positive impact it will have on our shared goals. This partnership underscores our commitment to addressing critical issues through rigorous research and dedicated advocacy. We look forward to the positive outcomes this partnership will bring.`,
     image: "https://picsum.photos/seed/news3/800/400",
     socialMediaLink: "https://www.facebook.com/100070134764200/posts/we-are-pleased-to-announce-that-following-our-weekly-partnership-negotiations-we/743484734666012/"
@@ -90,40 +85,9 @@ export default function NewsroomPage() {
               </div>
             </div>
 
-            {/* Featured Post */}
-            <div className="mb-16">
-              <Card className="overflow-hidden border-none shadow-xl flex flex-col lg:flex-row cursor-pointer group" onClick={() => setSelectedNews(newsItems[0])}>
-                <div className="relative lg:w-1/2 aspect-video lg:aspect-auto">
-                  <Image 
-                    src={newsItems[0].image} 
-                    alt="Featured Statement" 
-                    fill 
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center space-y-6">
-                  <div className="flex items-center gap-3">
-                    <Badge className="bg-accent text-white hover:bg-accent">{newsItems[0].category}</Badge>
-                    <span className="text-sm text-muted-foreground flex items-center gap-1">
-                      <Calendar className="h-3 w-3" /> {newsItems[0].date}
-                    </span>
-                  </div>
-                  <h2 className="text-3xl font-headline font-bold text-primary leading-tight group-hover:text-accent transition-colors">
-                    {newsItems[0].title}
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {newsItems[0].excerpt}
-                  </p>
-                  <Button className="w-fit bg-primary gap-2">
-                    Read Full Statement <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </div>
-              </Card>
-            </div>
-
             {/* Grid Posts */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {newsItems.slice(1).map((news) => (
+              {newsItems.map((news) => (
                 <Card key={news.id} className="group overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow flex flex-col cursor-pointer" onClick={() => setSelectedNews(news)}>
                   <div className="relative aspect-video">
                     <Image 
@@ -132,6 +96,9 @@ export default function NewsroomPage() {
                       fill 
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
+                    <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors flex items-center justify-center">
+                      <ExternalLink className="text-white opacity-0 group-hover:opacity-100 h-8 w-8 transition-opacity" />
+                    </div>
                   </div>
                   <CardHeader className="flex-1 space-y-4">
                     <div className="flex items-center justify-between">
@@ -145,10 +112,19 @@ export default function NewsroomPage() {
                       {news.excerpt}
                     </p>
                   </CardHeader>
-                  <CardFooter className="pt-0">
+                  <CardFooter className="pt-0 flex justify-between items-center">
                     <Button variant="link" className="text-accent p-0 font-bold hover:underline">
                       Read Statement <ArrowRight className="h-4 w-4 ml-1" />
                     </Button>
+                    <a 
+                      href={news.socialMediaLink} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-muted-foreground hover:text-blue-600 transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Facebook className="h-5 w-5" />
+                    </a>
                   </CardFooter>
                 </Card>
               ))}
@@ -180,7 +156,7 @@ export default function NewsroomPage() {
                 <Image src={selectedNews.image} alt={selectedNews.title} fill className="object-cover" />
               </div>
               <div className="prose prose-slate max-w-none">
-                <div className="whitespace-pre-wrap text-muted-foreground leading-relaxed">
+                <div className="whitespace-pre-wrap text-muted-foreground leading-relaxed font-sans">
                   {selectedNews.fullStory}
                 </div>
               </div>
@@ -196,7 +172,7 @@ export default function NewsroomPage() {
                   </Button>
                   <Button asChild className="gap-2 bg-primary">
                     <a href={selectedNews.socialMediaLink} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="h-4 w-4" /> Full Story
+                      <ExternalLink className="h-4 w-4" /> View Original Story
                     </a>
                   </Button>
                 </div>
