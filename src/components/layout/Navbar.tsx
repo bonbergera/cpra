@@ -29,7 +29,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 flex h-20 items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image 
-            src={logo?.imageUrl || ""} 
+            src={logo?.imageUrl || "https://picsum.photos/seed/peace-advocacy-logo/400/120"} 
             alt="CPRA Logo" 
             width={240} 
             height={80} 
@@ -57,8 +57,8 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <Button variant="default" className="hidden sm:inline-flex bg-primary hover:bg-primary/90">
-            Support Our Mission
+          <Button asChild variant="default" className="hidden sm:inline-flex bg-primary hover:bg-primary/90">
+            <Link href="/support">Support Our Mission</Link>
           </Button>
           <button
             className="lg:hidden p-2 text-primary"
@@ -88,7 +88,9 @@ export function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Button className="w-full bg-primary mt-4">Support Our Mission</Button>
+            <Button asChild className="w-full bg-primary mt-4">
+              <Link href="/support">Support Our Mission</Link>
+            </Button>
           </nav>
         </div>
       )}

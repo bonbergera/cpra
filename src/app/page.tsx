@@ -286,7 +286,7 @@ export default function Home() {
             <p className="text-xl opacity-90 max-w-2xl mx-auto">Join us in our mission to build a more inclusive and peaceful Southern Africa.</p>
             <div className="flex justify-center gap-4">
               <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90">
-                <Link href="/partnerships">Become a Partner</Link>
+                <Link href="/support">Become a Partner</Link>
               </Button>
               <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90">
                 <Link href="/research">Analyze Research</Link>

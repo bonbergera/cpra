@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Button } from "@/components/ui/button";
 import { Users, GraduationCap, Handshake, Landmark, FileCheck, ArrowRight, Mail } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const partners = [
   { name: "University of Zambia", type: "Academic MOU", focus: "Restorative Justice" },
@@ -33,7 +34,9 @@ export default function PartnershipsPage() {
                   and foster sustainable peace through regional cooperation.
                 </p>
                 <div className="flex gap-4">
-                  <Button className="bg-primary px-8">Become a Partner</Button>
+                  <Button asChild className="bg-primary px-8">
+                    <Link href="/support">Become a Partner</Link>
+                  </Button>
                   <Button variant="outline" className="px-8">View Active MOUs</Button>
                 </div>
               </div>
@@ -102,8 +105,10 @@ export default function PartnershipsPage() {
                 <h3 className="text-3xl font-headline font-bold">Collaborate with us</h3>
                 <p className="opacity-90">Interested in formalizing an MOU or supporting our mentorship initiatives?</p>
               </div>
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 px-10 gap-2">
-                <Mail className="h-5 w-5" /> Send Proposal
+              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 px-10 gap-2">
+                <Link href="/support">
+                  <Mail className="h-5 w-5" /> Send Proposal
+                </Link>
               </Button>
             </div>
           </div>
