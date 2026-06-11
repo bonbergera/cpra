@@ -8,7 +8,7 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useFirestore } from "@/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { errorEmitter } from "@/firebase/error-emitter";
 import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
 
@@ -21,23 +21,25 @@ export function Footer() {
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || !firestore) return;
+    const cleanEmail = email.trim().toLowerCase();
+    if (!cleanEmail || !firestore) return;
 
     setIsSubmitting(true);
     
     const subscriberData = {
-      email,
+      email: cleanEmail,
       subscribedAt: serverTimestamp(),
     };
 
-    const subscribersRef = collection(firestore, 'newsletter_subscribers');
+    // Use email as the document ID to prevent duplicates
+    const subscriberRef = doc(firestore, 'newsletter_subscribers', cleanEmail);
 
     // Firestore write: Initiate and proceed immediately (Optimistic UI)
-    addDoc(subscribersRef, subscriberData)
+    setDoc(subscriberRef, subscriberData, { merge: true })
       .catch(async (error) => {
         const permissionError = new FirestorePermissionError({
-          path: subscribersRef.path,
-          operation: 'create',
+          path: subscriberRef.path,
+          operation: 'write',
           requestResourceData: subscriberData,
         } satisfies SecurityRuleContext);
 
@@ -154,6 +156,7 @@ export function Footer() {
           <div className="flex space-x-6">
             <Link href="#" className="hover:text-accent">Privacy Policy</Link>
             <Link href="#" className="hover:text-accent">Terms of Service</Link>
+            <Link href="/admin" className="hover:text-accent opacity-50">Admin</Link>
           </div>
         </div>
       </div>
