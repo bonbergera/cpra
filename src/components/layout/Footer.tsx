@@ -18,7 +18,7 @@ export function Footer() {
                 alt="CPRA Logo" 
                 width={200} 
                 height={70} 
-                className="h-14 w-auto object-contain brightness-0 invert"
+                className="h-14 w-auto object-contain bg-white rounded-md p-1"
               />
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed max-w-xs">
