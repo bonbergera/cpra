@@ -53,9 +53,9 @@ export default function AboutPage() {
                 <div className="space-y-4">
                   <h2 className="text-3xl font-headline font-bold text-primary">Our Mission</h2>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    To promote democracy, human rights, and social justice through localized 
-                    conflict resolution frameworks, strategic policy advocacy, and community-led 
-                    stability initiatives.
+                    To build strong institutions, catalyse positive change and support partnerships 
+                    to foster sustainable peace and development through research, advocacy and 
+                    evidence-based approaches.
                   </p>
                 </div>
               </div>
