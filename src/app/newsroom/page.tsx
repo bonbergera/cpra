@@ -19,10 +19,15 @@ const newsItems = [
     category: "Media Freedoms",
     excerpt: "The Centre for Peace Research and Advocacy (CPRA) has condemned alleged violence by UPND cadres during a recent community engagement...",
     fullStory: `CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST
+
 The Centre for Peace Research and Advocacy (CPRA) has condemned alleged violence by UPND cadres during a recent community engagement, in which a Power FM journalist, Mr. Alfonso, was reportedly assaulted while on duty.
+
 Executive Director Cliffton Mayaba Chifuwe described the attack as unjustifiable and a threat to press freedom and democratic values, noting that it contradicts assurances by President Hakainde Hichilema on media protection.
+
 He warned that the re-emergence of cadre violence ahead of the August 13 elections could escalate if not addressed, and called on the UPND to cooperate with police in identifying and prosecuting those responsible. He also raised concern over reports that some suspects were armed with tasers.
+
 Mr. Chifuwe further cautioned that such incidents could undermine public confidence in the electoral process and urged political players to promote tolerance, respect the rule of law, and safeguard media freedoms.
+
 By Zambia Today Staff Reporter
 Mafken FM`,
     image: "https://picsum.photos/seed/news1/800/400",
@@ -45,7 +50,9 @@ Mafken FM`,
     category: "Partnerships",
     excerpt: "We are pleased to announce that, following our weekly partnership negotiations, we have successfully signed an MOU with CPRA...",
     fullStory: `We are pleased to announce that, following our weekly partnership negotiations, we have successfully signed a Memorandum of Understanding (MOU) with the Centre for Peace Research and Advocacy-CPRA.
+
 This MOU marks a significant milestone in our joint efforts to advance research and initiatives in policy, peace studies, restorative justice, peacebuilding, wellbeing, and student mentorship.
+
 We are excited about this collaboration and the positive impact it will have on our shared goals. This partnership underscores our commitment to addressing critical issues through rigorous research and dedicated advocacy. We look forward to the positive outcomes this partnership will bring.`,
     image: "https://picsum.photos/seed/news3/800/400",
     socialMediaLink: "https://www.facebook.com/100070134764200/posts/we-are-pleased-to-announce-that-following-our-weekly-partnership-negotiations-we/743484734666012/"
@@ -69,7 +76,7 @@ export default function NewsroomPage() {
                 </div>
                 <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary">Newsroom</h1>
                 <p className="text-muted-foreground text-lg max-w-2xl">
-                  High-profile statements, legal updates, and strategic reports on Zambian governance and regional security.
+                  Official statements, legislative updates, and high-impact reports from the CPRA advocacy team.
                 </p>
               </div>
               <div className="flex gap-2">
@@ -88,43 +95,53 @@ export default function NewsroomPage() {
             {/* Grid Posts */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {newsItems.map((news) => (
-                <Card key={news.id} className="group overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow flex flex-col cursor-pointer" onClick={() => setSelectedNews(news)}>
-                  <div className="relative aspect-video">
+                <Card 
+                  key={news.id} 
+                  className="group overflow-hidden border border-slate-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer bg-white" 
+                  onClick={() => setSelectedNews(news)}
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden">
                     <Image 
                       src={news.image} 
                       alt={news.title} 
                       fill 
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors flex items-center justify-center">
-                      <ExternalLink className="text-white opacity-0 group-hover:opacity-100 h-8 w-8 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
+                    <div className="absolute bottom-3 left-3">
+                      <Badge variant="secondary" className="bg-white/90 text-primary border-none text-[10px] uppercase font-bold tracking-wider">
+                        {news.category}
+                      </Badge>
                     </div>
                   </div>
-                  <CardHeader className="flex-1 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <Badge variant="secondary" className="text-[10px] uppercase font-bold tracking-wider">{news.category}</Badge>
-                      <span className="text-xs text-muted-foreground">{news.date}</span>
+                  <CardHeader className="flex-1 space-y-3 pt-6">
+                    <div className="flex items-center text-[11px] text-muted-foreground font-semibold uppercase tracking-wider">
+                      <Calendar className="h-3 w-3 mr-1.5" />
+                      {news.date}
                     </div>
                     <CardTitle className="font-headline text-xl leading-tight text-primary group-hover:text-accent transition-colors">
                       {news.title}
                     </CardTitle>
-                    <p className="text-sm text-muted-foreground line-clamp-3">
+                    <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
                       {news.excerpt}
                     </p>
                   </CardHeader>
-                  <CardFooter className="pt-0 flex justify-between items-center">
-                    <Button variant="link" className="text-accent p-0 font-bold hover:underline">
-                      Read Statement <ArrowRight className="h-4 w-4 ml-1" />
+                  <CardFooter className="pt-2 pb-6 flex justify-between items-center px-6">
+                    <Button variant="link" className="text-accent p-0 font-bold hover:no-underline flex items-center group/btn">
+                      Read Statement <ArrowRight className="h-4 w-4 ml-1.5 group-hover/btn:translate-x-1 transition-transform" />
                     </Button>
-                    <a 
-                      href={news.socialMediaLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="text-muted-foreground hover:text-blue-600 transition-colors"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Facebook className="h-5 w-5" />
-                    </a>
+                    <div className="flex gap-3">
+                      <a 
+                        href={news.socialMediaLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-slate-400 hover:text-blue-600 transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                        title="View on Facebook"
+                      >
+                        <Facebook className="h-5 w-5" />
+                      </a>
+                    </div>
                   </CardFooter>
                 </Card>
               ))}
@@ -132,8 +149,8 @@ export default function NewsroomPage() {
 
             {/* Pagination Placeholder */}
             <div className="mt-16 flex justify-center">
-              <Button variant="outline" className="px-12 border-muted-foreground/30 text-primary font-semibold">
-                Load More Advocacy
+              <Button variant="outline" className="px-12 border-slate-300 text-primary font-bold uppercase tracking-widest text-xs h-12">
+                Load More Statements
               </Button>
             </div>
           </div>
@@ -141,38 +158,42 @@ export default function NewsroomPage() {
       </main>
 
       <Dialog open={!!selectedNews} onOpenChange={() => setSelectedNews(null)}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-3xl max-h-[90vh] p-0 overflow-hidden border-none flex flex-col">
           {selectedNews && (
             <>
-              <DialogHeader className="space-y-4">
-                <div className="flex items-center gap-2">
-                  <Badge className="bg-accent">{selectedNews.category}</Badge>
-                  <span className="text-xs text-muted-foreground">{selectedNews.date}</span>
-                </div>
-                <DialogTitle className="text-2xl font-headline text-primary">{selectedNews.title}</DialogTitle>
-                <DialogDescription className="sr-only">Full story details for {selectedNews.title}</DialogDescription>
-              </DialogHeader>
-              <div className="relative aspect-video w-full rounded-lg overflow-hidden mb-6">
+              <div className="relative h-64 w-full shrink-0">
                 <Image src={selectedNews.image} alt={selectedNews.title} fill className="object-cover" />
-              </div>
-              <div className="prose prose-slate max-w-none">
-                <div className="whitespace-pre-wrap text-muted-foreground leading-relaxed font-sans">
-                  {selectedNews.fullStory}
+                <div className="absolute inset-0 bg-primary/20" />
+                <div className="absolute bottom-6 left-6 right-6">
+                   <Badge className="bg-accent text-white mb-2">{selectedNews.category}</Badge>
+                   <h2 className="text-2xl md:text-3xl font-headline font-bold text-white drop-shadow-md leading-tight">
+                    {selectedNews.title}
+                  </h2>
                 </div>
               </div>
-              <DialogFooter className="mt-8 pt-6 border-t flex flex-col sm:flex-row gap-4 items-center justify-between">
-                <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-                  Follow CPRA advocacy on social media
+              <div className="p-8 md:p-10 overflow-y-auto bg-white flex-1">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground font-bold uppercase tracking-widest mb-6 pb-4 border-b">
+                  <Calendar className="h-4 w-4 text-accent" /> Published on {selectedNews.date}
                 </div>
-                <div className="flex gap-3">
-                  <Button asChild variant="outline" className="gap-2 border-primary/20">
+                <div className="prose prose-slate max-w-none">
+                  <div className="whitespace-pre-wrap text-slate-800 leading-relaxed font-sans text-base md:text-lg">
+                    {selectedNews.fullStory}
+                  </div>
+                </div>
+              </div>
+              <DialogFooter className="p-6 bg-slate-50 border-t flex flex-col sm:flex-row gap-4 items-center justify-between shrink-0">
+                <div className="text-sm font-semibold text-slate-500">
+                  Official Statement by CPRA Insight
+                </div>
+                <div className="flex gap-3 w-full sm:w-auto">
+                  <Button asChild variant="outline" className="flex-1 sm:flex-none gap-2 border-slate-300 font-bold text-xs uppercase tracking-widest">
                     <a href={selectedNews.socialMediaLink} target="_blank" rel="noopener noreferrer">
-                      <Facebook className="h-4 w-4 text-blue-600" /> View on Facebook
+                      <Facebook className="h-4 w-4 text-blue-600" /> Facebook
                     </a>
                   </Button>
-                  <Button asChild className="gap-2 bg-primary">
+                  <Button asChild className="flex-1 sm:flex-none gap-2 bg-primary font-bold text-xs uppercase tracking-widest">
                     <a href={selectedNews.socialMediaLink} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="h-4 w-4" /> View Original Story
+                      <ExternalLink className="h-4 w-4" /> Original Story
                     </a>
                   </Button>
                 </div>
