@@ -4,21 +4,20 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Newspaper, Globe, FileText, Scale, Map, Users, Info, Mail, Menu, X } from "lucide-react";
+import { Newspaper, Globe, FileText, Scale, Map, Users, Info, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const navItems = [
-  { name: "About Us", href: "/about", icon: Info },
   { name: "Themes", href: "/themes", icon: Globe },
   { name: "Newsroom", href: "/newsroom", icon: Newspaper },
   { name: "Research", href: "/research", icon: FileText },
   { name: "Tracker", href: "/tracker", icon: Scale },
   { name: "Conflict Map", href: "/conflict-map", icon: Map },
   { name: "Partnerships", href: "/partnerships", icon: Users },
-  { name: "Contact", href: "/contact", icon: Mail },
+  { name: "About Us", href: "/about", icon: Info },
 ];
 
 export function Navbar() {
