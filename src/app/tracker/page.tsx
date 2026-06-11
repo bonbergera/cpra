@@ -3,20 +3,18 @@
 
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Scale, Clock, CheckCircle2, AlertCircle, FileText, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 const bills = [
   {
     id: "bill-1",
     name: "Draft Public Gatherings Bill",
     status: "In Review",
-    progress: 45,
     lastUpdate: "Oct 2, 2023",
     description: "Proposed amendments to secure a level playing field for political assemblies and freedom of expression.",
     milestones: [
@@ -30,7 +28,6 @@ const bills = [
     id: "bill-2",
     name: "Access to Information (ATI) Act",
     status: "Implemented",
-    progress: 100,
     lastUpdate: "Sep 15, 2023",
     description: "Enabling transparency and public access to government documents for enhanced accountability.",
     milestones: [
@@ -43,7 +40,6 @@ const bills = [
     id: "bill-3",
     name: "Restorative Justice Reform Bill",
     status: "Research Phase",
-    progress: 15,
     lastUpdate: "Aug 30, 2023",
     description: "Focusing on community-based mediation and reconciliation in juvenile criminal cases.",
     milestones: [
@@ -72,76 +68,85 @@ export default function TrackerPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-8">
-              {bills.map((bill) => (
-                <Card key={bill.id} className="border-none shadow-lg overflow-hidden">
-                  <div className="grid grid-cols-1 lg:grid-cols-3">
-                    <div className="lg:col-span-2 p-8 lg:p-10 space-y-6">
-                      <div className="flex flex-wrap items-center gap-4">
-                        <Badge 
-                          className={cn(
-                            "px-3 py-1 text-[10px] uppercase font-bold tracking-wider",
-                            bill.status === "Implemented" ? "bg-green-100 text-green-700 hover:bg-green-100" :
-                            bill.status === "In Review" ? "bg-blue-100 text-blue-700 hover:bg-blue-100" :
-                            "bg-orange-100 text-orange-700 hover:bg-orange-100"
-                          )}
-                        >
-                          {bill.status}
-                        </Badge>
-                        <span className="text-xs text-muted-foreground flex items-center gap-1">
-                          <Clock className="h-3 w-3" /> Last updated: {bill.lastUpdate}
-                        </span>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        <h3 className="text-2xl font-headline font-bold text-primary">{bill.name}</h3>
-                        <p className="text-muted-foreground leading-relaxed">{bill.description}</p>
-                      </div>
+              {bills.map((bill) => {
+                // Calculate progress based on milestones
+                const totalMilestones = bill.milestones.length;
+                const completedMilestones = bill.milestones.filter(m => m.completed).length;
+                const progressPercentage = totalMilestones > 0 
+                  ? Math.round((completedMilestones / totalMilestones) * 100) 
+                  : 0;
 
-                      <div className="space-y-4 pt-4">
-                        <div className="flex justify-between items-center text-sm font-bold">
-                          <span className="text-primary">Legislation Progress</span>
-                          <span className="text-accent">{bill.progress}%</span>
-                        </div>
-                        <Progress value={bill.progress} className="h-2 bg-muted rounded-full overflow-hidden" />
-                      </div>
-
-                      <div className="flex flex-wrap gap-4 pt-4">
-                        <Button asChild variant="outline" size="sm" className="gap-2 border-muted-foreground/20 text-xs uppercase font-bold tracking-widest">
-                          <a href={`/documents/${bill.id}-brief.pdf`} target="_blank" rel="noopener noreferrer">
-                            <FileText className="h-4 w-4" /> View Brief
-                          </a>
-                        </Button>
-                        <Button asChild variant="outline" size="sm" className="gap-2 border-muted-foreground/20 text-xs uppercase font-bold tracking-widest">
-                          <a href="https://www.facebook.com/p/Centre-for-Peace-Research-and-Advocacy-CPRA-100087220065870/" target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-4 w-4" /> Official Gazette
-                          </a>
-                        </Button>
-                      </div>
-                    </div>
-
-                    <div className="bg-primary/5 p-8 lg:p-10 border-l border-muted">
-                      <h4 className="text-sm font-bold uppercase tracking-widest text-primary mb-6">Milestones</h4>
-                      <ul className="space-y-4">
-                        {bill.milestones.map((ms, idx) => (
-                          <li key={idx} className="flex items-center gap-3">
-                            {ms.completed ? (
-                              <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0" />
-                            ) : (
-                              <AlertCircle className="h-5 w-5 text-muted-foreground shrink-0" />
+                return (
+                  <Card key={bill.id} className="border-none shadow-lg overflow-hidden bg-white">
+                    <div className="grid grid-cols-1 lg:grid-cols-3">
+                      <div className="lg:col-span-2 p-8 lg:p-10 space-y-6">
+                        <div className="flex flex-wrap items-center gap-4">
+                          <Badge 
+                            className={cn(
+                              "px-3 py-1 text-[10px] uppercase font-bold tracking-wider",
+                              bill.status === "Implemented" ? "bg-green-100 text-green-700 hover:bg-green-100" :
+                              bill.status === "In Review" ? "bg-blue-100 text-blue-700 hover:bg-blue-100" :
+                              "bg-orange-100 text-orange-700 hover:bg-orange-100"
                             )}
-                            <span className={cn(
-                              "text-sm",
-                              ms.completed ? "text-primary font-medium" : "text-muted-foreground"
-                            )}>
-                              {ms.label}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
+                          >
+                            {bill.status}
+                          </Badge>
+                          <span className="text-xs text-muted-foreground flex items-center gap-1">
+                            <Clock className="h-3 w-3" /> Last updated: {bill.lastUpdate}
+                          </span>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          <h3 className="text-2xl font-headline font-bold text-primary">{bill.name}</h3>
+                          <p className="text-muted-foreground leading-relaxed">{bill.description}</p>
+                        </div>
+
+                        <div className="space-y-4 pt-4">
+                          <div className="flex justify-between items-center text-sm font-bold">
+                            <span className="text-primary">Legislation Progress</span>
+                            <span className="text-accent">{progressPercentage}%</span>
+                          </div>
+                          <Progress value={progressPercentage} className="h-2 bg-muted rounded-full overflow-hidden" />
+                        </div>
+
+                        <div className="flex flex-wrap gap-4 pt-4">
+                          <Button asChild variant="outline" size="sm" className="gap-2 border-muted-foreground/20 text-xs uppercase font-bold tracking-widest">
+                            <a href={`/documents/${bill.id}-brief.pdf`} target="_blank" rel="noopener noreferrer">
+                              <FileText className="h-4 w-4" /> View Brief
+                            </a>
+                          </Button>
+                          <Button asChild variant="outline" size="sm" className="gap-2 border-muted-foreground/20 text-xs uppercase font-bold tracking-widest">
+                            <a href="https://www.facebook.com/p/Centre-for-Peace-Research-and-Advocacy-CPRA-100087220065870/" target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="h-4 w-4" /> Official Gazette
+                            </a>
+                          </Button>
+                        </div>
+                      </div>
+
+                      <div className="bg-primary/5 p-8 lg:p-10 border-l border-muted">
+                        <h4 className="text-sm font-bold uppercase tracking-widest text-primary mb-6">Milestones</h4>
+                        <ul className="space-y-4">
+                          {bill.milestones.map((ms, idx) => (
+                            <li key={idx} className="flex items-center gap-3">
+                              {ms.completed ? (
+                                <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0" />
+                              ) : (
+                                <AlertCircle className="h-5 w-5 text-muted-foreground shrink-0" />
+                              )}
+                              <span className={cn(
+                                "text-sm",
+                                ms.completed ? "text-primary font-medium" : "text-muted-foreground"
+                              )}>
+                                {ms.label}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                </Card>
-              ))}
+                  </Card>
+                );
+              })}
             </div>
 
             <div className="p-8 bg-white rounded-xl shadow-sm border border-muted text-center max-w-2xl mx-auto">
