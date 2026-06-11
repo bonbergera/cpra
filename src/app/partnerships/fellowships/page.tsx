@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Navbar } from "@/components/layout/Navbar";
@@ -105,7 +106,7 @@ export default function FellowshipsPage() {
               ))}
             </div>
 
-            {/* CTA Section - Fixed visibility */}
+            {/* CTA Section */}
             <div className="p-10 bg-primary text-white rounded-[2rem] text-center space-y-8 shadow-xl">
               <div className="space-y-3">
                 <h3 className="text-3xl font-headline font-bold">No Program Matches Your Research?</h3>
@@ -119,7 +120,11 @@ export default function FellowshipsPage() {
                   size="lg" 
                   className="bg-accent hover:bg-accent/90 text-white px-10 py-6 text-sm font-bold uppercase tracking-widest shadow-lg transition-all hover:scale-105"
                 >
-                  <a href={`mailto:${CPRA_EMAIL}?subject=Research Fellowship Proposal`}>
+                  <a 
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${CPRA_EMAIL}&su=Research Fellowship Proposal`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
                     <Mail className="h-4 w-4 mr-2" /> Submit Proposal
                   </a>
                 </Button>
