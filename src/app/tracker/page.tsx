@@ -1,12 +1,15 @@
 
+"use client";
+
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Scale, Clock, CheckCircle2, AlertCircle, FileText, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const bills = [
   {
@@ -140,9 +143,12 @@ export default function TrackerPage() {
             <div className="p-8 bg-white rounded-xl shadow-sm border border-muted text-center max-w-2xl mx-auto">
               <h4 className="font-headline font-bold text-lg text-primary mb-2">Want to contribute to our legal research?</h4>
               <p className="text-sm text-muted-foreground mb-6">We welcome legal experts and students to help us draft evidence-based advocacy briefs for upcoming legislation.</p>
-              <Button asChild className="bg-accent hover:bg-accent/90 px-8 font-bold uppercase text-xs tracking-widest">
-                <a href="mailto:cpra4peace@gmail.com">Connect with our Legal Team</a>
-              </Button>
+              <a 
+                href="mailto:cpra4peace@gmail.com" 
+                className={cn(buttonVariants({ variant: "default" }), "bg-accent hover:bg-accent/90 px-8 font-bold uppercase text-xs tracking-widest h-10 inline-flex items-center")}
+              >
+                Connect with our Legal Team
+              </a>
             </div>
           </div>
         </div>
