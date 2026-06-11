@@ -10,7 +10,7 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function SupportPage() {
-  const missionImg = PlaceHolderImages.find(img => img.id === "peacebuilding");
+  const missionImg = PlaceHolderImages.find(img => img.id === "community-need");
 
   return (
     <>
@@ -71,6 +71,7 @@ export default function SupportPage() {
                   alt="Our Mission in Action"
                   fill
                   className="object-cover"
+                  data-ai-hint={missionImg?.imageHint || "community support"}
                 />
               </div>
             </div>

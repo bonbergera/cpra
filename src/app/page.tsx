@@ -57,8 +57,9 @@ We are excited about this collaboration and the positive impact it will have on 
 
 export default function Home() {
   const [selectedAdvocacy, setSelectedAdvocacy] = useState<typeof advocacyItems[0] | null>(null);
-  const heroImg = PlaceHolderImages.find(img => img.id === "hero-peace");
+  const heroImg = PlaceHolderImages.find(img => img.id === "hero-refugee");
   const execImg = PlaceHolderImages.find(img => img.id === "cliffton-chifuwe");
+  const missionImg = PlaceHolderImages.find(img => img.id === "community-need");
 
   return (
     <>
@@ -69,11 +70,11 @@ export default function Home() {
           <div className="absolute inset-0 z-0">
             <Image
               src={heroImg?.imageUrl || ""}
-              alt="Peace in Southern Africa"
+              alt="Community support and peacebuilding"
               fill
               className="object-cover brightness-[0.4]"
               priority
-              data-ai-hint="peace landscape"
+              data-ai-hint={heroImg?.imageHint || "refugee children"}
             />
           </div>
           <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -133,11 +134,11 @@ export default function Home() {
               </div>
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src={PlaceHolderImages.find(img => img.id === "peacebuilding")?.imageUrl || ""}
-                  alt="Community Dialogue"
+                  src={missionImg?.imageUrl || ""}
+                  alt="Community Support Initiatives"
                   fill
                   className="object-cover"
-                  data-ai-hint="community dialogue"
+                  data-ai-hint={missionImg?.imageHint || "community support"}
                 />
               </div>
             </div>
@@ -223,6 +224,7 @@ export default function Home() {
                       alt="News thumbnail" 
                       fill 
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      data-ai-hint="community news"
                     />
                   </div>
                   <span className="text-xs font-bold text-accent uppercase tracking-wider">{news.category}</span>
@@ -285,10 +287,10 @@ export default function Home() {
             <h2 className="text-3xl md:text-5xl font-headline font-bold">Ready to Drive Change?</h2>
             <p className="text-xl opacity-90 max-w-2xl mx-auto">Join us in our mission to build a more inclusive and peaceful Southern Africa.</p>
             <div className="flex justify-center gap-4">
-              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90">
+              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 px-10">
                 <Link href="/support">Become a Partner</Link>
               </Button>
-              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90">
+              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 px-10">
                 <Link href="/research">Analyze Research</Link>
               </Button>
             </div>
