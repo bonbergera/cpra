@@ -3,7 +3,7 @@
 
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -106,11 +106,15 @@ export default function TrackerPage() {
                       </div>
 
                       <div className="flex flex-wrap gap-4 pt-4">
-                        <Button variant="outline" size="sm" className="gap-2 border-muted-foreground/20 text-xs uppercase font-bold tracking-widest">
-                          <FileText className="h-4 w-4" /> View Brief
+                        <Button asChild variant="outline" size="sm" className="gap-2 border-muted-foreground/20 text-xs uppercase font-bold tracking-widest">
+                          <a href={`/documents/${bill.id}-brief.pdf`} target="_blank" rel="noopener noreferrer">
+                            <FileText className="h-4 w-4" /> View Brief
+                          </a>
                         </Button>
-                        <Button variant="outline" size="sm" className="gap-2 border-muted-foreground/20 text-xs uppercase font-bold tracking-widest">
-                          <ExternalLink className="h-4 w-4" /> Official Gazette
+                        <Button asChild variant="outline" size="sm" className="gap-2 border-muted-foreground/20 text-xs uppercase font-bold tracking-widest">
+                          <a href="https://www.facebook.com/p/Centre-for-Peace-Research-and-Advocacy-CPRA-100087220065870/" target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="h-4 w-4" /> Official Gazette
+                          </a>
                         </Button>
                       </div>
                     </div>
