@@ -28,9 +28,25 @@ export function Footer() {
               Promoting sustainable peace and development through evidence-based research and advocacy in Southern Africa.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="hover:text-accent transition-colors"><Facebook className="h-5 w-5" /></Link>
-              <Link href="#" className="hover:text-accent transition-colors"><Twitter className="h-5 w-5" /></Link>
-              <Link href="#" className="hover:text-accent transition-colors"><Linkedin className="h-5 w-5" /></Link>
+              <Link 
+                href="https://www.facebook.com/p/Centre-for-Peace-Research-and-Advocacy-CPRA-100087220065870/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-accent transition-colors"
+              >
+                <Facebook className="h-5 w-5" />
+              </Link>
+              <Link href="#" className="hover:text-accent transition-colors">
+                <Twitter className="h-5 w-5" />
+              </Link>
+              <Link 
+                href="https://www.linkedin.com/in/cliffton-mayaba-chifuwe-42614040/?originalSubdomain=zm" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-accent transition-colors"
+              >
+                <Linkedin className="h-5 w-5" />
+              </Link>
             </div>
           </div>
 
@@ -54,11 +70,11 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-accent shrink-0" />
-                <span>+260 (0) 9XX XXX XXX</span>
+                <span>+260 (0) 977 411 676</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-accent shrink-0" />
-                <span>info@cprainsight.org</span>
+                <span>cpra4peace@gmail.com</span>
               </li>
             </ul>
           </div>
