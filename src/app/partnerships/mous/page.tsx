@@ -9,6 +9,11 @@ import { Button } from "@/components/ui/button";
 import { FileText, Calendar, ArrowLeft, Landmark, Users, Scale, Globe } from "lucide-react";
 import Link from "next/link";
 
+/**
+ * EDITABLE MOU DIRECTORY
+ * Add, remove, or modify MOU details in this array.
+ * Note: Briefs should be placed in public/documents/ with names like {id}-brief.pdf
+ */
 const mouList = [
   {
     id: "mou-unza",
@@ -97,8 +102,10 @@ export default function MOUsPage() {
                       {mou.description}
                     </p>
                     <div className="flex justify-end">
-                      <Button variant="link" className="text-accent gap-2 p-0 font-bold">
-                        <FileText className="h-4 w-4" /> View Agreement Brief
+                      <Button asChild variant="link" className="text-accent gap-2 p-0 font-bold hover:no-underline">
+                        <a href={`/documents/${mou.id}-brief.pdf`} target="_blank" rel="noopener noreferrer">
+                          <FileText className="h-4 w-4" /> View Agreement Brief
+                        </a>
                       </Button>
                     </div>
                   </CardContent>
@@ -106,13 +113,15 @@ export default function MOUsPage() {
               ))}
             </div>
 
-            <div className="p-8 bg-primary text-primary-foreground rounded-2xl text-center space-y-6">
-              <h3 className="text-2xl font-headline font-bold">Interested in establishing an MOU?</h3>
-              <p className="opacity-80 max-w-xl mx-auto">
-                We welcome collaborations with academic institutions, international NGOs, and government agencies 
-                committed to sustainable peace and development.
-              </p>
-              <Button asChild className="bg-accent hover:bg-accent/90 text-white px-10">
+            <div className="p-12 bg-primary text-primary-foreground rounded-3xl text-center space-y-8 shadow-xl">
+              <div className="space-y-3">
+                <h3 className="text-3xl font-headline font-bold">Interested in establishing an MOU?</h3>
+                <p className="opacity-80 max-w-xl mx-auto text-lg font-light leading-relaxed">
+                  We welcome collaborations with academic institutions, international NGOs, and government agencies 
+                  committed to sustainable peace and development.
+                </p>
+              </div>
+              <Button asChild className="bg-accent hover:bg-accent/90 text-white px-10 h-12 font-bold uppercase tracking-widest text-xs">
                 <Link href="/support">Submit Collaboration Proposal</Link>
               </Button>
             </div>
