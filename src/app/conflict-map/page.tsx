@@ -6,10 +6,9 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Map, AlertTriangle, Info, MapPin, Layers, Filter, ZoomIn, ZoomOut, Maximize2, Calendar, BookOpen, Mail, X } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Map, AlertTriangle, Info, MapPin, Layers, Filter, ZoomIn, ZoomOut, Maximize2, Calendar, BookOpen, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 /**
  * EDITABLE MAP DATA
@@ -57,6 +56,7 @@ const MAP_POINTS = [
 /**
  * EDITABLE ASSESSMENTS DATA
  * This powers the sidebar and the detailed popups.
+ * reportUrl should point to a file in public/documents/
  */
 const RECENT_ASSESSMENTS = [
   { 
@@ -66,7 +66,8 @@ const RECENT_ASSESSMENTS = [
     level: "High", 
     date: "November 2023",
     details: "This assessment focused on the Shangombo district, identifying a 40% increase in localized disputes between settled farmers and nomadic herders. CPRA recommends immediate community-led water sharing agreements and mediation training for traditional leaders.",
-    findings: ["Resource scarcity driving 60% of cases", "Youth migration rising", "Lack of formal mediation frameworks"]
+    findings: ["Resource scarcity driving 60% of cases", "Youth migration rising", "Lack of formal mediation frameworks"],
+    reportUrl: "/documents/climate-migration-western.pdf"
   },
   { 
     id: "as-2",
@@ -75,7 +76,8 @@ const RECENT_ASSESSMENTS = [
     level: "Medium", 
     date: "October 2023",
     details: "An audit of the Gwembe Valley land rights. Findings suggest that while structural peace remains stable, the introduction of large-scale commercial farming is displacing smallholder farmers. CPRA is facilitating dialogue between community stakeholders and investors.",
-    findings: ["Unclear land boundaries", "Inadequate consultation", "Risk of displacement"]
+    findings: ["Unclear land boundaries", "Inadequate consultation", "Risk of displacement"],
+    reportUrl: "/documents/resource-access-audit-southern.pdf"
   },
   { 
     id: "as-3",
@@ -84,7 +86,8 @@ const RECENT_ASSESSMENTS = [
     level: "High", 
     date: "October 2023",
     details: "Post-election fragility report. Despite a general decrease in national violence, urban markets in Lusaka remain flashpoints for extortion and intimidation by unaligned political cadres. Recommendations include strictly enforcing the Public Gatherings Bill.",
-    findings: ["Extortion in bus stations", "Weak police presence in markets", "High youth unemployment"]
+    findings: ["Extortion in bus stations", "Weak police presence in markets", "High youth unemployment"],
+    reportUrl: "/documents/cadre-activity-monitor-lusaka.pdf"
   }
 ];
 
@@ -138,7 +141,7 @@ export default function ConflictMapPage() {
                     className="absolute inset-0 transition-transform duration-500 ease-out flex items-center justify-center cursor-grab active:cursor-grabbing"
                     style={{ transform: `scale(${zoom})` }}
                   >
-                    {/* Visual Zambia Map Placeholder (SVG-based feel) */}
+                    {/* Visual Zambia Map Placeholder */}
                     <div className="relative w-[800px] h-[600px] bg-slate-100 rounded-[50px] shadow-inner flex items-center justify-center border-4 border-white/50">
                         <Map className="h-[40rem] w-[40rem] text-primary opacity-[0.03]" />
                         <div className="absolute inset-0 border-2 border-slate-300 rounded-[46px] border-dashed opacity-20"></div>
@@ -254,22 +257,23 @@ export default function ConflictMapPage() {
 
       {/* Assessment Details Popup */}
       <Dialog open={!!selectedAssessment} onOpenChange={() => setSelectedAssessment(null)}>
-        <DialogContent className="max-w-2xl p-0 overflow-hidden border-none rounded-3xl">
+        <DialogContent className="max-w-2xl w-[95vw] p-0 overflow-hidden border-none rounded-3xl flex flex-col max-h-[90vh]">
           {selectedAssessment && (
             <>
-              <DialogHeader className="p-8 bg-primary text-white relative">
+              <DialogHeader className="p-8 bg-primary text-white relative shrink-0">
                 <div className="flex justify-between items-center mb-4">
                   <Badge className="bg-accent text-white border-none uppercase text-[10px] tracking-widest">{selectedAssessment.region}</Badge>
                   <span className="text-xs opacity-70 flex items-center gap-1.5 font-bold"><Calendar className="h-3 w-3" /> {selectedAssessment.date}</span>
                 </div>
-                <DialogTitle className="text-2xl md:text-3xl font-headline font-bold leading-tight pr-8">
+                <DialogTitle className="text-2xl md:text-3xl font-headline font-bold leading-tight pr-10">
                   {selectedAssessment.type}
                 </DialogTitle>
                 <div className="absolute -bottom-4 right-8 p-3 bg-white rounded-full shadow-xl">
                   <BookOpen className="h-6 w-6 text-primary" />
                 </div>
               </DialogHeader>
-              <div className="p-8 space-y-8 bg-white max-h-[70vh] overflow-y-auto">
+              
+              <div className="p-8 space-y-8 bg-white overflow-y-auto flex-1">
                 <div className="space-y-4">
                   <h4 className="text-xs font-bold text-accent uppercase tracking-widest border-b pb-2">Assessment Overview</h4>
                   <p className="text-slate-700 leading-relaxed text-lg font-light">
@@ -289,13 +293,14 @@ export default function ConflictMapPage() {
                   </ul>
                 </div>
               </div>
-              <div className="p-6 bg-slate-50 border-t flex justify-between items-center">
+              
+              <div className="p-6 bg-slate-50 border-t flex flex-col sm:flex-row gap-4 items-center justify-between shrink-0">
                 <p className="text-[10px] text-muted-foreground font-bold uppercase">Restricted CPRA Insight Access</p>
-                <div className="flex gap-3">
-                  <Button className="bg-primary hover:bg-primary/90 text-xs font-bold uppercase tracking-widest px-6 h-10 rounded-xl">
-                    Download Full Report
-                  </Button>
-                </div>
+                <Button asChild className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-xs font-bold uppercase tracking-widest px-8 h-12 rounded-xl shadow-md transition-all hover:scale-[1.02]">
+                  <a href={selectedAssessment.reportUrl} download className="flex items-center justify-center gap-2">
+                    <Download className="h-4 w-4" /> Download Full Report
+                  </a>
+                </Button>
               </div>
             </>
           )}
