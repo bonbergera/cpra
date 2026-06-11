@@ -40,15 +40,8 @@ export default function ContactPage() {
 
     const messagesRef = collection(firestore, 'contact_messages');
 
-    // Firestore write (Non-blocking as per guidelines)
+    // Firestore write (Non-blocking: Optimistic UI)
     addDoc(messagesRef, messageData)
-      .then(() => {
-        toast({
-          title: "Message Sent",
-          description: "Thank you for reaching out. Our team will get back to you shortly.",
-        });
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      })
       .catch(async (error) => {
         const permissionError = new FirestorePermissionError({
           path: messagesRef.path,
@@ -57,10 +50,15 @@ export default function ContactPage() {
         } satisfies SecurityRuleContext);
 
         errorEmitter.emit('permission-error', permissionError);
-      })
-      .finally(() => {
-        setIsSubmitting(false);
       });
+
+    // Proceed immediately to clear form and show success
+    toast({
+      title: "Message Sent",
+      description: "Thank you for reaching out. Our team will get back to you shortly.",
+    });
+    setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsSubmitting(false);
   };
 
   const GMAIL_URL = "https://mail.google.com/mail/?view=cm&fs=1&to=cpra4peace@gmail.com";

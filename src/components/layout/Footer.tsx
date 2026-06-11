@@ -32,15 +32,8 @@ export function Footer() {
 
     const subscribersRef = collection(firestore, 'newsletter_subscribers');
 
-    // Firestore write (Non-blocking as per guidelines)
+    // Firestore write: Initiate and proceed immediately (Optimistic UI)
     addDoc(subscribersRef, subscriberData)
-      .then(() => {
-        toast({
-          title: "Subscription Successful!",
-          description: "Thank you for joining our mailing list. You will receive our next update shortly.",
-        });
-        setEmail("");
-      })
       .catch(async (error) => {
         const permissionError = new FirestorePermissionError({
           path: subscribersRef.path,
@@ -49,10 +42,15 @@ export function Footer() {
         } satisfies SecurityRuleContext);
 
         errorEmitter.emit('permission-error', permissionError);
-      })
-      .finally(() => {
-        setIsSubmitting(false);
       });
+
+    // Proceed immediately without awaiting the promise
+    toast({
+      title: "Subscription Successful!",
+      description: "Thank you for joining our mailing list.",
+    });
+    setEmail("");
+    setIsSubmitting(false);
   };
 
   return (
