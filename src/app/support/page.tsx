@@ -134,7 +134,7 @@ export default function SupportPage() {
                   size="lg" 
                   className="bg-accent hover:bg-accent/90 text-white px-10 py-8 text-lg font-bold flex flex-col items-center gap-1 group"
                 >
-                  <a href="https://forms.gle/your-placeholder-form-link" target="_blank" rel="noopener noreferrer">
+                  <a href="https://docs.google.com/forms/d/1Z4evQll6NfnWT9fSOmiYpB2Nb19fXdCS_FNVILCngQQ/edit?pli=1" target="_blank" rel="noopener noreferrer">
                     <span className="text-xs font-normal opacity-80">Interested in becoming a partner?</span>
                     <span className="flex items-center gap-2">
                       GET IN TOUCH <ExternalLink className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
