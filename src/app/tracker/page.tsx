@@ -144,7 +144,9 @@ export default function TrackerPage() {
               <h4 className="font-headline font-bold text-lg text-primary mb-2">Want to contribute to our legal research?</h4>
               <p className="text-sm text-muted-foreground mb-6">We welcome legal experts and students to help us draft evidence-based advocacy briefs for upcoming legislation.</p>
               <a 
-                href="mailto:cpra4peace@gmail.com" 
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=cpra4peace@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={cn(buttonVariants({ variant: "default" }), "bg-accent hover:bg-accent/90 px-8 font-bold uppercase text-xs tracking-widest h-10 inline-flex items-center")}
               >
                 Connect with our Legal Team
