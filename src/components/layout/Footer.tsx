@@ -7,23 +7,52 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useFirestore } from "@/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { errorEmitter } from "@/firebase/error-emitter";
+import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
 
 export function Footer() {
   const logo = PlaceHolderImages.find(img => img.id === "cpra-logo");
   const { toast } = useToast();
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const firestore = useFirestore();
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim() || !firestore) return;
 
-    // Mock successful subscription
-    toast({
-      title: "Subscription Successful!",
-      description: "Thank you for joining our mailing list. You will receive our next update shortly.",
-    });
+    setIsSubmitting(true);
     
-    setEmail("");
+    const subscriberData = {
+      email,
+      subscribedAt: serverTimestamp(),
+    };
+
+    const subscribersRef = collection(firestore, 'newsletter_subscribers');
+
+    // Firestore write (Non-blocking as per guidelines)
+    addDoc(subscribersRef, subscriberData)
+      .then(() => {
+        toast({
+          title: "Subscription Successful!",
+          description: "Thank you for joining our mailing list. You will receive our next update shortly.",
+        });
+        setEmail("");
+      })
+      .catch(async (error) => {
+        const permissionError = new FirestorePermissionError({
+          path: subscribersRef.path,
+          operation: 'create',
+          requestResourceData: subscriberData,
+        } satisfies SecurityRuleContext);
+
+        errorEmitter.emit('permission-error', permissionError);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -108,13 +137,15 @@ export function Footer() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email address" 
                 required
-                className="bg-primary-foreground/10 border-primary-foreground/20 rounded-md px-4 py-2 text-sm w-full focus:outline-none focus:ring-1 focus:ring-accent text-white placeholder:text-primary-foreground/40"
+                disabled={isSubmitting}
+                className="bg-primary-foreground/10 border-primary-foreground/20 rounded-md px-4 py-2 text-sm w-full focus:outline-none focus:ring-1 focus:ring-accent text-white placeholder:text-primary-foreground/40 disabled:opacity-50"
               />
               <button 
                 type="submit"
-                className="bg-accent text-white px-4 py-2 rounded-md hover:bg-accent/90 transition-colors font-bold text-sm"
+                disabled={isSubmitting}
+                className="bg-accent text-white px-4 py-2 rounded-md hover:bg-accent/90 transition-colors font-bold text-sm disabled:opacity-50 min-w-[70px]"
               >
-                Join
+                {isSubmitting ? "..." : "Join"}
               </button>
             </form>
           </div>

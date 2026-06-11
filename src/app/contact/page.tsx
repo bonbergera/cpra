@@ -1,24 +1,66 @@
 
 "use client";
 
+import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send, Facebook, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Facebook, Linkedin, Twitter, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useFirestore } from "@/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { errorEmitter } from "@/firebase/error-emitter";
+import { FirestorePermissionError, type SecurityRuleContext } from "@/firebase/errors";
 
 export default function ContactPage() {
   const { toast } = useToast();
+  const firestore = useFirestore();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent",
-      description: "Thank you for reaching out. Our team will get back to you shortly.",
-    });
+    if (!firestore) return;
+
+    setIsSubmitting(true);
+    
+    const messageData = {
+      ...formData,
+      sentAt: serverTimestamp(),
+    };
+
+    const messagesRef = collection(firestore, 'contact_messages');
+
+    // Firestore write (Non-blocking as per guidelines)
+    addDoc(messagesRef, messageData)
+      .then(() => {
+        toast({
+          title: "Message Sent",
+          description: "Thank you for reaching out. Our team will get back to you shortly.",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      })
+      .catch(async (error) => {
+        const permissionError = new FirestorePermissionError({
+          path: messagesRef.path,
+          operation: 'create',
+          requestResourceData: messageData,
+        } satisfies SecurityRuleContext);
+
+        errorEmitter.emit('permission-error', permissionError);
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   const GMAIL_URL = "https://mail.google.com/mail/?view=cm&fs=1&to=cpra4peace@gmail.com";
@@ -112,24 +154,51 @@ export default function ContactPage() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
                           <label className="text-sm font-bold text-slate-700">Full Name</label>
-                          <Input placeholder="John Doe" required />
+                          <Input 
+                            placeholder="John Doe" 
+                            required 
+                            value={formData.name}
+                            onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          />
                         </div>
                         <div className="space-y-2">
                           <label className="text-sm font-bold text-slate-700">Email Address</label>
-                          <Input type="email" placeholder="john@example.com" required />
+                          <Input 
+                            type="email" 
+                            placeholder="john@example.com" 
+                            required 
+                            value={formData.email}
+                            onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          />
                         </div>
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-slate-700">Subject</label>
-                        <Input placeholder="Inquiry about Research Fellowship" required />
+                        <Input 
+                          placeholder="Inquiry about Research Fellowship" 
+                          required 
+                          value={formData.subject}
+                          onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                        />
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-slate-700">Message</label>
-                        <Textarea placeholder="Tell us more about your inquiry..." className="min-h-[150px]" required />
+                        <Textarea 
+                          placeholder="Tell us more about your inquiry..." 
+                          className="min-h-[150px]" 
+                          required 
+                          value={formData.message}
+                          onChange={(e) => setFormData({...formData, message: e.target.value})}
+                        />
                       </div>
                       <div className="flex flex-col sm:flex-row gap-4">
-                        <Button type="submit" className="bg-primary hover:bg-primary/90 flex-1 h-12 gap-2 text-sm font-bold uppercase tracking-widest">
-                          <Send className="h-4 w-4" /> Send Message
+                        <Button 
+                          type="submit" 
+                          disabled={isSubmitting}
+                          className="bg-primary hover:bg-primary/90 flex-1 h-12 gap-2 text-sm font-bold uppercase tracking-widest"
+                        >
+                          {isSubmitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+                          Send Message
                         </Button>
                         <Button asChild variant="outline" className="border-primary/20 flex-1 h-12 gap-2 text-sm font-bold uppercase tracking-widest">
                           <a href={GMAIL_URL} target="_blank" rel="noopener noreferrer">
