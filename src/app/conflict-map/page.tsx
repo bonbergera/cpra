@@ -7,7 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Map, AlertTriangle, Info, MapPin, Layers, Filter, ZoomIn, ZoomOut, Maximize2, Calendar, BookOpen } from "lucide-react";
+import { Map, AlertTriangle, Info, MapPin, Layers, Filter, ZoomIn, ZoomOut, Maximize2, Calendar, BookOpen, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -87,6 +87,8 @@ const RECENT_ASSESSMENTS = [
     findings: ["Extortion in bus stations", "Weak police presence in markets", "High youth unemployment"]
   }
 ];
+
+const GMAIL_URL = "https://mail.google.com/mail/?view=cm&fs=1&to=cpra4peace@gmail.com&su=Request for Raw Conflict Dataset";
 
 export default function ConflictMapPage() {
   const [zoom, setZoom] = useState(1);
@@ -225,21 +227,23 @@ export default function ConflictMapPage() {
                   </CardContent>
                 </Card>
 
-                <div className="p-8 bg-primary text-primary-foreground rounded-3xl shadow-2xl space-y-5 relative overflow-hidden group">
-                  <div className="absolute -top-4 -right-4 opacity-10 group-hover:scale-110 transition-transform">
+                <div className="p-8 bg-primary text-primary-foreground rounded-3xl shadow-2xl space-y-5 relative overflow-hidden">
+                  <div className="absolute -top-4 -right-4 opacity-10">
                      <MapPin className="h-32 w-32" />
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 relative z-10">
                     <div className="p-2 bg-accent/20 rounded-xl">
                        <Info className="h-5 w-5 text-accent" />
                     </div>
                     <h4 className="font-headline font-bold text-xl">Protocol</h4>
                   </div>
-                  <p className="text-xs opacity-80 leading-relaxed font-light">
+                  <p className="text-xs opacity-80 leading-relaxed font-light relative z-10">
                     Our conflict maps are cross-verified by regional academic partners and on-the-ground human rights monitors.
                   </p>
-                  <Button variant="outline" size="sm" className="w-full border-white/20 text-white hover:bg-white/10 text-[10px] uppercase font-bold tracking-widest h-12 rounded-xl">
-                    Request Raw Dataset
+                  <Button asChild className="w-full bg-accent hover:bg-accent/90 text-white text-[10px] uppercase font-bold tracking-widest h-12 rounded-xl relative z-10 shadow-lg transition-transform hover:scale-[1.02]">
+                    <a href={GMAIL_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                      <Mail className="h-4 w-4" /> Request Raw Dataset
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -287,9 +291,14 @@ export default function ConflictMapPage() {
               </div>
               <div className="p-6 bg-slate-50 border-t flex justify-between items-center">
                 <p className="text-[10px] text-muted-foreground font-bold uppercase">Restricted CPRA Insight Access</p>
-                <Button className="bg-primary hover:bg-primary/90 text-xs font-bold uppercase tracking-widest px-6 h-10 rounded-xl">
-                  Download Full Report
-                </Button>
+                <div className="flex gap-3">
+                  <Button variant="outline" onClick={() => setSelectedAssessment(null)} className="text-xs font-bold uppercase tracking-widest px-6 h-10 rounded-xl border-slate-300">
+                    Close
+                  </Button>
+                  <Button className="bg-primary hover:bg-primary/90 text-xs font-bold uppercase tracking-widest px-6 h-10 rounded-xl">
+                    Download Full Report
+                  </Button>
+                </div>
               </div>
             </>
           )}
