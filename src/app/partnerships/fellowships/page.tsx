@@ -5,9 +5,13 @@ import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { GraduationCap, Landmark, Sparkles, ArrowLeft, Calendar, UserCheck } from "lucide-react";
+import { Landmark, Sparkles, ArrowLeft, Calendar, UserCheck } from "lucide-react";
 import Link from "next/link";
 
+/**
+ * EDITABLE FELLOWSHIP DATA
+ * You can add, remove, or modify fellowships in this array.
+ */
 const fellowships = [
   {
     id: "f-1",
@@ -37,6 +41,8 @@ const fellowships = [
     description: "Focus on monitoring current bills and providing evidence-based advocacy briefs for stakeholders in the Zambian government."
   }
 ];
+
+const FB_LINK = "https://www.facebook.com/p/Centre-for-Peace-Research-and-Advocacy-CPRA-100087220065870/";
 
 export default function FellowshipsPage() {
   return (
@@ -89,7 +95,9 @@ export default function FellowshipsPage() {
                   </CardContent>
                   <div className="p-6 pt-0">
                     <Button asChild className="w-full bg-primary hover:bg-primary/90 text-white font-bold">
-                      <Link href="/support">Apply for Fellowship</Link>
+                      <a href={FB_LINK} target="_blank" rel="noopener noreferrer">
+                        Apply for Fellowship
+                      </a>
                     </Button>
                   </div>
                 </Card>
@@ -102,7 +110,9 @@ export default function FellowshipsPage() {
                 We are always looking for innovative research proposals that align with our core themes. You can submit an independent research fellowship proposal.
               </p>
               <Button asChild variant="outline" className="text-white border-white hover:bg-white/10 px-10">
-                <Link href="/support">Submit Proposal</Link>
+                <a href={FB_LINK} target="_blank" rel="noopener noreferrer">
+                  Submit Proposal
+                </a>
               </Button>
             </div>
           </div>
