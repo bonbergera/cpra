@@ -31,10 +31,11 @@ export function Navbar() {
           <Image 
             src={logo?.imageUrl || ""} 
             alt="CPRA Logo" 
-            width={180} 
-            height={60} 
-            className="h-12 w-auto object-contain"
+            width={240} 
+            height={80} 
+            className="h-14 w-auto object-contain"
             priority
+            data-ai-hint="peace advocacy logo"
           />
         </Link>
 

@@ -1,4 +1,6 @@
 
+"use client";
+
 import Link from "next/link";
 import { Mail, MapPin, Phone, Facebook, Twitter, Linkedin } from "lucide-react";
 import Image from "next/image";
@@ -16,9 +18,10 @@ export function Footer() {
               <Image 
                 src={logo?.imageUrl || ""} 
                 alt="CPRA Logo" 
-                width={200} 
-                height={70} 
-                className="h-14 w-auto object-contain bg-white rounded-md p-1"
+                width={240} 
+                height={80} 
+                className="h-16 w-auto object-contain bg-white rounded-sm p-1"
+                data-ai-hint="peace advocacy logo"
               />
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed max-w-xs">
