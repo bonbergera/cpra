@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Landmark, Sparkles, ArrowLeft, Calendar, UserCheck } from "lucide-react";
+import { Landmark, Sparkles, ArrowLeft, Calendar, UserCheck, Mail } from "lucide-react";
 import Link from "next/link";
 
 /**
@@ -43,6 +43,7 @@ const fellowships = [
 ];
 
 const FB_LINK = "https://www.facebook.com/p/Centre-for-Peace-Research-and-Advocacy-CPRA-100087220065870/";
+const CPRA_EMAIL = "cpra4peace@gmail.com";
 
 export default function FellowshipsPage() {
   return (
@@ -104,16 +105,25 @@ export default function FellowshipsPage() {
               ))}
             </div>
 
-            <div className="p-8 bg-accent text-white rounded-3xl text-center space-y-6">
-              <h3 className="text-2xl font-headline font-bold">No Program Matches Your Research?</h3>
-              <p className="opacity-90 max-w-xl mx-auto">
-                We are always looking for innovative research proposals that align with our core themes. You can submit an independent research fellowship proposal.
-              </p>
-              <Button asChild variant="outline" className="text-white border-white hover:bg-white/10 px-10">
-                <a href={FB_LINK} target="_blank" rel="noopener noreferrer">
-                  Submit Proposal
-                </a>
-              </Button>
+            {/* CTA Section - Fixed visibility */}
+            <div className="p-10 bg-primary text-white rounded-[2rem] text-center space-y-8 shadow-xl">
+              <div className="space-y-3">
+                <h3 className="text-3xl font-headline font-bold">No Program Matches Your Research?</h3>
+                <p className="opacity-80 max-w-xl mx-auto text-lg font-light leading-relaxed">
+                  We are always looking for innovative research proposals that align with our core themes. You can submit an independent research fellowship proposal directly to our team.
+                </p>
+              </div>
+              <div className="flex justify-center pt-2">
+                <Button 
+                  asChild 
+                  size="lg" 
+                  className="bg-accent hover:bg-accent/90 text-white px-10 py-6 text-sm font-bold uppercase tracking-widest shadow-lg transition-all hover:scale-105"
+                >
+                  <a href={`mailto:${CPRA_EMAIL}?subject=Research Fellowship Proposal`}>
+                    <Mail className="h-4 w-4 mr-2" /> Submit Proposal
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
