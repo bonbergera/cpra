@@ -22,10 +22,10 @@ export default function AboutPage() {
           <div className="absolute inset-0 opacity-20">
             <Image
               src={heroImg?.imageUrl || ""}
-              alt="Peacebuilding context"
+              alt={heroImg?.description || "Peacebuilding context"}
               fill
               className="object-cover"
-              data-ai-hint="refugee children"
+              data-ai-hint={heroImg?.imageHint}
             />
           </div>
           <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
@@ -62,10 +62,10 @@ export default function AboutPage() {
               <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src={missionImg?.imageUrl || ""}
-                  alt="Community interaction"
+                  alt={missionImg?.description || "Community interaction"}
                   fill
                   className="object-cover"
-                  data-ai-hint="community support"
+                  data-ai-hint={missionImg?.imageHint}
                 />
               </div>
             </div>
@@ -106,7 +106,7 @@ export default function AboutPage() {
               <div className="shrink-0 relative w-64 h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <Image
                   src={execImg?.imageUrl || ""}
-                  alt="Cliffton Mayaba Chifuwe"
+                  alt={execImg?.description || "Cliffton Mayaba Chifuwe"}
                   fill
                   className="object-cover"
                 />

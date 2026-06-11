@@ -4,46 +4,51 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Globe, Scale, TreePine, Users, ChevronRight, ShieldCheck, Heart, Landmark, Sprout } from "lucide-react";
+import { Globe, Scale, TreePine, Users, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
+/**
+ * EDITABLE THEMES DATA
+ * Note: Each item ID corresponds to an image in placeholder-images.json
+ */
 const themes = [
   {
     id: "peacebuilding",
+    imgId: "theme-peacebuilding",
     label: "Peacebuilding",
     icon: Globe,
     title: "Mediation & Conflict Resolution",
     description: "Our peacebuilding initiatives involve mapping out structural conflicts and training local communities in restorative justice. We focus on creating sustainable environments for peaceful coexistence.",
-    image: "https://picsum.photos/seed/theme1/800/500",
     features: ["Conflict Mapping", "Mediator Training", "Youth Peace Camps", "Regional Security Monitoring"]
   },
   {
     id: "accountability",
+    imgId: "theme-accountability",
     label: "Accountability",
     icon: Scale,
     title: "Democratic Governance",
     description: "Monitoring political governance and electoral integrity is at our core. We advocate for legislative reforms that protect human rights and ensure a transparent democratic process in Zambia.",
-    image: "https://picsum.photos/seed/theme2/800/500",
     features: ["Electoral Observation", "Legal Reform Advocacy", "Anti-Corruption Monitoring", "Civic Education"]
   },
   {
     id: "climate-justice",
+    imgId: "theme-climate",
     label: "Climate Justice",
     icon: TreePine,
     title: "Environmental Fragility",
     description: "Environmental issues often drive regional conflicts. We conduct fragility assessments to map out how climate change impacts migration and localized resource disputes.",
-    image: "https://picsum.photos/seed/theme3/800/500",
     features: ["Resource Mapping", "Climate Fragility Reports", "Sustainable Land Rights", "Rural Conflict Mitigation"]
   },
   {
     id: "vulnerable-groups",
+    imgId: "theme-vulnerable",
     label: "Vulnerable Groups",
     icon: Users,
     title: "Humanitarian Protection",
     description: "We provide dedicated support for refugees, protect children affected by armed conflicts, and work tirelessly to prevent gender-based violence and child sexual abuse.",
-    image: "https://picsum.photos/seed/theme4/800/500",
     features: ["Refugee Support", "Child Protection", "GBV Prevention", "Humanitarian Advocacy"]
   }
 ];
@@ -78,48 +83,52 @@ export default function ThemesPage() {
                 </TabsList>
               </div>
 
-              {themes.map((theme) => (
-                <TabsContent key={theme.id} value={theme.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                      <Image 
-                        src={theme.image} 
-                        alt={theme.title} 
-                        fill 
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="space-y-8">
-                      <div className="space-y-4">
-                        <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary leading-tight">
-                          {theme.title}
-                        </h2>
-                        <p className="text-lg text-muted-foreground leading-relaxed">
-                          {theme.description}
-                        </p>
+              {themes.map((theme) => {
+                const themeImg = PlaceHolderImages.find(img => img.id === theme.imgId);
+                return (
+                  <TabsContent key={theme.id} value={theme.id} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                        <Image 
+                          src={themeImg?.imageUrl || ""} 
+                          alt={themeImg?.description || theme.title} 
+                          fill 
+                          className="object-cover"
+                          data-ai-hint={themeImg?.imageHint}
+                        />
                       </div>
+                      <div className="space-y-8">
+                        <div className="space-y-4">
+                          <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary leading-tight">
+                            {theme.title}
+                          </h2>
+                          <p className="text-lg text-muted-foreground leading-relaxed">
+                            {theme.description}
+                          </p>
+                        </div>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {theme.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-center gap-3 p-4 bg-white border rounded-xl hover:border-accent transition-colors">
-                            <ShieldCheck className="h-5 w-5 text-accent shrink-0" />
-                            <span className="text-sm font-semibold text-primary">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          {theme.features.map((feature, idx) => (
+                            <div key={idx} className="flex items-center gap-3 p-4 bg-white border rounded-xl hover:border-accent transition-colors">
+                              <ShieldCheck className="h-5 w-5 text-accent shrink-0" />
+                              <span className="text-sm font-semibold text-primary">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
 
-                      <div className="pt-6 border-t flex flex-wrap gap-4">
-                        <Button asChild className="bg-primary hover:bg-primary/90 text-white px-8">
-                          <Link href="/research">View Related Research</Link>
-                        </Button>
-                        <Button asChild variant="outline" className="border-muted-foreground/30 px-8">
-                          <Link href="/partnerships">Partner with Us</Link>
-                        </Button>
+                        <div className="pt-6 border-t flex flex-wrap gap-4">
+                          <Button asChild className="bg-primary hover:bg-primary/90 text-white px-8">
+                            <Link href="/research">View Related Research</Link>
+                          </Button>
+                          <Button asChild variant="outline" className="border-muted-foreground/30 px-8">
+                            <Link href="/partnerships">Partner with Us</Link>
+                          </Button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </TabsContent>
-              ))}
+                  </TabsContent>
+                );
+              })}
             </Tabs>
           </div>
         </div>

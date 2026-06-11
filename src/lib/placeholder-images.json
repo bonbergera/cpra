@@ -1,6 +1,12 @@
 {
   "placeholderImages": [
     {
+      "id": "cpra-logo",
+      "description": "The official logo for the Centre for Peace Research and Advocacy.",
+      "imageUrl": "https://picsum.photos/seed/peace-advocacy-logo/400/120",
+      "imageHint": "peace advocacy logo"
+    },
+    {
       "id": "hero-refugee",
       "description": "Children in a regional community setting representing the focus on vulnerable groups.",
       "imageUrl": "https://picsum.photos/seed/cpra-hero/1200/600",
@@ -13,34 +19,58 @@
       "imageHint": "community support"
     },
     {
-      "id": "climate-fragility",
-      "description": "Impact of environmental fragility on rural Zambian communities.",
-      "imageUrl": "https://picsum.photos/seed/cpra-climate/600/400",
-      "imageHint": "rural drought"
-    },
-    {
-      "id": "child-protection",
-      "description": "Educational and protection initiatives for children in conflict-affected areas.",
-      "imageUrl": "https://picsum.photos/seed/cpra-child/600/400",
-      "imageHint": "child protection"
-    },
-    {
       "id": "cliffton-chifuwe",
       "description": "Executive Director Cliffton Mayaba Chifuwe.",
       "imageUrl": "https://picsum.photos/seed/cpra-exec/300/300",
       "imageHint": "professional man"
     },
     {
-      "id": "cpra-logo",
-      "description": "The official logo for the Centre for Peace Research and Advocacy.",
-      "imageUrl": "https://picsum.photos/seed/peace-advocacy-logo/400/120",
-      "imageHint": "peace advocacy logo"
-    },
-    {
       "id": "signing-ceremony",
       "description": "Official signing of a Memorandum of Understanding.",
       "imageUrl": "https://picsum.photos/seed/cpra-sign/800/450",
       "imageHint": "partnership signing"
+    },
+    {
+      "id": "news-1",
+      "description": "News thumbnail for media freedom statement.",
+      "imageUrl": "https://picsum.photos/seed/news1/800/400",
+      "imageHint": "journalist working"
+    },
+    {
+      "id": "news-2",
+      "description": "News thumbnail for legislative reform statement.",
+      "imageUrl": "https://picsum.photos/seed/news2/800/400",
+      "imageHint": "government building"
+    },
+    {
+      "id": "news-3",
+      "description": "News thumbnail for academic partnership.",
+      "imageUrl": "https://picsum.photos/seed/news3/800/400",
+      "imageHint": "university campus"
+    },
+    {
+      "id": "theme-peacebuilding",
+      "description": "Image for peacebuilding and mediation theme.",
+      "imageUrl": "https://picsum.photos/seed/theme1/800/500",
+      "imageHint": "handshake peace"
+    },
+    {
+      "id": "theme-accountability",
+      "description": "Image for accountability and governance theme.",
+      "imageUrl": "https://picsum.photos/seed/theme2/800/500",
+      "imageHint": "justice scales"
+    },
+    {
+      "id": "theme-climate",
+      "description": "Image for climate justice theme.",
+      "imageUrl": "https://picsum.photos/seed/theme3/800/500",
+      "imageHint": "dry soil"
+    },
+    {
+      "id": "theme-vulnerable",
+      "description": "Image for vulnerable groups theme.",
+      "imageUrl": "https://picsum.photos/seed/theme4/800/500",
+      "imageHint": "children laughing"
     }
   ]
 }

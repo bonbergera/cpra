@@ -1,3 +1,4 @@
+
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
@@ -5,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Users, GraduationCap, Handshake, Landmark, FileCheck, ArrowRight, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const partners = [
   { name: "University of Zambia", type: "Academic MOU", focus: "Restorative Justice" },
@@ -14,6 +16,8 @@ const partners = [
 ];
 
 export default function PartnershipsPage() {
+  const signingImg = PlaceHolderImages.find(img => img.id === "signing-ceremony");
+
   return (
     <>
       <Navbar />
@@ -43,10 +47,11 @@ export default function PartnershipsPage() {
               </div>
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
                 <Image 
-                  src="https://picsum.photos/seed/partnership/800/450" 
-                  alt="Partnership Signing" 
+                  src={signingImg?.imageUrl || ""} 
+                  alt={signingImg?.description || "Partnership Signing"} 
                   fill 
                   className="object-cover"
+                  data-ai-hint={signingImg?.imageHint}
                 />
               </div>
             </div>

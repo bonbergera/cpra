@@ -13,53 +13,46 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Globe, Shield, Scale, TreePine, Users, ChevronRight, Facebook, ExternalLink } from "lucide-react";
 
+/**
+ * EDITABLE ADVOCACY DATA
+ */
 const advocacyItems = [
   { 
+    id: "news-1",
     category: "Media Freedoms",
     title: "CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST",
     date: "Oct 12, 2023",
     desc: "CPRA demands immediate police action to safeguard democratic values and press freedom.",
-    fullStory: `CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST
-
-The Centre for Peace Research and Advocacy (CPRA) has condemned alleged violence by UPND cadres during a recent community engagement, in which a Power FM journalist, Mr. Alfonso, was reportedly assaulted while on duty.
-
-Executive Director Cliffton Mayaba Chifuwe described the attack as unjustifiable and a threat to press freedom and democratic values, noting that it contradicts assurances by President Hakainde Hichilema on media protection.
-
-He warned that the re-emergence of cadre violence ahead of the August 13 elections could escalate if not addressed, and called on the UPND to cooperate with police in identifying and prosecuting those responsible. He also raised concern over reports that some suspects were armed with tasers.
-
-Mr. Chifuwe further cautioned that such incidents could undermine public confidence in the electoral process and urged political players to promote tolerance, respect the rule of law, and safeguard media freedoms.
-
-By Zambia Today Staff Reporter
-Mafken FM`,
-    socialMediaLink: "https://www.facebook.com/zambiatodayz/posts/cpra-condemns-alleged-upnd-cadre-violence-on-journalistthe-centre-for-peace-rese/1441667144640741/"
+    fullStory: `CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST...`,
+    socialMediaLink: "https://www.facebook.com/zambiatodayz/posts/..."
   },
   { 
+    id: "news-2",
     category: "Legislative Reform",
     title: "Urgent Call for Review of the Public Gatherings Bill",
     date: "Sep 28, 2023",
     desc: "The Ministry of Justice must expedite reviews to ensure a level playing field for all citizens.",
-    fullStory: "The Centre for Peace, Research and Advocacy has urged the Ministry of Justice to fast-track the review of the draft Public Gatherings Bill so it can be presented when the Fifth Session of the Thirteenth National Assembly resumes on Tuesday, February 3, 2026.",
-    socialMediaLink: "https://www.facebook.com/HotFmZambia/posts/the-centre-for-peace-research-and-advocacy-has-urged-the-ministry-of-justice-to-/1330322699137825/"
+    fullStory: "The Centre for Peace, Research and Advocacy has urged the Ministry of Justice...",
+    socialMediaLink: "https://www.facebook.com/HotFmZambia/posts/..."
   },
   { 
+    id: "news-3",
     category: "Partnerships",
     title: "Strategic MOU Signed with Regional Academic Institutions",
     date: "Sep 15, 2023",
     desc: "Enhancing collaborative research in restorative justice and student mentorship.",
-    fullStory: `We are pleased to announce that, following our weekly partnership negotiations, we have successfully signed a Memorandum of Understanding (MOU) with the Centre for Peace Research and Advocacy-CPRA.
-
-This MOU marks a significant milestone in our joint efforts to advance research and initiatives in policy, peace studies, restorative justice, peacebuilding, wellbeing, and student mentorship.
-
-We are excited about this collaboration and the positive impact it will have on our shared goals. This partnership underscores our commitment to addressing critical issues through rigorous research and dedicated advocacy. We look forward to the positive outcomes this partnership will bring.`,
-    socialMediaLink: "https://www.facebook.com/100070134764200/posts/we-are-pleased-to-announce-that-following-our-weekly-partnership-negotiations-we/743484734666012/"
+    fullStory: `We are pleased to announce that...`,
+    socialMediaLink: "https://www.facebook.com/100070134764200/posts/..."
   }
 ];
 
 export default function Home() {
   const [selectedAdvocacy, setSelectedAdvocacy] = useState<typeof advocacyItems[0] | null>(null);
+  
+  // IMAGE LOOKUPS
   const heroImg = PlaceHolderImages.find(img => img.id === "hero-refugee");
-  const execImg = PlaceHolderImages.find(img => img.id === "cliffton-chifuwe");
   const missionImg = PlaceHolderImages.find(img => img.id === "community-need");
+  const execImg = PlaceHolderImages.find(img => img.id === "cliffton-chifuwe");
 
   return (
     <>
@@ -70,26 +63,26 @@ export default function Home() {
           <div className="absolute inset-0 z-0">
             <Image
               src={heroImg?.imageUrl || ""}
-              alt="Community support and peacebuilding"
+              alt={heroImg?.description || "Hero"}
               fill
               className="object-cover brightness-[0.4]"
               priority
-              data-ai-hint={heroImg?.imageHint || "refugee children"}
+              data-ai-hint={heroImg?.imageHint}
             />
           </div>
           <div className="container mx-auto px-4 sm:px-6 relative z-10">
-            <div className="max-w-3xl space-y-6 md:space-y-8 animate-fade-in">
+            <div className="max-w-3xl space-y-6 md:space-y-8 animate-fade-in text-center sm:text-left">
               <div className="inline-block bg-accent/20 border border-accent/30 text-accent-foreground px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold backdrop-blur-sm">
                 Independent NGO • Zambia
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-bold text-white leading-[1.1]">
                 Fostering Sustainable <span className="text-accent italic">Peace</span> Across Southern Africa
               </h1>
-              <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed max-w-2xl">
+              <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed max-w-2xl mx-auto sm:mx-0">
                 The Centre for Peace Research and Advocacy (CPRA) is dedicated to promoting democracy, 
                 human rights, and social justice through evidence-based research and localized conflict resolution.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center sm:justify-start">
                 <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white px-8 h-14 md:h-12 w-full sm:w-auto">
                   <Link href="/research">Launch Research Tool</Link>
                 </Button>
@@ -135,10 +128,10 @@ export default function Home() {
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src={missionImg?.imageUrl || ""}
-                  alt="Community Support Initiatives"
+                  alt={missionImg?.description || "Mission"}
                   fill
                   className="object-cover"
-                  data-ai-hint={missionImg?.imageHint || "community support"}
+                  data-ai-hint={missionImg?.imageHint}
                 />
               </div>
             </div>
@@ -184,7 +177,7 @@ export default function Home() {
               <div className="shrink-0 relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-accent shadow-xl">
                 <Image
                   src={execImg?.imageUrl || ""}
-                  alt="Cliffton Mayaba Chifuwe"
+                  alt={execImg?.description || "Cliffton Chifuwe"}
                   fill
                   className="object-cover"
                 />
@@ -216,28 +209,31 @@ export default function Home() {
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {advocacyItems.map((news, idx) => (
-                <div key={idx} className="group cursor-pointer" onClick={() => setSelectedAdvocacy(news)}>
-                  <div className="mb-4 overflow-hidden rounded-lg aspect-video relative">
-                    <Image 
-                      src={`https://picsum.photos/seed/news${idx}/800/450`} 
-                      alt="News thumbnail" 
-                      fill 
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      data-ai-hint="community news"
-                    />
+              {advocacyItems.map((news, idx) => {
+                const newsImg = PlaceHolderImages.find(img => img.id === news.id);
+                return (
+                  <div key={idx} className="group cursor-pointer" onClick={() => setSelectedAdvocacy(news)}>
+                    <div className="mb-4 overflow-hidden rounded-lg aspect-video relative">
+                      <Image 
+                        src={newsImg?.imageUrl || ""} 
+                        alt={newsImg?.description || news.title} 
+                        fill 
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        data-ai-hint={newsImg?.imageHint}
+                      />
+                    </div>
+                    <span className="text-xs font-bold text-accent uppercase tracking-wider">{news.category}</span>
+                    <h3 className="text-xl font-headline font-semibold mt-2 group-hover:text-primary transition-colors leading-tight line-clamp-2">
+                      {news.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mt-3 line-clamp-2">{news.desc}</p>
+                    <div className="flex items-center justify-between mt-4">
+                      <p className="text-xs text-muted-foreground/60">{news.date}</p>
+                      <span className="text-xs font-bold text-accent group-hover:underline flex items-center gap-1">Read Story <ArrowRight className="h-3 w-3" /></span>
+                    </div>
                   </div>
-                  <span className="text-xs font-bold text-accent uppercase tracking-wider">{news.category}</span>
-                  <h3 className="text-xl font-headline font-semibold mt-2 group-hover:text-primary transition-colors leading-tight line-clamp-2">
-                    {news.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mt-3 line-clamp-2">{news.desc}</p>
-                  <div className="flex items-center justify-between mt-4">
-                    <p className="text-xs text-muted-foreground/60">{news.date}</p>
-                    <span className="text-xs font-bold text-accent group-hover:underline flex items-center gap-1">Read Story <ArrowRight className="h-3 w-3" /></span>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
@@ -301,4 +297,3 @@ export default function Home() {
     </>
   );
 }
-
