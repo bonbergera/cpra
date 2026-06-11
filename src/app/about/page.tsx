@@ -4,7 +4,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Shield, Target, Users, Scale, Globe, Heart } from "lucide-react";
+import { Shield, Target, Eye, Scale, Globe, Heart } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -78,12 +78,36 @@ export default function AboutPage() {
             <h2 className="text-3xl font-headline font-bold text-primary text-center mb-16">Core Values</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { icon: Shield, title: "Integrity", desc: "Honesty and transparency in all our research and advocacy efforts." },
-                { icon: Heart, title: "Compassion", desc: "A deep commitment to the wellbeing of vulnerable groups and communities." },
-                { icon: Scale, title: "Justice", desc: "Upholding the rule of law and advocating for equal rights for all." },
-                { icon: Target, title: "Accountability", desc: "Ensuring democratic processes are transparent and inclusive." },
-                { icon: Users, title: "Inclusivity", desc: "Valuing diverse voices and perspectives in our peacebuilding mission." },
-                { icon: Globe, title: "Regional Solidarity", desc: "Working across borders to build lasting peace in Southern Africa." }
+                { 
+                  icon: Target, 
+                  title: "Non-Partisan", 
+                  desc: "CPRA will remain apolitical, neutral and objective in all its research and advocacy efforts." 
+                },
+                { 
+                  icon: Eye, 
+                  title: "Transparent & Accountable", 
+                  desc: "CPRA will be transparent and accountable in its dealings with all stakeholders and communities." 
+                },
+                { 
+                  icon: Heart, 
+                  title: "Ethical", 
+                  desc: "CPRA will continue to adhere to professional and acceptable ethos in its mission-driven work." 
+                },
+                { 
+                  icon: Shield, 
+                  title: "Honesty & Integrity", 
+                  desc: "CPRA will be guided by principles that uphold integrity and honesty in every localized intervention." 
+                },
+                { 
+                  icon: Scale, 
+                  title: "Democratic Values", 
+                  desc: "CPRA's institutional arrangements will be anchored on respect for democratic values and human rights." 
+                },
+                { 
+                  icon: Globe, 
+                  title: "Regional Cooperation", 
+                  desc: "CPRA will be anchored on recognition of the value of regional efforts to build lasting peace in Southern Africa." 
+                }
               ].map((value, idx) => (
                 <Card key={idx} className="border-none shadow-md hover:shadow-xl transition-all duration-300">
                   <CardContent className="pt-8 text-center space-y-4">
