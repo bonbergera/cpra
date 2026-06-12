@@ -38,6 +38,7 @@ All images are centralized in `src/lib/placeholder-images.json`.
 Modify CSS variables in `src/app/globals.css` under the `:root` section (specifically `--primary` and `--accent`).
 
 ## 💻 Tech Stack
+- **Language**: TypeScript (TSX)
 - **Framework**: Next.js 15 (App Router)
 - **Database**: Firebase Firestore (NoSQL)
 - **Authentication**: Firebase Auth (Google)
