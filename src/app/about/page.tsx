@@ -16,27 +16,27 @@ export default function AboutPage() {
   const coreValues = [
     { 
       icon: Target,
-      text: "Non Partisan •CPRA will remain apolitical, neutral and objective" 
+      text: "Non\nPartisan\n•CPRA will remain apolitical, neutral and objective" 
     },
     { 
       icon: Eye,
-      text: "Transpa rent & Account able •CPRA will be transparent and accountable in its dealings" 
+      text: "Transpa\nrent &\nAccount\nable\n•CPRA will be transparent and accountable in its dealings" 
     },
     { 
       icon: Heart,
-      text: "Ethical •CPRA will continue to adhere to professional and acceptable ethos" 
+      text: "Ethical\n•CPRA will continue to adhere to professional and acceptable ethos" 
     },
     { 
       icon: Shield,
-      text: "Honesty & Intergrit y •CPRA will be guided by principles that uphold integrity" 
+      text: "Honesty\n&\nIntergrit\ny\n•CPRA will be guided by principles that uphold integrity" 
     },
     { 
       icon: Scale,
-      text: "Democra tic Values •CPRA's institutional arrangements will be anchored on respect for democratic values" 
+      text: "Democra\ntic\nValues\n•CPRA's institutional arrangements will be anchored on respect for democratic values" 
     },
     { 
       icon: Globe,
-      text: "Regional cooperati on •CPRA will be anchored on recognition of the value of regional efforts" 
+      text: "Regional\ncooperati\non\n•CPRA will be anchored on recognition of the value of regional efforts" 
     }
   ];
 
