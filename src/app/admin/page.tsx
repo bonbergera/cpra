@@ -3,9 +3,10 @@
 
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { useCollection } from "@/firebase";
+import { useCollection, useUser, useAuth } from "@/firebase";
 import { useFirestore } from "@/firebase";
 import { collection, query, orderBy } from "firebase/firestore";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useMemo } from "react";
 import { 
   Table, 
@@ -17,26 +18,59 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Users, Mail, MessageSquare, ShieldAlert, Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Users, Mail, MessageSquare, ShieldAlert, Calendar, LogIn } from "lucide-react";
 import { format } from "date-fns";
 
 export default function AdminPage() {
+  const { user, loading: authLoading } = useUser();
+  const auth = useAuth();
   const firestore = useFirestore();
 
   // Memoize queries for subscribers
   const subscribersQuery = useMemo(() => {
-    if (!firestore) return null;
+    if (!firestore || !user) return null;
     return query(collection(firestore, "newsletter_subscribers"), orderBy("subscribedAt", "desc"));
-  }, [firestore]);
+  }, [firestore, user]);
 
   // Memoize queries for messages
   const messagesQuery = useMemo(() => {
-    if (!firestore) return null;
+    if (!firestore || !user) return null;
     return query(collection(firestore, "contact_messages"), orderBy("sentAt", "desc"));
-  }, [firestore]);
+  }, [firestore, user]);
 
   const { data: subscribers, loading: subLoading } = useCollection(subscribersQuery);
   const { data: messages, loading: msgLoading } = useCollection(messagesQuery);
+
+  const handleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    await signInWithPopup(auth, provider);
+  };
+
+  if (authLoading) {
+    return <div className="min-h-screen flex items-center justify-center">Verifying session...</div>;
+  }
+
+  if (!user) {
+    return (
+      <>
+        <Navbar />
+        <main className="flex-1 bg-slate-50 flex items-center justify-center py-20">
+          <Card className="max-w-md w-full text-center p-8 space-y-6">
+            <ShieldAlert className="h-12 w-12 text-primary mx-auto" />
+            <div className="space-y-2">
+              <h2 className="text-2xl font-headline font-bold">Admin Access Required</h2>
+              <p className="text-muted-foreground">Please sign in with your CPRA authorized account to view dashboard data.</p>
+            </div>
+            <Button onClick={handleLogin} className="w-full gap-2">
+              <LogIn className="h-4 w-4" /> Sign in with Google
+            </Button>
+          </Card>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
@@ -44,14 +78,17 @@ export default function AdminPage() {
       <main className="flex-1 bg-[#F6F8F9] py-12">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-6xl mx-auto space-y-8">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-primary text-white rounded-xl">
-                <ShieldAlert className="h-6 w-6" />
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-primary text-white rounded-xl">
+                  <ShieldAlert className="h-6 w-6" />
+                </div>
+                <div>
+                  <h1 className="text-3xl font-headline font-bold text-primary">Admin Dashboard</h1>
+                  <p className="text-muted-foreground">Managing community engagement for {user.email}</p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-3xl font-headline font-bold text-primary">Admin Dashboard</h1>
-                <p className="text-muted-foreground">Manage your community engagement and insights.</p>
-              </div>
+              <Button variant="outline" size="sm" onClick={() => auth.signOut()}>Sign Out</Button>
             </div>
 
             <Tabs defaultValue="subscribers" className="w-full">
