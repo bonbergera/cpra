@@ -15,10 +15,11 @@ All the text content of the website is centralized for your convenience.
 ### 2. Research Synthesis (AI)
 Navigate to the **Research** page. Paste technical papers or fragility assessments into the input field. The built-in GenAI tool will generate a stakeholder-ready advocacy brief aligned with CPRA's mission.
 
-### 3. Admin Dashboard
+### 3. Admin Dashboard & Database
 The dashboard is located at `/admin`.
 - **Authentication**: Sign in with an authorized Google account.
 - **Real-time Monitoring**: View newsletter subscribers and contact form inquiries as they arrive directly from Firestore.
+- **Database Architecture**: The data structure is defined in `docs/backend.json`. Raw data can be managed directly in the Firebase Console under "Firestore Database".
 
 ### 4. Managing Images
 All images are centralized in `src/lib/placeholder-images.json`. To update any photo:
