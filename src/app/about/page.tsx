@@ -77,32 +77,32 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
                 { 
-                  icon: Target, 
+                  icon: Target,
                   title: "Non Partisan", 
                   desc: "CPRA will remain apolitical, neutral and objective" 
                 },
                 { 
-                  icon: Eye, 
+                  icon: Eye,
                   title: "Transparent & Accountable", 
                   desc: "CPRA will be transparent and accountable in its dealings" 
                 },
                 { 
-                  icon: Heart, 
+                  icon: Heart,
                   title: "Ethical", 
                   desc: "CPRA will continue to adhere to professional and acceptable ethos" 
                 },
                 { 
-                  icon: Shield, 
+                  icon: Shield,
                   title: "Honesty & Integrity", 
                   desc: "CPRA will be guided by principles that uphold integrity" 
                 },
                 { 
-                  icon: Scale, 
+                  icon: Scale,
                   title: "Democratic Values", 
                   desc: "CPRA's institutional arrangements will be anchored on respect for democratic values" 
                 },
                 { 
-                  icon: Globe, 
+                  icon: Globe,
                   title: "Regional cooperation", 
                   desc: "CPRA will be anchored on recognition of the value of regional efforts" 
                 }
