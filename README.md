@@ -48,9 +48,6 @@ All text content is centralized for easy updates without deep coding knowledge.
 - **Adding**: Add a new object to the relevant array in the JSON file.
 - **Removing**: Delete the object from the JSON file.
 
-## 🧠 Research Synthesis (AI)
-Navigate to the **Research** page. Paste technical papers or fragility assessments. The GenAI tool (powered by Gemini 1.5 Flash) generates a stakeholder-ready advocacy brief aligned with CPRA's mission.
-
 ## 📂 Managing Images
 All images are centralized in `src/lib/placeholder-images.json`. 
 1. Find the relevant `id`.
