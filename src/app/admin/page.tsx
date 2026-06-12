@@ -19,7 +19,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { Users, Mail, MessageSquare, ShieldAlert, Calendar, LogIn } from "lucide-react";
+import { Users, Mail, MessageSquare, ShieldAlert, Calendar, LogIn, LogOut } from "lucide-react";
 import { format } from "date-fns";
 
 export default function AdminPage() {
@@ -44,25 +44,42 @@ export default function AdminPage() {
 
   const handleLogin = async () => {
     const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider);
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error("Login failed", error);
+    }
   };
 
+  const handleSignOut = () => auth.signOut();
+
   if (authLoading) {
-    return <div className="min-h-screen flex items-center justify-center">Verifying session...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <div className="flex flex-col items-center gap-4">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+          <p className="text-sm font-medium text-muted-foreground">Verifying secure session...</p>
+        </div>
+      </div>
+    );
   }
 
   if (!user) {
     return (
       <>
         <Navbar />
-        <main className="flex-1 bg-slate-50 flex items-center justify-center py-20">
-          <Card className="max-w-md w-full text-center p-8 space-y-6">
-            <ShieldAlert className="h-12 w-12 text-primary mx-auto" />
-            <div className="space-y-2">
-              <h2 className="text-2xl font-headline font-bold">Admin Access Required</h2>
-              <p className="text-muted-foreground">Please sign in with your CPRA authorized account to view dashboard data.</p>
+        <main className="flex-1 bg-slate-100 flex items-center justify-center py-20 px-4">
+          <Card className="max-w-md w-full text-center p-8 space-y-6 shadow-2xl border-none">
+            <div className="mx-auto w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+              <ShieldAlert className="h-8 w-8 text-primary" />
             </div>
-            <Button onClick={handleLogin} className="w-full gap-2">
+            <div className="space-y-2">
+              <h2 className="text-2xl font-headline font-bold text-primary">Admin Access Required</h2>
+              <p className="text-muted-foreground">
+                This dashboard is restricted to authorized CPRA staff. Please sign in with your organization-linked Google account to proceed.
+              </p>
+            </div>
+            <Button onClick={handleLogin} className="w-full gap-2 h-12 text-sm font-bold uppercase tracking-widest">
               <LogIn className="h-4 w-4" /> Sign in with Google
             </Button>
           </Card>
@@ -78,25 +95,27 @@ export default function AdminPage() {
       <main className="flex-1 bg-[#F6F8F9] py-12">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-6xl mx-auto space-y-8">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 bg-white p-6 rounded-2xl shadow-sm border">
               <div className="flex items-center gap-4">
                 <div className="p-3 bg-primary text-white rounded-xl">
                   <ShieldAlert className="h-6 w-6" />
                 </div>
                 <div>
-                  <h1 className="text-3xl font-headline font-bold text-primary">Admin Dashboard</h1>
-                  <p className="text-muted-foreground">Managing community engagement for {user.email}</p>
+                  <h1 className="text-2xl font-headline font-bold text-primary">Internal Dashboard</h1>
+                  <p className="text-xs text-muted-foreground font-medium">Logged in as <span className="text-accent">{user.email}</span></p>
                 </div>
               </div>
-              <Button variant="outline" size="sm" onClick={() => auth.signOut()}>Sign Out</Button>
+              <Button variant="ghost" size="sm" onClick={handleSignOut} className="gap-2 text-muted-foreground hover:text-destructive">
+                <LogOut className="h-4 w-4" /> Sign Out
+              </Button>
             </div>
 
             <Tabs defaultValue="subscribers" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 max-w-md mb-8">
-                <TabsTrigger value="subscribers" className="gap-2">
+              <TabsList className="grid w-full grid-cols-2 max-w-md mb-8 bg-white border shadow-sm">
+                <TabsTrigger value="subscribers" className="gap-2 data-[state=active]:bg-primary data-[state=active]:text-white transition-all">
                   <Users className="h-4 w-4" /> Subscribers
                 </TabsTrigger>
-                <TabsTrigger value="messages" className="gap-2">
+                <TabsTrigger value="messages" className="gap-2 data-[state=active]:bg-primary data-[state=active]:text-white transition-all">
                   <MessageSquare className="h-4 w-4" /> Messages
                 </TabsTrigger>
               </TabsList>
@@ -104,7 +123,7 @@ export default function AdminPage() {
               <TabsContent value="subscribers" className="space-y-6">
                 <Card className="border-none shadow-lg overflow-hidden">
                   <CardHeader className="bg-white border-b">
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2 text-lg">
                       <Mail className="h-5 w-5 text-accent" />
                       Newsletter Subscribers
                     </CardTitle>
@@ -124,7 +143,7 @@ export default function AdminPage() {
                         {subLoading ? (
                           <TableRow><TableCell colSpan={2} className="text-center py-8">Loading subscribers...</TableCell></TableRow>
                         ) : subscribers?.length === 0 ? (
-                          <TableRow><TableCell colSpan={2} className="text-center py-8">No subscribers found yet.</TableCell></TableRow>
+                          <TableRow><TableCell colSpan={2} className="text-center py-8 text-muted-foreground">No subscribers found yet.</TableCell></TableRow>
                         ) : (
                           subscribers?.map((sub: any) => (
                             <TableRow key={sub.id}>
@@ -147,7 +166,7 @@ export default function AdminPage() {
               <TabsContent value="messages" className="space-y-6">
                 <Card className="border-none shadow-lg overflow-hidden">
                   <CardHeader className="bg-white border-b">
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2 text-lg">
                       <MessageSquare className="h-5 w-5 text-accent" />
                       Contact Form Messages
                     </CardTitle>
@@ -169,7 +188,7 @@ export default function AdminPage() {
                         {msgLoading ? (
                           <TableRow><TableCell colSpan={4} className="text-center py-8">Loading messages...</TableCell></TableRow>
                         ) : messages?.length === 0 ? (
-                          <TableRow><TableCell colSpan={4} className="text-center py-8">No messages received yet.</TableCell></TableRow>
+                          <TableRow><TableCell colSpan={4} className="text-center py-8 text-muted-foreground">No messages received yet.</TableCell></TableRow>
                         ) : (
                           messages?.map((msg: any) => (
                             <TableRow key={msg.id} className="cursor-pointer hover:bg-slate-50">
@@ -177,8 +196,8 @@ export default function AdminPage() {
                                 <div className="font-medium">{msg.name}</div>
                                 <div className="text-xs text-muted-foreground">{msg.email}</div>
                               </TableCell>
-                              <TableCell className="font-semibold">{msg.subject}</TableCell>
-                              <TableCell className="max-w-xs truncate text-muted-foreground">
+                              <TableCell className="font-semibold text-primary">{msg.subject}</TableCell>
+                              <TableCell className="max-w-xs truncate text-muted-foreground text-xs">
                                 {msg.message}
                               </TableCell>
                               <TableCell className="text-xs text-muted-foreground">

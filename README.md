@@ -3,36 +3,43 @@
 
 This is a production-ready web application built for CPRA to manage research, advocacy, and community engagement.
 
-## 🚀 Getting Started
+## 🚀 Access Control & Security
 
-### 1. Content Management (Editing News, Map, etc.)
-All the text content of the website is centralized for your convenience.
-- Open `src/lib/site-content.json`.
-- To **Edit**: Locate the item (news article, bill, fellowship) and change the text.
-- To **Add**: Add a new object to the relevant array in the JSON file.
-- To **Remove**: Delete the object from the JSON file.
+The application is split into two access tiers:
 
-### 2. Research Synthesis (AI)
-Navigate to the **Research** page. Paste technical papers or fragility assessments into the input field. The built-in GenAI tool will generate a stakeholder-ready advocacy brief aligned with CPRA's mission.
+### 1. Public Access (Visitors)
+- **Routes**: All pages EXCEPT `/admin`.
+- **Functionality**: Visitors can read content, use the AI Research tool, join the newsletter, and send contact messages.
+- **Privacy**: No sign-in is required for general browsing.
 
-### 3. Admin Dashboard & Database
-The dashboard is located at `/admin`.
-- **Authentication**: Sign in with an authorized Google account.
-- **Real-time Monitoring**: View newsletter subscribers and contact form inquiries as they arrive directly from Firestore.
-- **Database Architecture**: The data structure is defined in `docs/backend.json`. Raw data can be managed directly in the Firebase Console under "Firestore Database".
+### 2. Admin Access (CPRA Staff)
+- **Route**: `/admin`.
+- **Functionality**: Viewing newsletter subscribers and contact form inquiries.
+- **Authentication**: Secured via Firebase Authentication (Google Sign-In).
+- **Setup**: To access the dashboard, you must sign in with a Google account. In production, security rules can be configured to only allow specific email domains.
 
-### 4. Managing Images
-All images are centralized in `src/lib/placeholder-images.json`. To update any photo:
-1. Open `src/lib/placeholder-images.json`.
-2. Find the relevant `id`.
-3. Update the `imageUrl` field.
+## 🛠 Content Management
 
-### 5. Color Branding
-To change the website's color scheme, modify the CSS variables in `src/app/globals.css` under the `:root` section (specifically `--primary` and `--accent`).
+All text content is centralized for easy updates without deep coding knowledge.
+- **File**: `src/lib/site-content.json`.
+- **Editing**: Locate the item (news article, bill, fellowship) and change the text.
+- **Adding**: Add a new object to the relevant array in the JSON file.
+- **Removing**: Delete the object from the JSON file.
 
-## 🛠 Tech Stack
+## 🧠 Research Synthesis (AI)
+Navigate to the **Research** page. Paste technical papers or fragility assessments. The GenAI tool (powered by Gemini 1.5 Flash) generates a stakeholder-ready advocacy brief aligned with CPRA's mission.
+
+## 📂 Managing Images
+All images are centralized in `src/lib/placeholder-images.json`. 
+1. Find the relevant `id`.
+2. Update the `imageUrl` field with your new photo URL.
+
+## 🎨 Color Branding
+Modify CSS variables in `src/app/globals.css` under the `:root` section (specifically `--primary` and `--accent`).
+
+## 💻 Tech Stack
 - **Framework**: Next.js 15 (App Router)
-- **Database**: Firebase Firestore
-- **Authentication**: Firebase Auth
+- **Database**: Firebase Firestore (NoSQL)
+- **Authentication**: Firebase Auth (Google)
 - **AI Engine**: Genkit with Gemini 1.5 Flash
 - **Styling**: Tailwind CSS & Shadcn UI
