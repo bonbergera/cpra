@@ -18,6 +18,28 @@ The application is split into two access tiers:
 - **Authentication**: Secured via Firebase Authentication (Google Sign-In).
 - **Setup**: To access the dashboard, you must sign in with a Google account. In production, security rules can be configured to only allow specific email domains.
 
+## 💻 Local Development Setup
+
+To run this project on your local computer:
+
+1. **Download**: Click the "Download" icon in the Firebase Studio header to get the source code.
+2. **Install Dependencies**: Open your terminal in the project folder and run:
+   ```bash
+   npm install
+   ```
+3. **Environment Variables**: Create a `.env.local` file in the root directory and add your Firebase and Gemini API keys:
+   ```env
+   NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
+   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+   GEMINI_API_KEY=your_google_ai_key
+   ```
+4. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
+5. **Open Browser**: Navigate to `http://localhost:3000`.
+
 ## 🛠 Content Management
 
 All text content is centralized for easy updates without deep coding knowledge.
