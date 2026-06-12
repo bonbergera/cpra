@@ -5,21 +5,28 @@ This is a production-ready web application built for CPRA to manage research, ad
 
 ## 🚀 Getting Started
 
-### 1. Research Synthesis (AI)
+### 1. Content Management (Editing News, Map, etc.)
+All the text content of the website is centralized for your convenience.
+- Open `src/lib/site-content.json`.
+- To **Edit**: Locate the item (news article, bill, fellowship) and change the text.
+- To **Add**: Add a new object to the relevant array in the JSON file.
+- To **Remove**: Delete the object from the JSON file.
+
+### 2. Research Synthesis (AI)
 Navigate to the **Research** page. Paste technical papers or fragility assessments into the input field. The built-in GenAI tool will generate a stakeholder-ready advocacy brief aligned with CPRA's mission.
 
-### 2. Admin Dashboard
+### 3. Admin Dashboard
 The dashboard is located at `/admin`.
-- **Authentication**: You must sign in with an authorized Google account to view community data.
-- **Real-time Monitoring**: View newsletter subscribers and contact form inquiries as they arrive.
+- **Authentication**: Sign in with an authorized Google account.
+- **Real-time Monitoring**: View newsletter subscribers and contact form inquiries as they arrive directly from Firestore.
 
-### 3. Managing Images
-All images are centralized in `src/lib/placeholder-images.json`. To update any photo on the website:
+### 4. Managing Images
+All images are centralized in `src/lib/placeholder-images.json`. To update any photo:
 1. Open `src/lib/placeholder-images.json`.
 2. Find the relevant `id`.
 3. Update the `imageUrl` field.
 
-### 4. Color Branding
+### 5. Color Branding
 To change the website's color scheme, modify the CSS variables in `src/app/globals.css` under the `:root` section (specifically `--primary` and `--accent`).
 
 ## 🛠 Tech Stack

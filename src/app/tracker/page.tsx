@@ -9,48 +9,11 @@ import { Progress } from "@/components/ui/progress";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Scale, Clock, CheckCircle2, AlertCircle, FileText, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const bills = [
-  {
-    id: "bill-1",
-    name: "Draft Public Gatherings Bill",
-    status: "In Review",
-    lastUpdate: "Oct 2, 2023",
-    description: "Proposed amendments to secure a level playing field for political assemblies and freedom of expression.",
-    milestones: [
-      { label: "Cabinet Approval", completed: true },
-      { label: "Ministry of Justice Review", completed: true },
-      { label: "Public Consultation", completed: false },
-      { label: "Parliamentary Presentation", completed: false }
-    ]
-  },
-  {
-    id: "bill-2",
-    name: "Access to Information (ATI) Act",
-    status: "Implemented",
-    lastUpdate: "Sep 15, 2023",
-    description: "Enabling transparency and public access to government documents for enhanced accountability.",
-    milestones: [
-      { label: "Drafting", completed: true },
-      { label: "Parliamentary Reading", completed: true },
-      { label: "Presidential Assent", completed: true }
-    ]
-  },
-  {
-    id: "bill-3",
-    name: "Restorative Justice Reform Bill",
-    status: "Research Phase",
-    lastUpdate: "Aug 30, 2023",
-    description: "Focusing on community-based mediation and reconciliation in juvenile criminal cases.",
-    milestones: [
-      { label: "Stakeholder Mapping", completed: true },
-      { label: "Policy Whitepaper", completed: false },
-      { label: "Legislative Drafting", completed: false }
-    ]
-  }
-];
+import siteContent from "@/lib/site-content.json";
 
 export default function TrackerPage() {
+  const bills = siteContent.bills;
+
   return (
     <>
       <Navbar />
@@ -68,10 +31,9 @@ export default function TrackerPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-8">
-              {bills.map((bill) => {
-                // Calculate progress based on milestones
+              {bills.map((bill: any) => {
                 const totalMilestones = bill.milestones.length;
-                const completedMilestones = bill.milestones.filter(m => m.completed).length;
+                const completedMilestones = bill.milestones.filter((m: any) => m.completed).length;
                 const progressPercentage = totalMilestones > 0 
                   ? Math.round((completedMilestones / totalMilestones) * 100) 
                   : 0;
@@ -126,7 +88,7 @@ export default function TrackerPage() {
                       <div className="bg-primary/5 p-8 lg:p-10 border-l border-muted">
                         <h4 className="text-sm font-bold uppercase tracking-widest text-primary mb-6">Milestones</h4>
                         <ul className="space-y-4">
-                          {bill.milestones.map((ms, idx) => (
+                          {bill.milestones.map((ms: any, idx: number) => (
                             <li key={idx} className="flex items-center gap-3">
                               {ms.completed ? (
                                 <CheckCircle2 className="h-5 w-5 text-green-600 shrink-0" />

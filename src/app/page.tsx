@@ -12,44 +12,12 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Globe, Shield, Scale, TreePine, Users, ChevronRight, Facebook, ExternalLink } from "lucide-react";
-
-/**
- * EDITABLE ADVOCACY DATA
- */
-const advocacyItems = [
-  { 
-    id: "news-1",
-    category: "Media Freedoms",
-    title: "CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST",
-    date: "Oct 12, 2023",
-    desc: "CPRA demands immediate police action to safeguard democratic values and press freedom.",
-    fullStory: `CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST...`,
-    socialMediaLink: "https://www.facebook.com/zambiatodayz/posts/..."
-  },
-  { 
-    id: "news-2",
-    category: "Legislative Reform",
-    title: "Urgent Call for Review of the Public Gatherings Bill",
-    date: "Sep 28, 2023",
-    desc: "The Ministry of Justice must expedite reviews to ensure a level playing field for all citizens.",
-    fullStory: "The Centre for Peace, Research and Advocacy has urged the Ministry of Justice...",
-    socialMediaLink: "https://www.facebook.com/HotFmZambia/posts/..."
-  },
-  { 
-    id: "news-3",
-    category: "Partnerships",
-    title: "Strategic MOU Signed with Regional Academic Institutions",
-    date: "Sep 15, 2023",
-    desc: "Enhancing collaborative research in restorative justice and student mentorship.",
-    fullStory: `We are pleased to announce that...`,
-    socialMediaLink: "https://www.facebook.com/100070134764200/posts/..."
-  }
-];
+import siteContent from "@/lib/site-content.json";
 
 export default function Home() {
-  const [selectedAdvocacy, setSelectedAdvocacy] = useState<typeof advocacyItems[0] | null>(null);
+  const [selectedAdvocacy, setSelectedAdvocacy] = useState<any | null>(null);
+  const advocacyItems = siteContent.news;
   
-  // IMAGE LOOKUPS
   const heroImg = PlaceHolderImages.find(img => img.id === "hero-refugee");
   const missionImg = PlaceHolderImages.find(img => img.id === "community-need");
   const execImg = PlaceHolderImages.find(img => img.id === "cliffton-chifuwe");
@@ -209,7 +177,7 @@ export default function Home() {
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {advocacyItems.map((news, idx) => {
+              {advocacyItems.slice(0, 3).map((news: any, idx: number) => {
                 const newsImg = PlaceHolderImages.find(img => img.id === news.id);
                 return (
                   <div key={idx} className="group cursor-pointer" onClick={() => setSelectedAdvocacy(news)}>
@@ -226,7 +194,7 @@ export default function Home() {
                     <h3 className="text-xl font-headline font-semibold mt-2 group-hover:text-primary transition-colors leading-tight line-clamp-2">
                       {news.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground mt-3 line-clamp-2">{news.desc}</p>
+                    <p className="text-sm text-muted-foreground mt-3 line-clamp-2">{news.excerpt}</p>
                     <div className="flex items-center justify-between mt-4">
                       <p className="text-xs text-muted-foreground/60">{news.date}</p>
                       <span className="text-xs font-bold text-accent group-hover:underline flex items-center gap-1">Read Story <ArrowRight className="h-3 w-3" /></span>
@@ -280,7 +248,7 @@ export default function Home() {
         {/* Final CTA */}
         <section className="py-16 md:py-24 bg-accent text-white">
           <div className="container mx-auto px-4 sm:px-6 text-center space-y-8">
-            <h2 className="text-3xl md:text-5xl font-headline font-bold">Ready to Drive Change?</h2>
+            <h2 className="text-3xl md:text-5xl font-headline font-bold">Ready to drive change?</h2>
             <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">Join us in our mission to build a more inclusive and peaceful Southern Africa.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 px-10 w-full sm:w-auto">

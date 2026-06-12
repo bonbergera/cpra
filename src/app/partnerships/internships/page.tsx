@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Navbar } from "@/components/layout/Navbar";
@@ -7,44 +8,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Users, MapPin, Search, ArrowLeft, Clock, ShieldCheck } from "lucide-react";
 import Link from "next/link";
-
-/**
- * EDITABLE INTERNSHIP ROLES
- * You can add, remove, or modify roles in this array.
- */
-const roles = [
-  {
-    id: "i-1",
-    title: "Field Research Assistant",
-    location: "Western Province, Zambia",
-    duration: "3 Months",
-    stipend: "Sponsored / Basic Stipend",
-    tasks: ["Data Collection", "Community Mapping", "Stakeholder Interviews"],
-    partner: "CPRA Insight Team"
-  },
-  {
-    id: "i-2",
-    title: "Community Liaison Intern",
-    location: "Southern Province, Zambia",
-    duration: "6 Months",
-    stipend: "Sponsored / Partial",
-    tasks: ["Mediation Support", "Youth Engagement", "Reporting"],
-    partner: "SADC Peacebuilding Center"
-  },
-  {
-    id: "i-3",
-    title: "Governance & Transparency Intern",
-    location: "Lusaka, Zambia",
-    duration: "4 Months",
-    stipend: "Unpaid / Academic Credit",
-    tasks: ["Legislative Tracking", "Social Media Advocacy", "Drafting Briefs"],
-    partner: "Ministry of Justice"
-  }
-];
-
-const FB_LINK = "https://www.facebook.com/p/Centre-for-Peace-Research-and-Advocacy-CPRA-100087220065870/";
+import siteContent from "@/lib/site-content.json";
 
 export default function InternshipsPage() {
+  const roles = siteContent.internships;
+  const FB_LINK = "https://www.facebook.com/p/Centre-for-Peace-Research-and-Advocacy-CPRA-100087220065870/";
+
   return (
     <>
       <Navbar />
@@ -69,7 +38,7 @@ export default function InternshipsPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-6">
-              {roles.map((role) => (
+              {roles.map((role: any) => (
                 <Card key={role.id} className="border-none shadow-md overflow-hidden bg-white">
                   <div className="grid grid-cols-1 md:grid-cols-4">
                     <div className="md:col-span-3 p-8">
@@ -86,7 +55,7 @@ export default function InternshipsPage() {
                       <p className="text-sm text-accent font-bold mb-6">Partner: {role.partner}</p>
                       
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                        {role.tasks.map((task, i) => (
+                        {role.tasks.map((task: string, i: number) => (
                           <div key={i} className="flex items-center gap-2 text-xs text-slate-600 font-medium bg-slate-50 p-2 rounded-lg">
                             <ShieldCheck className="h-3 w-3 text-green-600" /> {task}
                           </div>

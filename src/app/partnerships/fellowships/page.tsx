@@ -8,45 +8,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Landmark, Sparkles, ArrowLeft, Calendar, UserCheck, Mail } from "lucide-react";
 import Link from "next/link";
-
-/**
- * EDITABLE FELLOWSHIP DATA
- * You can add, remove, or modify fellowships in this array.
- */
-const fellowships = [
-  {
-    id: "f-1",
-    title: "Post-Conflict Reconstruction Fellow",
-    partner: "University of Zambia (UNZA)",
-    duration: "6 Months",
-    type: "Sponsored / Full",
-    focus: "Restorative Justice Systems",
-    description: "In-depth academic research into indigenous mediation frameworks within rural Zambia. Candidates will work with UNZA faculty and CPRA field researchers."
-  },
-  {
-    id: "f-2",
-    title: "Regional Security Analyst",
-    partner: "SADC Peacebuilding Center",
-    duration: "4 Months",
-    type: "Sponsored / Hybrid",
-    focus: "Conflict Mapping & GIS",
-    description: "Using data science and geospatial tools to map localized structural conflicts across the Southern African region."
-  },
-  {
-    id: "f-3",
-    title: "Human Rights & Policy Advocate",
-    partner: "Ministry of Justice",
-    duration: "3 Months",
-    type: "Sponsored / Partial",
-    focus: "Legislative Reform Monitoring",
-    description: "Focus on monitoring current bills and providing evidence-based advocacy briefs for stakeholders in the Zambian government."
-  }
-];
-
-const FB_LINK = "https://www.facebook.com/p/Centre-for-Peace-Research-and-Advocacy-CPRA-100087220065870/";
-const CPRA_EMAIL = "cpra4peace@gmail.com";
+import siteContent from "@/lib/site-content.json";
 
 export default function FellowshipsPage() {
+  const fellowships = siteContent.fellowships;
+  const FB_LINK = "https://www.facebook.com/p/Centre-for-Peace-Research-and-Advocacy-CPRA-100087220065870/";
+  const CPRA_EMAIL = "cpra4peace@gmail.com";
+
   return (
     <>
       <Navbar />
@@ -71,7 +39,7 @@ export default function FellowshipsPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {fellowships.map((f) => (
+              {fellowships.map((f: any) => (
                 <Card key={f.id} className="border-none shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col bg-white">
                   <CardHeader className="space-y-4">
                     <Badge className="w-fit bg-primary/10 text-primary border-none">{f.type}</Badge>
@@ -106,7 +74,6 @@ export default function FellowshipsPage() {
               ))}
             </div>
 
-            {/* CTA Section */}
             <div className="p-10 bg-primary text-white rounded-[2rem] text-center space-y-8 shadow-xl">
               <div className="space-y-3">
                 <h3 className="text-3xl font-headline font-bold">No Program Matches Your Research?</h3>

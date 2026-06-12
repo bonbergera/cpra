@@ -9,93 +9,14 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Map, AlertTriangle, Info, MapPin, Layers, Filter, ZoomIn, ZoomOut, Maximize2, Calendar, BookOpen, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-/**
- * EDITABLE MAP DATA
- * Adjust 'top' and 'left' percentages to move pins on the map mockup.
- */
-const MAP_POINTS = [
-  {
-    id: 1,
-    region: "Copperbelt Region",
-    title: "Land Tenure Dispute",
-    description: "High fragility due to rapid urbanization and mining land overlaps.",
-    level: "moderate", // "high", "moderate", "peacebuilding"
-    top: "25%",
-    left: "45%"
-  },
-  {
-    id: 2,
-    region: "Lusaka Province",
-    title: "Political Violence Risk",
-    description: "Monitoring cadre activities and inter-party tension zones.",
-    level: "high",
-    top: "55%",
-    left: "55%"
-  },
-  {
-    id: 3,
-    region: "Western Province",
-    title: "Climate Migration Study",
-    description: "Cross-border pastoralist movements causing localized tension.",
-    level: "peacebuilding",
-    top: "50%",
-    left: "25%"
-  },
-  {
-    id: 4,
-    region: "Southern Province",
-    title: "Water Resource Access",
-    description: "Dispute over livestock watering points in drought-affected areas.",
-    level: "moderate",
-    top: "70%",
-    left: "40%"
-  }
-];
-
-/**
- * EDITABLE ASSESSMENTS DATA
- * This powers the sidebar and the detailed popups.
- * reportUrl should point to a file in public/documents/ (e.g., "/documents/my-report.pdf")
- */
-const RECENT_ASSESSMENTS = [
-  { 
-    id: "as-1",
-    region: "Western Province", 
-    type: "Climate Migration Assessment", 
-    level: "High", 
-    date: "November 2023",
-    details: "This assessment focused on the Shangombo district, identifying a 40% increase in localized disputes between settled farmers and nomadic herders. CPRA recommends immediate community-led water sharing agreements and mediation training for traditional leaders.",
-    findings: ["Resource scarcity driving 60% of cases", "Youth migration rising", "Lack of formal mediation frameworks"],
-    reportUrl: "/documents/climate-migration-western.pdf"
-  },
-  { 
-    id: "as-2",
-    region: "Southern Province", 
-    type: "Resource Access Audit", 
-    level: "Medium", 
-    date: "October 2023",
-    details: "An audit of the Gwembe Valley land rights. Findings suggest that while structural peace remains stable, the introduction of large-scale commercial farming is displacing smallholder farmers. CPRA is facilitating dialogue between community stakeholders and investors.",
-    findings: ["Unclear land boundaries", "Inadequate consultation", "Risk of displacement"],
-    reportUrl: "/documents/resource-access-audit-southern.pdf"
-  },
-  { 
-    id: "as-3",
-    region: "Lusaka District", 
-    type: "Cadre Activity Monitor", 
-    level: "High", 
-    date: "October 2023",
-    details: "Post-election fragility report. Despite a general decrease in national violence, urban markets in Lusaka remain flashpoints for extortion and intimidation by unaligned political cadres. Recommendations include strictly enforcing the Public Gatherings Bill.",
-    findings: ["Extortion in bus stations", "Weak police presence in markets", "High youth unemployment"],
-    reportUrl: "/documents/cadre-activity-monitor-lusaka.pdf"
-  }
-];
-
-const GMAIL_URL = "https://mail.google.com/mail/?view=cm&fs=1&to=cpra4peace@gmail.com&su=Request for Raw Conflict Dataset";
+import siteContent from "@/lib/site-content.json";
 
 export default function ConflictMapPage() {
   const [zoom, setZoom] = useState(1);
-  const [selectedAssessment, setSelectedAssessment] = useState<typeof RECENT_ASSESSMENTS[0] | null>(null);
+  const [selectedAssessment, setSelectedAssessment] = useState<any | null>(null);
+
+  const MAP_POINTS = siteContent.mapPoints;
+  const RECENT_ASSESSMENTS = siteContent.assessments;
 
   const handleZoomIn = () => setZoom(prev => Math.min(prev + 0.2, 2));
   const handleZoomOut = () => setZoom(prev => Math.max(prev - 0.2, 0.8));
@@ -109,6 +30,8 @@ export default function ConflictMapPage() {
       default: return 'bg-slate-500';
     }
   };
+
+  const GMAIL_URL = "https://mail.google.com/mail/?view=cm&fs=1&to=cpra4peace@gmail.com&su=Request for Raw Conflict Dataset";
 
   return (
     <>
@@ -133,21 +56,17 @@ export default function ConflictMapPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-              {/* Map Interface Simulation */}
               <div className="lg:col-span-3">
                 <Card className="border-none shadow-2xl overflow-hidden min-h-[700px] relative bg-[#E5E7EB] group/map">
-                  {/* Interactive Map Container */}
                   <div 
                     className="absolute inset-0 transition-transform duration-500 ease-out flex items-center justify-center cursor-grab active:cursor-grabbing"
                     style={{ transform: `scale(${zoom})` }}
                   >
-                    {/* Visual Zambia Map Placeholder */}
                     <div className="relative w-[800px] h-[600px] bg-slate-100 rounded-[50px] shadow-inner flex items-center justify-center border-4 border-white/50">
                         <Map className="h-[40rem] w-[40rem] text-primary opacity-[0.03]" />
                         <div className="absolute inset-0 border-2 border-slate-300 rounded-[46px] border-dashed opacity-20"></div>
                         
-                        {/* Dynamic Map Markers */}
-                        {MAP_POINTS.map((point) => (
+                        {MAP_POINTS.map((point: any) => (
                           <div 
                             key={point.id} 
                             className="absolute z-10" 
@@ -168,14 +87,12 @@ export default function ConflictMapPage() {
                     </div>
                   </div>
 
-                  {/* Zoom Controls Overlay */}
                   <div className="absolute top-6 right-6 flex flex-col gap-2">
                     <Button size="icon" variant="secondary" className="bg-white/90 backdrop-blur shadow-lg hover:bg-white" onClick={handleZoomIn}><ZoomIn className="h-5 w-5" /></Button>
                     <Button size="icon" variant="secondary" className="bg-white/90 backdrop-blur shadow-lg hover:bg-white" onClick={handleZoomOut}><ZoomOut className="h-5 w-5" /></Button>
                     <Button size="icon" variant="secondary" className="bg-white/90 backdrop-blur shadow-lg hover:bg-white" onClick={handleResetZoom}><Maximize2 className="h-5 w-5" /></Button>
                   </div>
 
-                  {/* Legend Overlay */}
                   <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md p-6 rounded-2xl shadow-2xl border text-xs space-y-4 max-w-xs">
                     <h4 className="font-bold text-primary uppercase tracking-widest text-[10px] border-b pb-3">Security Legend</h4>
                     <div className="space-y-3">
@@ -196,7 +113,6 @@ export default function ConflictMapPage() {
                 </Card>
               </div>
 
-              {/* Sidebar Assessments */}
               <div className="space-y-6">
                 <Card className="border-none shadow-xl bg-white overflow-hidden">
                   <CardHeader className="bg-primary/5 pb-6">
@@ -206,7 +122,7 @@ export default function ConflictMapPage() {
                     <CardDescription className="text-xs">Click to view full research details</CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4 pt-6">
-                    {RECENT_ASSESSMENTS.map((item) => (
+                    {RECENT_ASSESSMENTS.map((item: any) => (
                       <div 
                         key={item.id} 
                         onClick={() => setSelectedAssessment(item)}
@@ -255,7 +171,6 @@ export default function ConflictMapPage() {
         </div>
       </main>
 
-      {/* Assessment Details Popup */}
       <Dialog open={!!selectedAssessment} onOpenChange={() => setSelectedAssessment(null)}>
         <DialogContent className="max-w-2xl w-[95vw] p-0 overflow-hidden border-none rounded-3xl flex flex-col max-h-[90vh]">
           {selectedAssessment && (
@@ -284,7 +199,7 @@ export default function ConflictMapPage() {
                 <div className="space-y-4">
                   <h4 className="text-xs font-bold text-accent uppercase tracking-widest border-b pb-2">Key Findings</h4>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {selectedAssessment.findings.map((finding, i) => (
+                    {selectedAssessment.findings.map((finding: string, i: number) => (
                       <li key={i} className="flex gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100 items-start">
                         <div className="h-2 w-2 rounded-full bg-accent mt-1.5 shrink-0" />
                         <span className="text-sm font-medium text-slate-700">{finding}</span>

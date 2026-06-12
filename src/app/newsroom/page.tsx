@@ -11,43 +11,11 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Search, Filter, Newspaper, Calendar, ArrowRight, Facebook, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-
-/**
- * EDITABLE NEWS DATA
- * Note: Each item ID corresponds to an image in placeholder-images.json
- */
-const newsItems = [
-  {
-    id: "news-1",
-    title: "CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST",
-    date: "October 12, 2023",
-    category: "Media Freedoms",
-    excerpt: "The Centre for Peace Research and Advocacy (CPRA) has condemned alleged violence by UPND cadres...",
-    fullStory: `CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST...`,
-    socialMediaLink: "https://www.facebook.com/zambiatodayz/posts/..."
-  },
-  {
-    id: "news-2",
-    title: "Centre Urges Ministry of Justice to Expedite Draft Public Gatherings Bill",
-    date: "September 28, 2023",
-    category: "Legislative Reform",
-    excerpt: "The Centre for Peace, Research and Advocacy has urged the Ministry of Justice...",
-    fullStory: "The Centre for Peace, Research and Advocacy has urged the Ministry of Justice...",
-    socialMediaLink: "https://www.facebook.com/HotFmZambia/posts/..."
-  },
-  {
-    id: "news-3",
-    title: "Strategic Academic Partnership with University of Zambia Formalized",
-    date: "September 15, 2023",
-    category: "Partnerships",
-    excerpt: "We are pleased to announce that, following our weekly partnership negotiations...",
-    fullStory: `We are pleased to announce that...`,
-    socialMediaLink: "https://www.facebook.com/100070134764200/posts/..."
-  }
-];
+import siteContent from "@/lib/site-content.json";
 
 export default function NewsroomPage() {
-  const [selectedNews, setSelectedNews] = useState<typeof newsItems[0] | null>(null);
+  const [selectedNews, setSelectedNews] = useState<any | null>(null);
+  const newsItems = siteContent.news;
 
   return (
     <>
@@ -79,9 +47,8 @@ export default function NewsroomPage() {
               </div>
             </div>
 
-            {/* Grid Posts */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {newsItems.map((news) => {
+              {newsItems.map((news: any) => {
                 const newsImg = PlaceHolderImages.find(img => img.id === news.id);
                 return (
                   <Card 
@@ -138,7 +105,6 @@ export default function NewsroomPage() {
               })}
             </div>
 
-            {/* Pagination Placeholder */}
             <div className="mt-16 flex justify-center">
               <Button variant="outline" className="px-12 border-slate-300 text-primary font-bold uppercase tracking-widest text-xs h-12">
                 Load More Statements

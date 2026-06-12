@@ -1,0 +1,233 @@
+
+{
+  "news": [
+    {
+      "id": "news-1",
+      "title": "CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST",
+      "date": "October 12, 2023",
+      "category": "Media Freedoms",
+      "excerpt": "The Centre for Peace Research and Advocacy (CPRA) has condemned alleged violence by UPND cadres...",
+      "fullStory": "CPRA CONDEMNS ALLEGED UPND CADRE VIOLENCE ON JOURNALIST... The Centre for Peace Research and Advocacy (CPRA) has condemned alleged violence by UPND cadres on a journalist. This act undermines democratic values and the freedom of the press in Zambia. We call upon the police to take immediate action.",
+      "socialMediaLink": "https://www.facebook.com/zambiatodayz/posts/..."
+    },
+    {
+      "id": "news-2",
+      "title": "Centre Urges Ministry of Justice to Expedite Draft Public Gatherings Bill",
+      "date": "September 28, 2023",
+      "category": "Legislative Reform",
+      "excerpt": "The Centre for Peace, Research and Advocacy has urged the Ministry of Justice...",
+      "fullStory": "The Centre for Peace, Research and Advocacy has urged the Ministry of Justice to expedite the Draft Public Gatherings Bill. This legislation is critical for ensuring that all citizens can assemble peacefully and safely.",
+      "socialMediaLink": "https://www.facebook.com/HotFmZambia/posts/..."
+    },
+    {
+      "id": "news-3",
+      "title": "Strategic Academic Partnership with University of Zambia Formalized",
+      "date": "September 15, 2023",
+      "category": "Partnerships",
+      "excerpt": "We are pleased to announce that, following our weekly partnership negotiations...",
+      "fullStory": "We are pleased to announce that, following our weekly partnership negotiations, we have formalized a strategic academic partnership with the University of Zambia (UNZA). This collaboration will focus on joint research in peacebuilding and restorative justice.",
+      "socialMediaLink": "https://www.facebook.com/100070134764200/posts/..."
+    }
+  ],
+  "bills": [
+    {
+      "id": "bill-1",
+      "name": "Draft Public Gatherings Bill",
+      "status": "In Review",
+      "lastUpdate": "Oct 2, 2023",
+      "description": "Proposed amendments to secure a level playing field for political assemblies and freedom of expression.",
+      "milestones": [
+        { "label": "Cabinet Approval", "completed": true },
+        { "label": "Ministry of Justice Review", "completed": true },
+        { "label": "Public Consultation", "completed": false },
+        { "label": "Parliamentary Presentation", "completed": false }
+      ]
+    },
+    {
+      "id": "bill-2",
+      "name": "Access to Information (ATI) Act",
+      "status": "Implemented",
+      "lastUpdate": "Sep 15, 2023",
+      "description": "Enabling transparency and public access to government documents for enhanced accountability.",
+      "milestones": [
+        { "label": "Drafting", "completed": true },
+        { "label": "Parliamentary Reading", "completed": true },
+        { "label": "Presidential Assent", "completed": true }
+      ]
+    },
+    {
+      "id": "bill-3",
+      "name": "Restorative Justice Reform Bill",
+      "status": "Research Phase",
+      "lastUpdate": "Aug 30, 2023",
+      "description": "Focusing on community-based mediation and reconciliation in juvenile criminal cases.",
+      "milestones": [
+        { "label": "Stakeholder Mapping", "completed": true },
+        { "label": "Policy Whitepaper", "completed": false },
+        { "label": "Legislative Drafting", "completed": false }
+      ]
+    }
+  ],
+  "mapPoints": [
+    {
+      "id": 1,
+      "region": "Copperbelt Region",
+      "title": "Land Tenure Dispute",
+      "description": "High fragility due to rapid urbanization and mining land overlaps.",
+      "level": "moderate",
+      "top": "25%",
+      "left": "45%"
+    },
+    {
+      "id": 2,
+      "region": "Lusaka Province",
+      "title": "Political Violence Risk",
+      "description": "Monitoring cadre activities and inter-party tension zones.",
+      "level": "high",
+      "top": "55%",
+      "left": "55%"
+    },
+    {
+      "id": 3,
+      "region": "Western Province",
+      "title": "Climate Migration Study",
+      "description": "Cross-border pastoralist movements causing localized tension.",
+      "level": "peacebuilding",
+      "top": "50%",
+      "left": "25%"
+    },
+    {
+      "id": 4,
+      "region": "Southern Province",
+      "title": "Water Resource Access",
+      "description": "Dispute over livestock watering points in drought-affected areas.",
+      "level": "moderate",
+      "top": "70%",
+      "left": "40%"
+    }
+  ],
+  "assessments": [
+    { 
+      "id": "as-1",
+      "region": "Western Province", 
+      "type": "Climate Migration Assessment", 
+      "level": "High", 
+      "date": "November 2023",
+      "details": "This assessment focused on the Shangombo district, identifying a 40% increase in localized disputes between settled farmers and nomadic herders. CPRA recommends immediate community-led water sharing agreements and mediation training for traditional leaders.",
+      "findings": ["Resource scarcity driving 60% of cases", "Youth migration rising", "Lack of formal mediation frameworks"],
+      "reportUrl": "/documents/climate-migration-western.pdf"
+    },
+    { 
+      "id": "as-2",
+      "region": "Southern Province", 
+      "type": "Resource Access Audit", 
+      "level": "Medium", 
+      "date": "October 2023",
+      "details": "An audit of the Gwembe Valley land rights. Findings suggest that while structural peace remains stable, the introduction of large-scale commercial farming is displacing smallholder farmers. CPRA is facilitating dialogue between community stakeholders and investors.",
+      "findings": ["Unclear land boundaries", "Inadequate consultation", "Risk of displacement"],
+      "reportUrl": "/documents/resource-access-audit-southern.pdf"
+    },
+    { 
+      "id": "as-3",
+      "region": "Lusaka District", 
+      "type": "Cadre Activity Monitor", 
+      "level": "High", 
+      "date": "October 2023",
+      "details": "Post-election fragility report. Despite a general decrease in national violence, urban markets in Lusaka remain flashpoints for extortion and intimidation by unaligned political cadres. Recommendations include strictly enforcing the Public Gatherings Bill.",
+      "findings": ["Extortion in bus stations", "Weak police presence in markets", "High youth unemployment"],
+      "reportUrl": "/documents/cadre-activity-monitor-lusaka.pdf"
+    }
+  ],
+  "fellowships": [
+    {
+      "id": "f-1",
+      "title": "Post-Conflict Reconstruction Fellow",
+      "partner": "University of Zambia (UNZA)",
+      "duration": "6 Months",
+      "type": "Sponsored / Full",
+      "focus": "Restorative Justice Systems",
+      "description": "In-depth academic research into indigenous mediation frameworks within rural Zambia. Candidates will work with UNZA faculty and CPRA field researchers."
+    },
+    {
+      "id": "f-2",
+      "title": "Regional Security Analyst",
+      "partner": "SADC Peacebuilding Center",
+      "duration": "4 Months",
+      "type": "Sponsored / Hybrid",
+      "focus": "Conflict Mapping & GIS",
+      "description": "Using data science and geospatial tools to map localized structural conflicts across the Southern African region."
+    },
+    {
+      "id": "f-3",
+      "title": "Human Rights & Policy Advocate",
+      "partner": "Ministry of Justice",
+      "duration": "3 Months",
+      "type": "Sponsored / Partial",
+      "focus": "Legislative Reform Monitoring",
+      "description": "Focus on monitoring current bills and providing evidence-based advocacy briefs for stakeholders in the Zambian government."
+    }
+  ],
+  "internships": [
+    {
+      "id": "i-1",
+      "title": "Field Research Assistant",
+      "location": "Western Province, Zambia",
+      "duration": "3 Months",
+      "stipend": "Sponsored / Basic Stipend",
+      "tasks": ["Data Collection", "Community Mapping", "Stakeholder Interviews"],
+      "partner": "CPRA Insight Team"
+    },
+    {
+      "id": "i-2",
+      "title": "Community Liaison Intern",
+      "location": "Southern Province, Zambia",
+      "duration": "6 Months",
+      "stipend": "Sponsored / Partial",
+      "tasks": ["Mediation Support", "Youth Engagement", "Reporting"],
+      "partner": "SADC Peacebuilding Center"
+    },
+    {
+      "id": "i-3",
+      "title": "Governance & Transparency Intern",
+      "location": "Lusaka, Zambia",
+      "duration": "4 Months",
+      "stipend": "Unpaid / Academic Credit",
+      "tasks": ["Legislative Tracking", "Social Media Advocacy", "Drafting Briefs"],
+      "partner": "Ministry of Justice"
+    }
+  ],
+  "mous": [
+    {
+      "id": "mou-unza",
+      "partner": "University of Zambia",
+      "type": "Academic Collaboration",
+      "date": "September 15, 2023",
+      "focus": "Restorative Justice & Student Mentorship",
+      "description": "A strategic milestone focused on advancing research in policy, peace studies, and student mentorship initiatives."
+    },
+    {
+      "id": "mou-sadc",
+      "partner": "SADC Peacebuilding Center",
+      "type": "Regional Strategic Partner",
+      "date": "July 2023",
+      "focus": "Conflict Mapping & Early Warning Systems",
+      "description": "Collaborative framework for regional fragility assessments and localized conflict resolution across Southern Africa."
+    },
+    {
+      "id": "mou-moj",
+      "partner": "Ministry of Justice",
+      "type": "Government Liaison",
+      "date": "October 2023",
+      "focus": "Legislative Reform & Human Rights",
+      "description": "Joint initiative to expedite the review of the Public Gatherings Bill and promote democratic accountability."
+    },
+    {
+      "id": "mou-unhcr",
+      "partner": "UNHCR Zambia",
+      "type": "Humanitarian Network",
+      "date": "June 2023",
+      "focus": "Protection of Vulnerable Groups",
+      "description": "Focus on child protection in conflict zones and integrated support for refugee communities in the region."
+    }
+  ]
+}
