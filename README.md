@@ -16,7 +16,16 @@ The application is split into two access tiers:
 - **Route**: `/admin`.
 - **Functionality**: Viewing newsletter subscribers and contact form inquiries.
 - **Authentication**: Secured via Firebase Authentication (Google Sign-In).
-- **Setup**: To access the dashboard, you must sign in with a Google account. In production, security rules can be configured to only allow specific email domains.
+- **Setup**: To access the dashboard, you must sign in with a Google account.
+
+## 📂 Managing Images
+All images are centralized in `src/lib/placeholder-images.json`. 
+1. Find the relevant `id`.
+2. Update the `imageUrl` field with your new photo URL.
+3. **Using images from your laptop**:
+   - Download the code to your computer.
+   - Place your images in the `public/` folder.
+   - In the JSON file, set the `imageUrl` to the path starting with a slash (e.g., `"/my-image.jpg"`).
 
 ## 💻 Local Development Setup
 
@@ -41,17 +50,7 @@ To run this project on your local computer:
 5. **Open Browser**: Navigate to `http://localhost:3000`.
 
 ## 🛠 Content Management
-
-All text content is centralized for easy updates without deep coding knowledge.
-- **File**: `src/lib/site-content.json`.
-- **Editing**: Locate the item (news article, bill, fellowship) and change the text.
-- **Adding**: Add a new object to the relevant array in the JSON file.
-- **Removing**: Delete the object from the JSON file.
-
-## 📂 Managing Images
-All images are centralized in `src/lib/placeholder-images.json`. 
-1. Find the relevant `id`.
-2. Update the `imageUrl` field with your new photo URL.
+All text content is centralized in `src/lib/site-content.json`. Simply edit this file to update the site.
 
 ## 🎨 Color Branding
 Modify CSS variables in `src/app/globals.css` under the `:root` section (specifically `--primary` and `--accent`).

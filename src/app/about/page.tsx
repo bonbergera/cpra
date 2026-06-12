@@ -48,11 +48,10 @@ export default function AboutPage() {
         <section className="relative py-24 bg-primary text-primary-foreground overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <Image
-              src={heroImg?.imageUrl || "https://picsum.photos/seed/cpra-hero/1200/600"}
-              alt={heroImg?.description || "Peacebuilding context"}
+              src={heroImg?.imageUrl || ""}
+              alt={heroImg?.description || "About Hero"}
               fill
               className="object-cover"
-              data-ai-hint="refugee children"
             />
           </div>
           <div className="container mx-auto px-4 sm:px-6 relative z-10 text-center">
@@ -79,18 +78,17 @@ export default function AboutPage() {
                 </div>
                 <div className="space-y-4">
                   <h2 className="text-3xl font-headline font-bold text-primary">Our Mission</h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
                     To build strong institutions, catalyse positive change and support partnerships to foster sustainable peace and development through research, advocacy and evidence-based approaches.
                   </p>
                 </div>
               </div>
               <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src={missionImg?.imageUrl || "https://picsum.photos/seed/cpra-comm/600/400"}
-                  alt={missionImg?.description || "Community interaction"}
+                  src={missionImg?.imageUrl || ""}
+                  alt={missionImg?.description || "Mission"}
                   fill
                   className="object-cover"
-                  data-ai-hint="community support"
                 />
               </div>
             </div>
@@ -127,8 +125,8 @@ export default function AboutPage() {
             <div className="flex flex-col md:flex-row items-center gap-12 max-w-5xl mx-auto">
               <div className="shrink-0 relative w-64 h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
                 <Image
-                  src={execImg?.imageUrl || "https://picsum.photos/seed/cpra-exec/300/300"}
-                  alt={execImg?.description || "Cliffton Mayaba Chifuwe"}
+                  src={execImg?.imageUrl || ""}
+                  alt={execImg?.description || "Cliffton Chifuwe"}
                   fill
                   className="object-cover"
                 />
