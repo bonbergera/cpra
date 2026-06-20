@@ -5,7 +5,7 @@ import { FirebaseClientProvider } from '@/firebase/client-provider';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'CPRA Insight | Centre for Peace Research and Advocacy',
+  title: 'CPRA | Centre for Peace Research and Advocacy',
   description: 'Promoting democracy, human rights, and social justice across Southern Africa through research and advocacy.',
 };
 
