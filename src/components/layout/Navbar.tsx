@@ -31,7 +31,7 @@ export function Navbar() {
         {/* Logo - ensured to be shrink-resistant but responsive */}
         <Link href="/" className="flex items-center hover:scale-105 transition-transform duration-300 shrink-0">
           <Image 
-            src={logo?.imageUrl || "https://picsum.photos/seed/peace-advocacy-logo/400/120"} 
+          src="/cpra-logo.jpg"
             alt="CPRA Logo" 
             width={200} 
             height={60} 

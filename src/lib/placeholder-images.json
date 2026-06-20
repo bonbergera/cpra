@@ -3,31 +3,31 @@
     {
       "id": "cpra-logo",
       "description": "The official logo for the Centre for Peace Research and Advocacy.",
-      "imageUrl": "https://picsum.photos/seed/peace-advocacy-logo/400/120",
+      "imageUrl": "/cpra-logo.jpg",
       "imageHint": "peace advocacy logo"
     },
     {
       "id": "hero-refugee",
       "description": "Children in a regional community setting representing the focus on vulnerable groups.",
-      "imageUrl": "https://picsum.photos/seed/cpra-hero/1200/600",
+      "imageUrl": "/home.jpg",
       "imageHint": "refugee children"
     },
     {
       "id": "community-need",
       "description": "Community members in a rural setting receiving support.",
-      "imageUrl": "https://picsum.photos/seed/cpra-comm/600/400",
+      "imageUrl": "/vision.jpg",
       "imageHint": "community support"
     },
     {
       "id": "cliffton-chifuwe",
       "description": "Executive Director Cliffton Mayaba Chifuwe.",
-      "imageUrl": "https://picsum.photos/seed/cpra-exec/300/300",
+      "imageUrl": "/cliffton.jpg",
       "imageHint": "professional man"
     },
     {
       "id": "signing-ceremony",
       "description": "Official signing of a Memorandum of Understanding.",
-      "imageUrl": "https://picsum.photos/seed/cpra-sign/800/450",
+      "imageUrl": "/partener.jpg",
       "imageHint": "partnership signing"
     },
     {

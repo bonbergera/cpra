@@ -115,8 +115,13 @@ export default function NewsroomPage() {
       </main>
 
       <Dialog open={!!selectedNews} onOpenChange={() => setSelectedNews(null)}>
-        <DialogContent className="max-w-3xl max-h-[90vh] p-0 overflow-hidden border-none flex flex-col">
-          {selectedNews && (
+  <DialogContent className="max-w-3xl max-h-[90vh] p-0 overflow-hidden border-none flex flex-col">
+
+    <DialogTitle className="sr-only">
+      News Article
+    </DialogTitle>
+
+    {selectedNews && (
             <>
               {(() => {
                 const newsImg = PlaceHolderImages.find(img => img.id === selectedNews.id);
