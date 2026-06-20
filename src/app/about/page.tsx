@@ -15,27 +15,33 @@ export default function AboutPage() {
   const coreValues = [
     { 
       icon: Target,
-      text: "Non\nPartisan\n•CPRA will remain apolitical, neutral and objective" 
+      title: "Non Partisan",
+      description: "CPRA will remain apolitical, neutral and objective" 
     },
     { 
       icon: Eye,
-      text: "Transpa\nrent &\nAccount\nable\n•CPRA will be transparent and accountable in its dealings" 
+      title: "Transparent & Accountable",
+      description: "CPRA will be transparent and accountable in its dealings" 
     },
     { 
       icon: Heart,
-      text: "Ethical\n•CPRA will continue to adhere to professional and acceptable ethos" 
+      title: "Ethical",
+      description: "CPRA will continue to adhere to professional and acceptable ethos" 
     },
     { 
       icon: Shield,
-      text: "Honesty\n&\nIntergrit\ny\n•CPRA will be guided by principles that uphold integrity" 
+      title: "Honesty & Integrity",
+      description: "CPRA will be guided by principles that uphold integrity" 
     },
     { 
       icon: Scale,
-      text: "Democra\ntic\nValues\n•CPRA's institutional arrangements will be anchored on respect for democratic values" 
+      title: "Democratic Values",
+      description: "CPRA's institutional arrangements will be anchored on respect for democratic values" 
     },
     { 
       icon: Globe,
-      text: "Regional\ncooperati\non\n•CPRA will be anchored on recognition of the value of regional efforts" 
+      title: "Regional Cooperation",
+      description: "CPRA will be anchored on recognition of the value of regional efforts" 
     }
   ];
 
@@ -77,7 +83,7 @@ export default function AboutPage() {
                 </div>
                 <div className="space-y-4">
                   <h2 className="text-3xl font-headline font-bold text-primary">Our Mission</h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+                  <p className="text-lg text-muted-foreground leading-relaxed">
                     To build strong institutions, catalyse positive change and support partnerships to foster sustainable peace and development through research, advocacy and evidence-based approaches.
                   </p>
                 </div>
@@ -97,23 +103,26 @@ export default function AboutPage() {
         {/* Core Values */}
         <section className="py-24 bg-slate-50 border-y">
           <div className="container mx-auto px-4 sm:px-6">
-            <h2 className="text-3xl font-headline font-bold text-primary text-center mb-16">Core Values</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {coreValues.map((value, idx) => {
-                const Icon = value.icon;
-                return (
-                  <Card key={idx} className="border-none shadow-md hover:shadow-xl transition-all duration-300">
-                    <CardContent className="pt-8 text-center space-y-4">
-                      <div className="mx-auto w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
-                        <Icon className="h-6 w-6 text-accent" />
-                      </div>
-                      <p className="text-muted-foreground text-sm leading-relaxed whitespace-pre-line">
-                        {value.text}
-                      </p>
-                    </CardContent>
-                  </Card>
-                );
-              })}
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary text-center mb-16">Core Values</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {coreValues.map((value, idx) => {
+                  const Icon = value.icon;
+                  return (
+                    <Card key={idx} className="border-none shadow-md hover:shadow-xl transition-all duration-300">
+                      <CardContent className="pt-10 pb-10 flex flex-col items-center text-center space-y-4">
+                        <div className="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center mb-2">
+                          <Icon className="h-7 w-7 text-accent" />
+                        </div>
+                        <h4 className="font-bold text-primary text-lg">{value.title}</h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed px-2">
+                          {value.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
@@ -130,7 +139,7 @@ export default function AboutPage() {
                   className="object-cover"
                 />
               </div>
-              <div className="space-y-6">
+              <div className="space-y-6 text-center md:text-left">
                 <h2 className="text-3xl font-headline font-bold text-primary">Our Leadership</h2>
                 <div className="space-y-2">
                   <h4 className="text-2xl font-bold text-primary">Cliffton Mayaba Chifuwe</h4>
