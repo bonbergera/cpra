@@ -56,81 +56,81 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-primary text-primary-foreground pt-16 pb-8">
+    <footer className="bg-accent text-white pt-24 pb-12">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20">
+          <div className="space-y-8">
             <Link href="/" className="inline-block">
               <Image 
                 src={logo?.imageUrl || ""} 
                 alt="CPRA Logo" 
-                width={240} 
-                height={80} 
-                className="h-16 w-auto object-contain bg-white rounded-sm p-1"
+                width={200} 
+                height={60} 
+                className="h-12 w-auto object-contain bg-white rounded-lg p-2"
                 data-ai-hint="peace advocacy logo"
               />
             </Link>
-            <p className="text-primary-foreground/70 text-sm leading-relaxed max-w-xs">
-              Promoting sustainable peace and development through evidence-based research and advocacy in Southern Africa.
+           <p className="text-white/60 text-sm leading-relaxed max-w-xs">
+              Promoting sustainable peace and development through evidence-based research and advocacy across Southern Africa.
             </p>
             <div className="flex space-x-4">
               <Link 
                 href="https://www.facebook.com/p/Centre-for-Peace-Research-and-Advocacy-CPRA-100087220065870/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="hover:text-accent transition-colors"
+                className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary transition-all group"
               >
-                <Facebook className="h-5 w-5" />
+                <Facebook className="h-5 w-5 text-white/70 group-hover:text-white" />
               </Link>
-              <Link href="#" className="hover:text-accent transition-colors">
-                <Twitter className="h-5 w-5" />
+              <Link href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary transition-all group">
+                <Twitter className="h-5 w-5 text-white/70 group-hover:text-white" />
               </Link>
               <Link 
-                href="https://www.linkedin.com/in/cliffton-mayaba-chifuwe-42614040/?originalSubdomain=zm" 
+               href="https://www.linkedin.com/in/cliffton-mayaba-chifuwe-42614040/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="hover:text-accent transition-colors"
+                className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-primary transition-all group"
               >
-                <Linkedin className="h-5 w-5" />
+               <Linkedin className="h-5 w-5 text-white/70 group-hover:text-white" />
               </Link>
             </div>
           </div>
 
           <div>
-            <h4 className="font-headline text-lg font-semibold mb-6">Quick Links</h4>
-            <ul className="space-y-4 text-sm text-primary-foreground/70">
-              <li><Link href="/themes" className="hover:text-accent transition-colors">Core Themes</Link></li>
-              <li><Link href="/research" className="hover:text-accent transition-colors">Research Synthesis</Link></li>
-              <li><Link href="/newsroom" className="hover:text-accent transition-colors">Advocacy Newsroom</Link></li>
-              <li><Link href="/tracker" className="hover:text-accent transition-colors">Legislative Tracker</Link></li>
-              <li><Link href="/partnerships" className="hover:text-accent transition-colors">Academic MOUs</Link></li>
+            <h4 className="font-headline text-lg font-bold mb-8 border-b border-white/10 pb-2">Quick Links</h4>
+            <ul className="space-y-4 text-sm text-white/60">
+              <li><Link href="/themes" className="hover:text-primary transition-colors">Core Themes</Link></li>
+              <li><Link href="/research" className="hover:text-primary transition-colors">Research Synthesis</Link></li>
+              <li><Link href="/newsroom" className="hover:text-primary transition-colors">Advocacy Newsroom</Link></li>
+              <li><Link href="/tracker" className="hover:text-primary transition-colors">Legislative Tracker</Link></li>
+              <li><Link href="/partnerships" className="hover:text-primary transition-colors">Academic MOUs</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-headline text-lg font-semibold mb-6">Contact Us</h4>
-            <ul className="space-y-4 text-sm text-primary-foreground/70">
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-accent shrink-0" />
+             <h4 className="font-headline text-lg font-bold mb-8 border-b border-white/10 pb-2">Contact Us</h4>
+            <ul className="space-y-6 text-sm text-white/60">
+              <li className="flex items-start gap-4">
+                <MapPin className="h-5 w-5 text-primary shrink-0" />
                 <span>Lusaka, Zambia</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="h-5 w-5 text-accent shrink-0" />
+                           <li className="flex items-center gap-4">
+                <Phone className="h-5 w-5 text-primary shrink-0" />
                 <span>+260 (0) 977 411 676</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-accent shrink-0" />
+              <li className="flex items-center gap-4">
+                <Mail className="h-5 w-5 text-primary shrink-0" />
                 <span>cpra4peace@gmail.com</span>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-headline text-lg font-semibold mb-6">Stay Informed</h4>
-            <p className="text-sm text-primary-foreground/70 mb-4">
-              Subscribe to our monthly fragility assessments and advocacy briefs.
+           <div className="space-y-8">
+            <h4 className="font-headline text-lg font-bold mb-8 border-b border-white/10 pb-2">Newsletter</h4>
+            <p className="text-sm text-white/60 leading-relaxed">
+              Stay updated with our monthly fragility assessments and advocacy briefs.
             </p>
-            <form onSubmit={handleSubscribe} className="flex gap-2">
+            <form onSubmit={handleSubscribe} className="space-y-3">
               <input 
                 type="email" 
                 value={email}
@@ -138,25 +138,25 @@ export function Footer() {
                 placeholder="Email address" 
                 required
                 disabled={isSubmitting}
-                className="bg-primary-foreground/10 border-primary-foreground/20 rounded-md px-4 py-2 text-sm w-full focus:outline-none focus:ring-1 focus:ring-accent text-white placeholder:text-primary-foreground/40 disabled:opacity-50"
+                className="bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm w-full focus:outline-none focus:ring-1 focus:ring-primary text-white placeholder:text-white/30 disabled:opacity-50 transition-all"
               />
               <button 
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-accent text-white px-4 py-2 rounded-md hover:bg-accent/90 transition-colors font-bold text-sm disabled:opacity-50 min-w-[70px]"
+                className="bg-primary text-white w-full py-3 rounded-xl hover:bg-primary/90 transition-all font-bold text-sm uppercase tracking-widest shadow-lg disabled:opacity-50"
               >
-                {isSubmitting ? "..." : "Join"}
+                {isSubmitting ? "Subscribing..." : "Join Newsletter"}
               </button>
             </form>
           </div>
         </div>
         
-        <div className="border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-primary-foreground/50 gap-4">
-          <p>© {new Date().getFullYear()} Centre for Peace Research and Advocacy (CPRA). All rights reserved.</p>
-          <div className="flex space-x-6">
-            <Link href="#" className="hover:text-accent">Privacy Policy</Link>
-            <Link href="#" className="hover:text-accent">Terms of Service</Link>
-            <Link href="/admin" className="hover:text-accent opacity-50">Admin</Link>
+        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-[10px] font-bold uppercase tracking-widest text-white/40 gap-6">
+          <p>© {new Date().getFullYear()} Centre for Peace Research and Advocacy (CPRA).</p>
+          <div className="flex space-x-8">
+            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/admin" className="hover:text-primary transition-colors opacity-50">Admin</Link>
           </div>
         </div>
       </div>

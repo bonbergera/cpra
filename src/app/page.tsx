@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -33,28 +32,28 @@ export default function Home() {
               src={heroImg?.imageUrl || ""}
               alt={heroImg?.description || "Hero"}
               fill
-              className="object-cover brightness-[0.4]"
+              className="object-cover brightness-[0.3]"
               priority
               data-ai-hint={heroImg?.imageHint}
             />
           </div>
           <div className="container mx-auto px-4 sm:px-6 relative z-10">
             <div className="max-w-3xl space-y-6 md:space-y-8 animate-fade-in text-center sm:text-left">
-              <div className="inline-block bg-accent/20 border border-accent/30 text-accent-foreground px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold backdrop-blur-sm">
+              <div className="inline-block bg-primary/20 border border-primary/30 text-white px-4 py-1.5 rounded-full text-xs md:text-sm font-bold backdrop-blur-md">
                 Independent NGO • Zambia
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-bold text-white leading-[1.1]">
-                Fostering Sustainable <span className="text-accent italic">Peace</span> Across Southern Africa
+                Fostering Sustainable <span className="text-primary italic">Peace</span> Across Southern Africa
               </h1>
-              <p className="text-lg md:text-xl text-white/80 font-light leading-relaxed max-w-2xl mx-auto sm:mx-0">
+              <p className="text-lg md:text-xl text-white/90 font-light leading-relaxed max-w-2xl mx-auto sm:mx-0">
                 The Centre for Peace Research and Advocacy (CPRA) is dedicated to promoting democracy, 
                 human rights, and social justice through evidence-based research and localized conflict resolution.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center sm:justify-start">
-                <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white px-8 h-14 md:h-12 w-full sm:w-auto">
+                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white px-10 h-14 w-full sm:w-auto font-bold uppercase tracking-widest text-xs shadow-xl">
                   <Link href="/research">Launch Research Tool</Link>
                 </Button>
-                <Button asChild size="lg" variant="secondary" className="bg-white hover:bg-slate-100 text-primary px-8 h-14 md:h-12 w-full sm:w-auto font-bold shadow-lg">
+                <Button asChild size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white/50 px-10 h-14 w-full sm:w-auto font-bold uppercase tracking-widest text-xs backdrop-blur-sm">
                   <Link href="/themes">Explore Core Themes</Link>
                 </Button>
               </div>
@@ -63,37 +62,40 @@ export default function Home() {
         </section>
 
         {/* Mission Statement */}
-        <section className="py-16 md:py-24 bg-background">
+        <section className="py-16 md:py-32 bg-slate-50">
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-headline font-bold text-primary">Our Vision</h2>
-                <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+              <div className="space-y-8">
+                <div className="space-y-2">
+                  <span className="text-primary font-bold uppercase tracking-widest text-xs">Our Commitment</span>
+                  <h2 className="text-3xl md:text-5xl font-headline font-bold text-accent">Defining Our Vision</h2>
+                </div>
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-light">
                   We envision a vibrant Southern Africa anchored on peaceful and inclusive societies, 
                   where every individual can thrive in an environment free from violence and inequality.
                 </p>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/5 p-3 rounded-lg shrink-0">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="flex items-start gap-4 p-4 bg-white rounded-2xl shadow-sm border">
+                    <div className="bg-primary/10 p-3 rounded-xl shrink-0">
                       <Shield className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-primary">Strategic Advocacy</h4>
-                      <p className="text-sm text-muted-foreground">Driving evidence-based policy changes at local and regional levels.</p>
+                      <h4 className="font-bold text-accent">Strategic Advocacy</h4>
+                      <p className="text-xs text-muted-foreground mt-1">Driving evidence-based policy changes.</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/5 p-3 rounded-lg shrink-0">
+                  <div className="flex items-start gap-4 p-4 bg-white rounded-2xl shadow-sm border">
+                    <div className="bg-primary/10 p-3 rounded-xl shrink-0">
                       <Scale className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-primary">Democratic Integrity</h4>
-                      <p className="text-sm text-muted-foreground">Monitoring governance and advocating for legislative reforms.</p>
+                      <h4 className="font-bold text-accent">Democratic Integrity</h4>
+                      <p className="text-xs text-muted-foreground mt-1">Monitoring governance reforms.</p>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative aspect-video rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
                 <Image
                   src={missionImg?.imageUrl || ""}
                   alt={missionImg?.description || "Mission"}
@@ -107,29 +109,31 @@ export default function Home() {
         </section>
 
         {/* Thematic Pillars */}
-        <section className="py-16 md:py-24 bg-primary text-primary-foreground">
+        <section className="py-24 bg-accent text-white">
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16 space-y-4">
-              <h2 className="text-3xl md:text-5xl font-headline font-bold">Strategic Pillars</h2>
-              <p className="text-primary-foreground/70 text-sm md:text-base">Our work operates at the critical intersection of governance, human rights, and environmental stability.</p>
+            <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+              <h2 className="text-4xl md:text-5xl font-headline font-bold">Strategic Pillars</h2>
+              <p className="text-white/70 text-lg font-light leading-relaxed">Our work operates at the critical intersection of governance, human rights, and environmental stability.</p>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 { title: "Peacebuilding", icon: Globe, desc: "Conflict mapping and local community mediation training." },
                 { title: "Governance", icon: Scale, desc: "Monitoring electoral integrity and legislative reforms." },
                 { title: "Climate Justice", icon: TreePine, desc: "Assessing how environmental fragility impacts conflict." },
                 { title: "Vulnerable Groups", icon: Users, desc: "Supporting refugees and protecting children in conflict." }
               ].map((item, idx) => (
-                <Card key={idx} className="bg-primary-foreground/5 border-primary-foreground/10 hover:border-accent/50 transition-all duration-300 group">
+                <Card key={idx} className="bg-white/5 border-white/10 hover:bg-white/10 transition-all duration-300 group">
                   <CardHeader>
-                    <item.icon className="h-10 w-10 text-accent mb-4 group-hover:scale-110 transition-transform" />
+                    <div className="p-3 bg-primary/20 rounded-xl w-fit mb-4">
+                      <item.icon className="h-8 w-8 text-primary group-hover:scale-110 transition-transform" />
+                    </div>
                     <CardTitle className="text-white text-xl font-headline">{item.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-primary-foreground/60 leading-relaxed">{item.desc}</p>
-                    <Link href={`/themes?tab=${item.title.toLowerCase().replace(' ', '-')}`} className="inline-flex items-center text-accent mt-6 text-sm font-semibold hover:underline">
-                      Learn More <ArrowRight className="h-4 w-4 ml-1" />
+                    <p className="text-sm text-white/60 leading-relaxed min-h-[3rem]">{item.desc}</p>
+                    <Link href={`/themes?tab=${item.title.toLowerCase().replace(' ', '-')}`} className="inline-flex items-center text-primary mt-6 text-sm font-bold hover:underline gap-2">
+                      Explore Pillar <ArrowRight className="h-4 w-4" />
                     </Link>
                   </CardContent>
                 </Card>
@@ -139,10 +143,10 @@ export default function Home() {
         </section>
 
         {/* Executive Director Section */}
-        <section className="py-16 md:py-24 bg-white border-y">
+        <section className="py-24 bg-white">
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 max-w-5xl mx-auto">
-              <div className="shrink-0 relative w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-accent shadow-xl">
+            <div className="flex flex-col md:flex-row items-center gap-12 max-w-5xl mx-auto">
+              <div className="shrink-0 relative w-48 h-48 md:w-56 md:h-56 rounded-3xl overflow-hidden shadow-2xl border-4 border-slate-50 rotate-3">
                 <Image
                   src={execImg?.imageUrl || ""}
                   alt={execImg?.description || "Cliffton Chifuwe"}
@@ -150,13 +154,16 @@ export default function Home() {
                   className="object-cover"
                 />
               </div>
-              <div className="text-center md:text-left space-y-4">
-                <blockquote className="text-xl md:text-2xl font-headline italic text-primary leading-snug">
-                  "At CPRA, we believe that peace is not merely the absence of conflict, but the presence of social justice, democratic accountability, and human dignity."
+              <div className="text-center md:text-left space-y-6">
+                <blockquote className="text-2xl md:text-3xl font-headline italic text-accent leading-snug">
+                  "At CPRA, we believe that peace is not merely the absence of conflict, but the <span className="text-primary not-italic font-bold">presence of social justice</span>, democratic accountability, and human dignity."
                 </blockquote>
-                <div>
-                  <h4 className="text-lg font-bold text-primary">Cliffton Mayaba Chifuwe</h4>
-                  <p className="text-muted-foreground text-xs uppercase tracking-widest font-semibold">Executive Director, CPRA</p>
+                <div className="flex items-center justify-center md:justify-start gap-4">
+                  <div className="h-px w-12 bg-primary"></div>
+                  <div>
+                    <h4 className="text-xl font-bold text-accent">Cliffton Mayaba Chifuwe</h4>
+                    <p className="text-primary text-xs uppercase tracking-widest font-bold">Executive Director, CPRA</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -164,40 +171,44 @@ export default function Home() {
         </section>
 
         {/* Newsroom Preview */}
-        <section className="py-16 md:py-24 bg-background">
+        <section className="py-24 bg-slate-50">
           <div className="container mx-auto px-4 sm:px-6">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 md:mb-12 gap-4">
+            <div className="flex flex-col sm:flex-row justify-between items-end mb-16 gap-6">
               <div className="space-y-2">
-                <h2 className="text-3xl font-headline font-bold text-primary">Latest Advocacy</h2>
-                <p className="text-muted-foreground text-sm md:text-base">Recent public statements and policy updates.</p>
+                <span className="text-primary font-bold uppercase tracking-widest text-xs">Advocacy Updates</span>
+                <h2 className="text-3xl md:text-5xl font-headline font-bold text-accent">Latest Advocacy</h2>
               </div>
-              <Button asChild variant="ghost" className="text-accent hover:text-accent/80 font-bold p-0 sm:p-4">
-                <Link href="/newsroom">View All News <ChevronRight className="h-4 w-4 ml-1" /></Link>
+              <Button asChild variant="ghost" className="text-primary hover:text-primary/80 hover:bg-primary/5 font-bold h-12 px-8">
+                <Link href="/newsroom" className="flex items-center gap-2">View Newsroom <ChevronRight className="h-4 w-4" /></Link>
               </Button>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
               {advocacyItems.slice(0, 3).map((news: any, idx: number) => {
                 const newsImg = PlaceHolderImages.find(img => img.id === news.id);
                 return (
-                  <div key={idx} className="group cursor-pointer" onClick={() => setSelectedAdvocacy(news)}>
-                    <div className="mb-4 overflow-hidden rounded-lg aspect-video relative">
+                  <div key={idx} className="group cursor-pointer bg-white p-6 rounded-3xl shadow-sm border border-transparent hover:border-primary/20 hover:shadow-xl transition-all duration-500" onClick={() => setSelectedAdvocacy(news)}>
+                    <div className="mb-6 overflow-hidden rounded-2xl aspect-[16/10] relative">
                       <Image 
                         src={newsImg?.imageUrl || ""} 
                         alt={newsImg?.description || news.title} 
                         fill 
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="object-cover group-hover:scale-110 transition-transform duration-700"
                         data-ai-hint={newsImg?.imageHint}
                       />
                     </div>
-                    <span className="text-xs font-bold text-accent uppercase tracking-wider">{news.category}</span>
-                    <h3 className="text-xl font-headline font-semibold mt-2 group-hover:text-primary transition-colors leading-tight line-clamp-2">
-                      {news.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-3 line-clamp-2">{news.excerpt}</p>
-                    <div className="flex items-center justify-between mt-4">
-                      <p className="text-xs text-muted-foreground/60">{news.date}</p>
-                      <span className="text-xs font-bold text-accent group-hover:underline flex items-center gap-1">Read Story <ArrowRight className="h-3 w-3" /></span>
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center">
+                        <Badge variant="outline" className="text-[10px] font-bold text-primary border-primary/20 px-3 uppercase tracking-wider">{news.category}</Badge>
+                        <span className="text-[10px] text-muted-foreground font-bold">{news.date}</span>
+                      </div>
+                      <h3 className="text-xl font-headline font-bold text-accent group-hover:text-primary transition-colors leading-tight line-clamp-2">
+                        {news.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">{news.excerpt}</p>
+                      <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                        <span className="text-xs font-bold text-primary flex items-center gap-2">Read Full Statement <ArrowRight className="h-3 w-3" /></span>
+                      </div>
                     </div>
                   </div>
                 );
@@ -206,55 +217,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Advocacy Modal */}
-        <Dialog open={!!selectedAdvocacy} onOpenChange={() => setSelectedAdvocacy(null)}>
-          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto w-[95vw]">
-            {selectedAdvocacy && (
-              <>
-                <DialogHeader className="space-y-4 text-left">
-                  <div className="flex items-center gap-2">
-                    <Badge className="bg-accent">{selectedAdvocacy.category}</Badge>
-                    <span className="text-xs text-muted-foreground">{selectedAdvocacy.date}</span>
-                  </div>
-                  <DialogTitle className="text-2xl font-headline text-primary leading-tight">{selectedAdvocacy.title}</DialogTitle>
-                </DialogHeader>
-                <div className="prose prose-slate max-w-none mt-4">
-                  <div className="whitespace-pre-wrap text-sm md:text-base text-muted-foreground leading-relaxed">
-                    {selectedAdvocacy.fullStory}
-                  </div>
-                </div>
-                <DialogFooter className="mt-8 pt-6 border-t flex flex-col sm:flex-row gap-4 items-center justify-between">
-                  <div className="flex items-center gap-2 text-xs md:text-sm font-medium text-muted-foreground text-center sm:text-left">
-                    Follow CPRA advocacy on social media
-                  </div>
-                  <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                    <Button asChild variant="outline" className="gap-2 border-primary/20 w-full sm:w-auto">
-                      <a href={selectedAdvocacy.socialMediaLink} target="_blank" rel="noopener noreferrer">
-                        <Facebook className="h-4 w-4 text-blue-600" /> Facebook
-                      </a>
-                    </Button>
-                    <Button asChild className="gap-2 bg-primary w-full sm:w-auto">
-                      <a href={selectedAdvocacy.socialMediaLink} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4" /> Original Story
-                      </a>
-                    </Button>
-                  </div>
-                </DialogFooter>
-              </>
-            )}
-          </DialogContent>
-        </Dialog>
-
         {/* Final CTA */}
-        <section className="py-16 md:py-24 bg-accent text-white">
-          <div className="container mx-auto px-4 sm:px-6 text-center space-y-8">
-            <h2 className="text-3xl md:text-5xl font-headline font-bold">Ready to drive change?</h2>
-            <p className="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">Join us in our mission to build a more inclusive and peaceful Southern Africa.</p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 px-10 w-full sm:w-auto">
+        <section className="py-24 bg-primary text-white text-center relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+             <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+             <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
+          </div>
+          <div className="container mx-auto px-4 sm:px-6 relative z-10 space-y-10">
+            <h2 className="text-4xl md:text-6xl font-headline font-bold">Ready to drive change?</h2>
+            <p className="text-xl opacity-80 max-w-2xl mx-auto font-light leading-relaxed">
+              Join us in our mission to build a more inclusive, peaceful, and democratic Southern Africa.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6">
+              <Button asChild size="lg" className="bg-white text-primary hover:bg-slate-100 px-12 h-14 w-full sm:w-auto font-bold uppercase tracking-widest text-xs shadow-2xl">
                 <Link href="/support">Become a Partner</Link>
               </Button>
-              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 px-10 w-full sm:w-auto">
+              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white px-12 h-14 w-full sm:w-auto font-bold uppercase tracking-widest text-xs shadow-lg">
                 <Link href="/research">Analyze Research</Link>
               </Button>
             </div>
