@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Globe, Shield, Scale, TreePine, Users, ChevronRight, Facebook, ExternalLink } from "lucide-react";
+import { ArrowRight, Globe, Shield, Scale, TreePine, Users, ChevronRight, Facebook, ExternalLink, Calendar } from "lucide-react";
 import siteContent from "@/lib/site-content.json";
 
 export default function Home() {
@@ -50,7 +50,7 @@ export default function Home() {
                 human rights, and social justice through evidence-based research and localized conflict resolution.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center sm:justify-start">
-                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white px-10 h-14 w-full sm:w-auto font-bold uppercase tracking-widest text-xs shadow-xl">
+                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white px-10 h-14 w-full sm:w-auto font-bold uppercase tracking-widest text-xs shadow-xl border-none">
                   <Link href="/research">Launch Research Tool</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white/50 px-10 h-14 w-full sm:w-auto font-bold uppercase tracking-widest text-xs backdrop-blur-sm">
@@ -229,15 +229,67 @@ export default function Home() {
               Join us in our mission to build a more inclusive, peaceful, and democratic Southern Africa.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <Button asChild size="lg" className="bg-white text-primary hover:bg-slate-100 px-12 h-14 w-full sm:w-auto font-bold uppercase tracking-widest text-xs shadow-2xl">
+              <Button asChild size="lg" className="bg-white text-primary hover:bg-slate-100 px-12 h-14 w-full sm:w-auto font-bold uppercase tracking-widest text-xs shadow-2xl border-none">
                 <Link href="/support">Become a Partner</Link>
               </Button>
-              <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-white px-12 h-14 w-full sm:w-auto font-bold uppercase tracking-widest text-xs shadow-lg">
+              <Button asChild size="lg" className="bg-accent hover:bg-accent/80 text-white px-12 h-14 w-full sm:w-auto font-bold uppercase tracking-widest text-xs shadow-lg border-none">
                 <Link href="/research">Analyze Research</Link>
               </Button>
             </div>
           </div>
         </section>
+
+        {/* Advocacy Detail Dialog */}
+        <Dialog open={!!selectedAdvocacy} onOpenChange={() => setSelectedAdvocacy(null)}>
+          <DialogContent className="max-w-3xl max-h-[90vh] p-0 overflow-hidden border-none flex flex-col">
+            {selectedAdvocacy && (
+              <>
+                {(() => {
+                  const newsImg = PlaceHolderImages.find(img => img.id === selectedAdvocacy.id);
+                  return (
+                    <div className="relative h-64 w-full shrink-0">
+                      <Image src={newsImg?.imageUrl || ""} alt={newsImg?.description || selectedAdvocacy.title} fill className="object-cover" />
+                      <div className="absolute inset-0 bg-primary/20" />
+                      <div className="absolute bottom-6 left-6 right-6">
+                         <Badge className="bg-accent text-white mb-2">{selectedAdvocacy.category}</Badge>
+                         <h2 className="text-2xl md:text-3xl font-headline font-bold text-white drop-shadow-md leading-tight">
+                          {selectedAdvocacy.title}
+                        </h2>
+                      </div>
+                    </div>
+                  );
+                })()}
+                <div className="p-8 md:p-10 overflow-y-auto bg-white flex-1">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground font-bold uppercase tracking-widest mb-6 pb-4 border-b">
+                    <Calendar className="h-4 w-4 text-accent" /> Published on {selectedAdvocacy.date}
+                  </div>
+                  <div className="prose prose-slate max-w-none">
+                    <div className="whitespace-pre-wrap text-slate-800 leading-relaxed font-sans text-base md:text-lg">
+                      {selectedAdvocacy.fullStory}
+                    </div>
+                  </div>
+                </div>
+                <DialogFooter className="p-6 bg-slate-50 border-t flex flex-col sm:flex-row gap-4 items-center justify-between shrink-0">
+                  <div className="text-sm font-semibold text-slate-500">
+                    Official Statement by CPRA Insight
+                  </div>
+                  <div className="flex gap-3 w-full sm:w-auto">
+                    <Button asChild variant="outline" className="flex-1 sm:flex-none gap-2 border-slate-300 font-bold text-xs uppercase tracking-widest">
+                      <a href={selectedAdvocacy.socialMediaLink} target="_blank" rel="noopener noreferrer">
+                        <Facebook className="h-4 w-4 text-blue-600" /> Facebook
+                      </a>
+                    </Button>
+                    <Button asChild className="flex-1 sm:flex-none gap-2 bg-primary font-bold text-xs uppercase tracking-widest">
+                      <a href={selectedAdvocacy.socialMediaLink} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="h-4 w-4" /> Original Story
+                      </a>
+                    </Button>
+                  </div>
+                </DialogFooter>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </main>
       <Footer />
     </>
